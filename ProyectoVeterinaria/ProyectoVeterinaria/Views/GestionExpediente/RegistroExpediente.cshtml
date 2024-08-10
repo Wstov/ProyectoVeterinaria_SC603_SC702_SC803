@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Veterinaria El Gandero"] = "Gestion Expediente";
+}
+
+
+<section class="mt-5">
+    <div class="container ">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <!-- Form Container with shadow and padding -->
+                <div class="shadow p-4 mb-5 bg-body rounded">
+                    <h2 class="text-center mb-4">Registro de Expediente</h2>
+                    <form>
+                        <fieldset>
+                            <div class="mb-3">
+                                <label for="expedienteCode" class="form-label">Código de Expediente</label>
+                                <input type="text" class="form-control" id="expedienteCode" name="expedienteCode" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="ownerName" class="form-label">Dueño</label>
+                                <input type="text" class="form-control" id="ownerName" name="ownerName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="petName" class="form-label">Mascota</label>
+                                <input type="text" class="form-control" id="petName" name="petName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="petDescription" class="form-label">Descripción de la Mascota</label>
+                                <input type="text" class="form-control" id="petDescription" name="petDescription" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="symptom" class="form-label">Síntoma</label>
+                                <input type="text" class="form-control" id="symptom" name="symptom" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="medication" class="form-label">Medicamento</label>
+                                <input type="text" class="form-control" id="medication" name="medication" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cost" class="form-label">Costo</label>
+                                <input type="number" class="form-control" id="cost" name="cost" step="0.01" required>
+                            </div>
+                            <div class="d-grid gap-2 mt-3">
+                                <button class="btn btn-lg btn-primary" type="submit">Registrar Expediente</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

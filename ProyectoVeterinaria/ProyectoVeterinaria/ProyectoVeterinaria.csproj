@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Marketing\" />
+    <Folder Include="Views\GestionCitas\" />
   </ItemGroup>
 
 </Project>

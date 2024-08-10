@@ -1,0 +1,121 @@
+﻿@{
+    ViewData["Veterinaria El Gandero"] = "Contabilidad";
+}
+
+
+<div class="d-flex">
+    <!-- Sidebar -->
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light border-end" style="width: 280px; height: 100vh;">
+        <p class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+            <svg class="bi pe-none me-2" width="30" height="24"></svg>
+            <span class="fs-5 fw-semibold">Gestión del Personal</span>
+            </a>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary d-inline-flex align-items-center rounded-0 border-0 w-100 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                        Horarios
+                    </button>
+                    <div class="collapse" id="home-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal small">
+                            <li><a href="#" class="nav-link text-dark py-2 px-3 rounded">Asignar Horario</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary d-inline-flex align-items-center rounded-0 border-0 w-100 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                        Desempeño
+                    </button>
+                    <div class="collapse" id="dashboard-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal small">
+                            <li><a href="#" class="nav-link text-dark py-2 px-3 rounded">Gestionar Reporte</a></li>
+                            <li><a href="#" class="nav-link text-dark py-2 px-3 rounded">Generar Reporte</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary d-inline-flex align-items-center rounded-0 border-0 w-100 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                        Vacaciones
+                    </button>
+                    <div class="collapse" id="orders-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal small">
+                            <li><a href="#" class="nav-link text-dark py-2 px-3 rounded">Solicitudes de Vacaciones</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item border-top my-3"></li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary d-inline-flex align-items-center rounded-0 border-0 w-100 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="true">
+                        Capacitaciones
+                    </button>
+                    <div class="collapse show" id="account-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal small">
+                            <li><a href="#" class="nav-link text-dark py-2 px-3 rounded">Gestionar Capacitación</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-grow-1 p-3">
+        <div class="container mt-5">
+            <h1 class="mb-4">Lista de Empleados</h1>
+
+            <!-- Tabla de Empleados -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>Empleados - Veterinaria</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Puesto</th>
+                                <th>Especialidad</th>
+                                <th>Correo Electrónico</th>
+                                <th>Teléfono</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ana Martínez</td>
+                                <td>Veterinaria</td>
+                                <td>Cirugía de animales pequeños</td>
+                                <td>ana.martinez@veterinaria.com</td>
+                                <td>1234-5678</td>
+                            </tr>
+                            <tr>
+                                <td>Carlos Ramírez</td>
+                                <td>Asistente</td>
+                                <td>Cuidado postoperatorio</td>
+                                <td>carlos.ramirez@veterinaria.com</td>
+                                <td>2345-6789</td>
+                            </tr>
+                            <tr>
+                                <td>Laura Gómez</td>
+                                <td>Recepcionista</td>
+                                <td>Atención al cliente</td>
+                                <td>laura.gomez@veterinaria.com</td>
+                                <td>3456-7890</td>
+                            </tr>
+                            <tr>
+                                <td>Pedro Sánchez</td>
+                                <td>Asistente</td>
+                                <td>Atención al cliente</td>
+                                <td>pedro.sanchez@veterinaria.com</td>
+                                <td>4567-8901</td>
+                            </tr>
+                            <tr>
+                                <td>María López</td>
+                                <td>Administradora</td>
+                                <td>Gestión de la clínica</td>
+                                <td>maria.lopez@veterinaria.com</td>
+                                <td>5678-9012</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

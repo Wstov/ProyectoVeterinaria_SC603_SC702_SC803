@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Veterinaria El Gandero"] = "Gestion Expediente";
+}
+
+
+<section class="mt-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Expedientes de Mascotas</h2>
+        <!-- Botón para crear un nuevo expediente -->
+        <div class="mb-3 text-center">
+            <a class="btn btn-primary" href="@Url.Action("RegistroExpediente")">Crear Nuevo Expediente</a>
+        </div>
+        <!-- Barra de búsqueda -->
+        <div class="col-md-12">
+            <form class="d-flex" role="search">
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Buscar expediente" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+                </div>
+            </form>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Código de Expediente</th>
+                        <th>Dueño</th>
+                        <th>Mascota</th>
+                        <th>Síntoma</th>
+                        <th>Medicamento</th>
+                        <th>Costo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se insertarán dinámicamente las filas de los expedientes -->
+                    <!-- Ejemplo de una fila -->
+                    <tr>
+                        <td>001</td>
+                        <td>Ana Martínez</td>
+                        <td>Rocky</td>
+                        <td>Tos persistente y dificultad para respirar</td>
+                        <td>Jarabe expectorante</td>
+                        <td>₡30,000</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">Editar</button>
+                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>Juan Pérez</td>
+                        <td>Bella</td>
+                        <td>Vómitos y pérdida de apetito</td>
+                        <td>Antiemético</td>
+                        <td>₡25,000</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">Editar</button>
+                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>003</td>
+                        <td>Laura Gómez</td>
+                        <td>Max</td>
+                        <td>Cojera en la pata trasera derecha</td>
+                        <td>Anti-inflamatorio</td>
+                        <td>₡20,000</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">Editar</button>
+                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>004</td>
+                        <td>Carlos López</td>
+                        <td>Luna</td>
+                        <td>Picazón excesiva y enrojecimiento en la piel</td>
+                        <td>Corticoide tópico</td>
+                        <td>₡28,000</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">Editar</button>
+                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>005</td>
+                        <td>Marta Ruiz</td>
+                        <td>Toby</td>
+                        <td>Diarrea y debilidad general</td>
+                        <td>Antibiótico</td>
+                        <td>₡32,000</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">Editar</button>
+                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                    <!-- Fin del ejemplo -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
