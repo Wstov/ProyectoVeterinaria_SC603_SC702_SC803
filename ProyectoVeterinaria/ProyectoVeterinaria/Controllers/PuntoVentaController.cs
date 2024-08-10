@@ -11,14 +11,16 @@ namespace ProyectoVeterinaria.Controllers
             return View();
         }
 
-        // GET: PuntoVentaController/Details/5
-        public ActionResult Details(int id)
+
+
+        // GET: PuntoVentaController/Carrito
+        public ActionResult Carrito()
         {
             return View();
         }
 
-        // GET: PuntoVentaController/Create
-        public ActionResult Create()
+        // GET: PuntoVentaController/Pago
+        public ActionResult Pago()
         {
             return View();
         }

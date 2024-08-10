@@ -1,0 +1,86 @@
+﻿<section class="bg-light">
+    <div class="container">
+        <div class="p-5">
+
+            <div class="mb-4">
+                <h2 class="fw-bolder display-5">Lista de productos agregados</h2>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Blog Post -->
+    <div class="container pb-5">
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Imagen</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Vacuna Triple Felina</td>
+                                    <td>15 ml</td>
+                                    <td>$4500.00</td>
+                                    <td>1</td>
+                                    <td>Vacuna para gatos que protege contra el moquillo felino, la rinotraqueitis y el calicivirus.</td>
+                                    <td><img src="ruta_de_imagen.jpg" alt="Vacuna Triple Felina" class="img-fluid" width="100"></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-danger">Eliminar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Antiparasitario Canino</td>
+                                    <td>50 ml</td>
+                                    <td>$6000.00</td>
+                                    <td>1</td>
+                                    <td>Solución líquida para eliminar parásitos internos en perros.</td>
+                                    <td><img src="ruta_de_imagen_antiparasitario.jpg" alt="Antiparasitario Canino" class="img-fluid" width="100"></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-danger">Eliminar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Shampoo Antipulgas</td>
+                                    <td>250 ml</td>
+                                    <td>$5000.00</td>
+                                    <td>1</td>
+                                    <td>Shampoo para perros y gatos que elimina y previene las pulgas.</td>
+                                    <td><img src="ruta_de_imagen_shampoo.jpg" alt="Shampoo Antipulgas" class="img-fluid" width="100"></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-danger">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cuadro para el total y botón de pago -->
+            <div class="col-lg-2">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Resumen</h5>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Total:</span>
+                            <span id="total-amount">$15500.00</span> <!-- Total calculado aquí -->
+                        </div>
+                        <a href="@Url.Action("Pago")" class="btn btn-primary btn-block">Proceder a Pagar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
