@@ -23,7 +23,7 @@
                             <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Privacy">Inventario</a>
+                            <a class="nav-link " asp-area="" asp-controller="Inventario" asp-action="Index">Inventario</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " asp-area="" asp-controller="User" asp-action="Index">Contabilidad</a>
@@ -44,17 +44,115 @@
         </nav>
         @* END *@
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+   
+    <main class="container my-4" role="main" class="pb-3">
             @RenderBody()
-        </main>
-    </div>
+    </main>
+  
 
-    <footer class="border-top footer text-muted">
+    <footer >
         <div class="container">
-            &copy; 2024 - ProyectoVeterinaria - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+                <div class="col mb-3">
+                    <div class="lc-block mb-3">
+                        <a class="navbar-brand " href="">
+                            Logo
+                        </a>
+                    </div>
+                    <div class="lc-block">
+                        <div editable="rich">
+
+                            <p class="text-muted">© 2024 Veterinaria El Ganadero, Inc</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col offset-md-2 mb-3">
+                    <div class="lc-block mb-4">
+                        <div editable="rich">
+                            <h4>Inicio</h4>
+                        </div>
+                    </div>
+                    <!-- /lc-block -->
+                    <div class="lc-block small">
+                        <style>
+                            .footer-links-list ul {
+                                padding-left: 0
+                            }
+
+                                .footer-links-list ul li {
+                                    margin-bottom: 15px;
+                                    list-style-type: none;
+                                    padding-left: 0
+                                }
+
+                            .footer-links-list a {
+                                text-decoration: none;
+                                color: var(--bs-body-color);
+                            }
+                        </style>
+                        <div editable="rich" class="footer-links-list">
+
+                            <ul>
+                                <li><a href="#">Primer Item</a> </li>
+                                <li><a href="#">Segundo Item</a></li>
+                                <li><a href="#">Tercer Item</a> </li>
+                                <li><a href="#">Cuarto Item</a> </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <!-- /lc-block -->
+                </div>
+                <div class="col mb-3">
+                    <div class="lc-block mb-4">
+                        <div editable="rich">
+                            <h4>Nosotros</h4>
+                        </div>
+                    </div>
+                    <!-- /lc-block -->
+                    <div class="lc-block small">
+                        <div editable="rich" class="footer-links-list">
+
+                            <ul>
+                                <li><a href="#">Historia</a> </li>
+                                <li><a href="#">Trabaja con nosotros</a></li>
+                                <li><a href="#">Blog</a> </li>
+                                <li><a href="#">Notricias</a> </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <!-- /lc-block -->
+                </div>
+                <div class="col mb-3">
+                    <div class="lc-block mb-4">
+                        <div editable="rich">
+                            <h4>Descargas</h4>
+                        </div>
+                    </div>
+                    <!-- /lc-block -->
+                    <div class="lc-block small">
+                        <div editable="rich" class="footer-links-list">
+
+                            <ul>
+                                <li><a href="#">Primer Elemento</a> </li>
+                                <li><a href="#">Segundo Elemento</a> </li>
+                                <li><a href="#">Tercer Elemento</a> </li>
+                                <li><a href="#">Cuarto Elemento</a> </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <!-- /lc-block -->
+                </div>
+            </div>
         </div>
     </footer>
+
+
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
