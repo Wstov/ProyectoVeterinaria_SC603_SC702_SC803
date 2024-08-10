@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<main class="mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <!-- Form Container with shadow and padding -->
+                <div class="shadow p-4 mb-5 bg-body rounded">
+                    <h2 class="text-center mb-4">Registro de Usuario</h2>
+                    <form>
+                        <fieldset>
+                            <div class="mb-3">
+                                <label for="firstName" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="lastName" class="form-label">Apellido</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                                <div id="emailHelp" class="form-text">Nunca compartiremos tu correo electrónico con nadie más.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phoneNumber" class="form-label">Número de Teléfono</label>
+                                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber">
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Dirección</label>
+                                <textarea class="form-control" id="address" name="address" rows="3"></textarea>
+                            </div>
+@*                             <div class="mb-3">
+                                <label for="profilePicture" class="form-label">Foto de Perfil</label>
+                                <input class="form-control" type="file" id="profilePicture" name="profilePicture">
+                            </div> *@
+                            <fieldset>
+                                <legend class="mt-4">Género</legend>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male" checked>
+                                    <label class="form-check-label" for="genderMale">
+                                        Masculino
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="female">
+                                    <label class="form-check-label" for="genderFemale">
+                                        Femenino
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="genderOther" value="other">
+                                    <label class="form-check-label" for="genderOther">
+                                        Otro
+                                    </label>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <legend class="mt-4">Suscripciones</legend>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="newsletterSubscription" name="newsletterSubscription">
+                                    <label class="form-check-label" for="newsletterSubscription">
+                                        Suscribirse al boletín informativo
+                                    </label>
+                                </div>
+                            </fieldset>
+                            <div class="d-grid gap-2 mt-3">
+                                <button class="btn btn-lg btn-primary" type="submit">Registrarse</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

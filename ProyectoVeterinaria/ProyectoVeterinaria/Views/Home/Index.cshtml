@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<main class="mt-4">
+<div class="container py-6">
+    <div class="row flex-lg-row-reverse align-items-center g-5">
+        <div class="col-10 mx-auto col-sm-8 col-lg-6">
+            <img src="~/img/imagencta.jpg" class="d-block mx-lg-auto img-fluid" alt="" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+            <div class="lc-block mb-3">
+                <div editable="rich">
+                    <h2 class="fw-bold display-5">Responsive left-aligned hero with image</h2>
+                </div>
+            </div>
+
+            <div class="lc-block mb-3">
+                <div editable="rich">
+                    <p class="lead">
+                        Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lc-block d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a class="btn btn-outline-secondary px-4" href="@Url.Action("Acceso")" role="button">Ingresar</a>
+                    <a class="btn btn-primary px-4 me-md-2" href="@Url.Action("Registro")" role="button">Registrarme</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    <div class="container py-5">
+        <div class="row min-vh-50 align-items-center">
+            <div class="col-md-12 text-center">
+                <div class="lc-block mb-4">
+                    <div editable="rich">
+                        <h2 class="display-3 fw-bolder">Reach us</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do<br>&nbsp;eiusmod tempor incididunt ut labore et dolore magna aliqua.&nbsp;</p>
+
+                    </div>
+                </div><!-- /lc-block -->
+                <div class="lc-block mb-5">
+                    <a class="btn btn-lg btn-dark" href="https://goo.gl/maps/zy3NkDKV3x4iyUkL9" role="button">VIEW MAP</a>
+                </div><!-- /lc-block -->
+                <div class="lc-block border-top col-md-6 offset-md-3">
+                    <div editable="rich">
+                        <h2 class="fw-bolder"><br></h2>
+                    </div>
+                </div>
+                <div class="lc-block mb-4">
+                    <div editable="rich">
+                        <h2 class="fw-bolder">Working Hours</h2>
+                    </div>
+                </div>
+                <div class="lc-block">
+                    <div editable="rich">
+                        <p>Monday to Friday: 07:00 – 19:45</p>
+                        <p>Saturday to Sunday: 11:00 – 17:00</p>
+                    </div>
+                </div><!-- /lc-block -->
+            </div><!-- /col -->
+        </div>
+    </div>
+
+
+    <div class="container-fluid g-0">
+        <div class="row g-0">
+            <div class="col-md-12">
+                <div class="lc-block overflow-hidden">
+                    <div style="max-height:40vh" class="ratio ratio-1x1" lc-helper="gmap-embed">
+                        <iframe src="https://maps.google.com/maps?q=1%20Hacker%20Way%2C%20Menlo%20Park%2C%20CA%2094025%2C%20United%20states&amp;t=m&amp;z=12&amp;output=embed&amp;iwloc=near"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
