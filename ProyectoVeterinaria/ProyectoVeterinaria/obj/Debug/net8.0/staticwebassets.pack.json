@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\ProyectoVeterinaria.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\wwwroot\\css\\carrito.css",
+      "PackagePath": "staticwebassets\\css\\carrito.css"
+    },
+    {
       "Id": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -19,6 +23,10 @@
     {
       "Id": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\wwwroot\\js\\toastProducto.js",
+      "PackagePath": "staticwebassets\\js\\toastProducto.js"
     },
     {
       "Id": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\wwwroot\\lib\\bootstrap\\LICENSE",

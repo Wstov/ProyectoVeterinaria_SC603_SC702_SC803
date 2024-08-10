@@ -3,28 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|c:\\users\\wstov\\desktop\\proyecto analisis y modelado\\proyectoveterinaria_sc603_sc702_sc803\\proyectoveterinaria\\proyectoveterinaria\\controllers\\inventariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|solutionrelative:proyectoveterinaria\\controllers\\inventariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|c:\\users\\wstov\\desktop\\proyecto analisis y modelado\\proyectoveterinaria_sc603_sc702_sc803\\proyectoveterinaria\\proyectoveterinaria\\wwwroot\\js\\toastproducto.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|solutionrelative:proyectoveterinaria\\wwwroot\\js\\toastproducto.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|c:\\users\\wstov\\desktop\\proyecto analisis y modelado\\proyectoveterinaria_sc603_sc702_sc803\\proyectoveterinaria\\proyectoveterinaria\\views\\puntoventa\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|solutionrelative:proyectoveterinaria\\views\\puntoventa\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|c:\\users\\wstov\\desktop\\proyecto analisis y modelado\\proyectoveterinaria_sc603_sc702_sc803\\proyectoveterinaria\\proyectoveterinaria\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|solutionrelative:proyectoveterinaria\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|c:\\users\\wstov\\desktop\\proyecto analisis y modelado\\proyectoveterinaria_sc603_sc702_sc803\\proyectoveterinaria\\proyectoveterinaria\\wwwroot\\js\\javascript.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|solutionrelative:proyectoveterinaria\\wwwroot\\js\\javascript.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|c:\\users\\wstov\\desktop\\proyecto analisis y modelado\\proyectoveterinaria_sc603_sc702_sc803\\proyectoveterinaria\\proyectoveterinaria\\views\\inventario\\listarproducto.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|solutionrelative:proyectoveterinaria\\views\\inventario\\listarproducto.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|c:\\users\\wstov\\desktop\\proyecto analisis y modelado\\proyectoveterinaria_sc603_sc702_sc803\\proyectoveterinaria\\proyectoveterinaria\\controllers\\inventariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|solutionrelative:proyectoveterinaria\\controllers\\inventariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|c:\\users\\wstov\\desktop\\proyecto analisis y modelado\\proyectoveterinaria_sc603_sc702_sc803\\proyectoveterinaria\\proyectoveterinaria\\views\\inventario\\registroproducto.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|solutionrelative:proyectoveterinaria\\views\\inventario\\registroproducto.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|c:\\users\\wstov\\desktop\\proyecto analisis y modelado\\proyectoveterinaria_sc603_sc702_sc803\\proyectoveterinaria\\proyectoveterinaria\\views\\inventario\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|solutionrelative:proyectoveterinaria\\views\\inventario\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|c:\\users\\wstov\\desktop\\proyecto analisis y modelado\\proyectoveterinaria_sc603_sc702_sc803\\proyectoveterinaria\\proyectoveterinaria\\views\\home\\registro.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|solutionrelative:proyectoveterinaria\\views\\home\\registro.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|c:\\users\\wstov\\desktop\\proyecto analisis y modelado\\proyectoveterinaria_sc603_sc702_sc803\\proyectoveterinaria\\proyectoveterinaria\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0D15BB4D-AC0B-4155-B93C-05462BBCD4F2}|ProyectoVeterinaria\\ProyectoVeterinaria.csproj|solutionrelative:proyectoveterinaria\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,24 +42,77 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "JavaScript.js",
+              "DocumentMoniker": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\wwwroot\\js\\JavaScript.js",
+              "RelativeDocumentMoniker": "ProyectoVeterinaria\\wwwroot\\js\\JavaScript.js",
+              "ToolTip": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\wwwroot\\js\\JavaScript.js",
+              "RelativeToolTip": "ProyectoVeterinaria\\wwwroot\\js\\JavaScript.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-10T18:48:53.683Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "ProyectoVeterinaria\\wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "ProyectoVeterinaria\\wwwroot\\js\\site.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-10T18:46:46.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "toastProducto.js",
+              "DocumentMoniker": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\wwwroot\\js\\toastProducto.js",
+              "RelativeDocumentMoniker": "ProyectoVeterinaria\\wwwroot\\js\\toastProducto.js",
+              "ToolTip": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\wwwroot\\js\\toastProducto.js",
+              "RelativeToolTip": "ProyectoVeterinaria\\wwwroot\\js\\toastProducto.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-10T18:39:01.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\Views\\PuntoVenta\\Index.cshtml",
+              "RelativeDocumentMoniker": "ProyectoVeterinaria\\Views\\PuntoVenta\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\Views\\PuntoVenta\\Index.cshtml",
+              "RelativeToolTip": "ProyectoVeterinaria\\Views\\PuntoVenta\\Index.cshtml",
+              "ViewState": "AQIAAPYAAAAAAAAAAAAAAPcAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-10T17:22:20.397Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "ListarProducto.cshtml",
               "DocumentMoniker": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\Views\\Inventario\\ListarProducto.cshtml",
               "RelativeDocumentMoniker": "ProyectoVeterinaria\\Views\\Inventario\\ListarProducto.cshtml",
               "ToolTip": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\Views\\Inventario\\ListarProducto.cshtml",
               "RelativeToolTip": "ProyectoVeterinaria\\Views\\Inventario\\ListarProducto.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAYAAAA",
+              "ViewState": "AQIAADQAAAAAAAAAAAAwwFIAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-10T17:00:06.882Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Registro.cshtml",
               "DocumentMoniker": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\Views\\Home\\Registro.cshtml",
               "RelativeDocumentMoniker": "ProyectoVeterinaria\\Views\\Home\\Registro.cshtml",
@@ -59,12 +120,11 @@
               "RelativeToolTip": "ProyectoVeterinaria\\Views\\Home\\Registro.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-10T16:54:44.415Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-10T16:54:44.415Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "RegistroProducto.cshtml",
               "DocumentMoniker": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\Views\\Inventario\\RegistroProducto.cshtml",
               "RelativeDocumentMoniker": "ProyectoVeterinaria\\Views\\Inventario\\RegistroProducto.cshtml",
@@ -72,38 +132,11 @@
               "RelativeToolTip": "ProyectoVeterinaria\\Views\\Inventario\\RegistroProducto.cshtml",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAB4AAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-10T16:54:31.179Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-10T16:54:31.179Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "ProyectoVeterinaria\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "ProyectoVeterinaria\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-10T16:43:37.004Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\Views\\Inventario\\Index.cshtml",
-              "RelativeDocumentMoniker": "ProyectoVeterinaria\\Views\\Inventario\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\Views\\Inventario\\Index.cshtml",
-              "RelativeToolTip": "ProyectoVeterinaria\\Views\\Inventario\\Index.cshtml",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAACEAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-10T16:38:31.749Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "InventarioController.cs",
               "DocumentMoniker": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\Controllers\\InventarioController.cs",
               "RelativeDocumentMoniker": "ProyectoVeterinaria\\Controllers\\InventarioController.cs",
