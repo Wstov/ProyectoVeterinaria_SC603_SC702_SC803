@@ -3,41 +3,156 @@
 }
 
 
-<div class="container py-5 my-4 bg-light text-dark text-center">
-    <div class="row pt-4 mb-2">
-        <div class="col-md-12">
-            <div class="lc-block">
-                <div editable="rich">
-                    <p class="h4 text-muted">Farmacia Veterinaria El Gandero</p>
-                </div><!-- /lc-block -->
-
-            </div><!-- /col -->
-        </div>
-        <div class="row justify-content-center mb-4">
-
-            <div class="lc-block col-xl-8">
-                <h1 editable="inline" class="display-2 fw-bold">Administrador <span class="text-success">Inventario</span> </h1>
-            </div><!-- /lc-block -->
-
-        </div>
-        <div class="row justify-content-center mb-4">
-
-            <div class="lc-block col-xl-6 lh-lg">
-                <div editable="rich">
-                    <p class="">
-                        &nbsp;Aliquam erat volutpat. In pellentesque scelerisque auctor. Ut porta lacus eget nisi fermentum lobortis. Vestibulum facilisis tempor
-                        ipsum, ut rhoncus magna ultricies laoreet. Proin vehicula erat eget libero accumsan iaculis.
-                    </p>
+<div class="d-flex">
+    <!-- Sidebar -->
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light border-end" style="width: 280px; height: 100vh;">
+        <p class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+            <svg class="bi pe-none me-2" width="30" height="24"></svg>
+            <span class="fs-5 fw-semibold">Gestión Contable</span>
+        </a>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <button class="btn btn-outline-secondary d-inline-flex align-items-center rounded-0 border-0 w-100 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                    Cierres contables
+                </button>
+                <div class="collapse" id="home-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal small">
+                        <li><a href="#" class="nav-link text-dark py-2 px-3 rounded">Cierre Diario</a></li>
+                            <li><a href="#" class="nav-link text-dark py-2 px-3 rounded">Cierre Semanal</a></li>
+                            <li><a href="#" class="nav-link text-dark py-2 px-3 rounded">Cierre MensuaL</a></li>
+                    </ul>
                 </div>
-            </div><!-- /lc-block -->
-
-        </div>
-        <div class="row pb-4">
-            <div class="col-md-12 d-">
-                <div class="lc-block d-grid gap-3 d-md-block">
-                    <a class="btn btn-lg btn-success me-md-2" href="@Url.Action("RegistroProducto")" role="button">Registro de Productos</a>
-
-                    <a class="btn btn-lg btn-primary" href="@Url.Action("ListarProducto")" role="button">Listar Productos</a>
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-outline-secondary d-inline-flex align-items-center rounded-0 border-0 w-100 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                    Historico
+                </button>
+                <div class="collapse" id="dashboard-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal small">
+                        <li><a href="#" class="nav-link text-dark py-2 px-3 rounded">Generar Historico</a></li>
+                    </ul>
                 </div>
-            </div><!-- /col -->
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-outline-secondary d-inline-flex align-items-center rounded-0 border-0 w-100 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                    Generar Reportes
+                </button>
+                <div class="collapse" id="orders-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal small">
+                        <li><a href="#" class="nav-link text-dark py-2 px-3 rounded">Generar Reporte Diario</a></li>
+                            <li><a href="#" class="nav-link text-dark py-2 px-3 rounded">Generar Reporte Semanal</a></li>
+                            <li><a href="#" class="nav-link text-dark py-2 px-3 rounded">Generar Reporte Mensual</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item border-top my-3"></li>
+            <li class="nav-item">
+                <button class="btn btn-outline-secondary d-inline-flex align-items-center rounded-0 border-0 w-100 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="true">
+                    Registro Movimientos
+                </button>
+                <div class="collapse show" id="account-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal small">
+                        <li><a href="#" class="nav-link text-dark py-2 px-3 rounded">Registrar Ingreso</a></li>
+                            <li><a href="#" class="nav-link text-dark py-2 px-3 rounded">Registrar Gastos</a></li>
+                        <li><a href="#" class="nav-link text-dark py-2 px-3 rounded">Crear Alerta</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-grow-1 p-3">
+        <div class="container mt-5">
+            <h1 class="mb-4">Resumen Financiero</h1>
+
+            <!-- Tabla de Resumen Financiero -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>Resumen Financiero - Actual</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Categoría</th>
+                                <th>Monto (CRC)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Consultas Veterinarias</td>
+                                <td>₡15,000</td>
+                            </tr>
+                            <tr>
+                                <td>Cirugías y Procedimientos</td>
+                                <td>₡8,000</td>
+                            </tr>
+                            <tr>
+                                <td>Venta de Medicamentos y Productos</td>
+                                <td>₡5,000</td>
+                            </tr>
+                            <tr>
+                                <td>Vacunas</td>
+                                <td>₡2,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Ingresos</strong></td>
+                                <td><strong>₡30,000</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Salarios del Personal</td>
+                                <td>₡12,000</td>
+                            </tr>
+                            <tr>
+                                <td>Suministros Médicos y Equipos</td>
+                                <td>₡6,000</td>
+                            </tr>
+                            <tr>
+                                <td>Alquiler del Local</td>
+                                <td>₡4,000</td>
+                            </tr>
+                            <tr>
+                                <td>Servicios Públicos (agua, luz, internet)</td>
+                                <td>₡1,500</td>
+                            </tr>
+                            <tr>
+                                <td>Publicidad y Marketing</td>
+                                <td>₡1,000</td>
+                            </tr>
+                            <tr>
+                                <td>Mantenimiento y Reparaciones</td>
+                                <td>₡500</td>
+                            </tr>
+                            <tr>
+                                <td>Otros Gastos Operativos</td>
+                                <td>₡500</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Gastos</strong></td>
+                                <td><strong>₡25,000</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Beneficio Neto</strong></td>
+                                <td><strong>₡5,000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Gráfico -->
+            <div class="card">
+                <div class="card-header">
+                    <h5>Gráfico de Ingresos y Gastos</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="financialChart"></canvas>
+                </div>
+            </div>
         </div>
+    </div>
+</div>
+
+<script src="~/js/contabilidad.js"></script>
+

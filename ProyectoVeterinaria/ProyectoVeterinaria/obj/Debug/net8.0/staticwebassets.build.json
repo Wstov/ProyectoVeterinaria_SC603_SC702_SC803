@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LPFSQHJpdfqRI8qZMnVlDHtFCOhSsukctD1v0aNeGFs=",
+  "Hash": "v2nreThKgoaqi0XG1/P9TPFvG1YyEokGmJ7qSYUSZUo=",
   "Source": "ProyectoVeterinaria",
   "BasePath": "_content/ProyectoVeterinaria",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\imagencta.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\wwwroot\\js\\contabilidad.js",
+      "SourceId": "ProyectoVeterinaria",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\wwwroot\\",
+      "BasePath": "_content/ProyectoVeterinaria",
+      "RelativePath": "js/contabilidad.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\contabilidad.js"
     },
     {
       "Identity": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\wwwroot\\js\\site.js",

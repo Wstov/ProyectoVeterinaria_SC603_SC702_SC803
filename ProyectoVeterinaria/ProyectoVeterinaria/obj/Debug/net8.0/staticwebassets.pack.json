@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\img\\imagencta.jpg"
     },
     {
+      "Id": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\wwwroot\\js\\contabilidad.js",
+      "PackagePath": "staticwebassets\\js\\contabilidad.js"
+    },
+    {
       "Id": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
