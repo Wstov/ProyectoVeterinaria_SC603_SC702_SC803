@@ -29,3 +29,34 @@ C:\Users\Wstov\Desktop\Proyecto Analisis y Modelado\ProyectoVeterinaria_SC603_SC
 C:\Users\Wstov\Desktop\Proyecto Analisis y Modelado\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\ProyectoVeterinaria.pdb
 C:\Users\Wstov\Desktop\Proyecto Analisis y Modelado\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\ProyectoVeterinaria.genruntimeconfig.cache
 C:\Users\Wstov\Desktop\Proyecto Analisis y Modelado\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\ref\ProyectoVeterinaria.dll
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\bin\Debug\net8.0\appsettings.json
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\bin\Debug\net8.0\ProyectoVeterinaria.staticwebassets.runtime.json
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\bin\Debug\net8.0\ProyectoVeterinaria.exe
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\bin\Debug\net8.0\ProyectoVeterinaria.deps.json
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\bin\Debug\net8.0\ProyectoVeterinaria.runtimeconfig.json
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\bin\Debug\net8.0\ProyectoVeterinaria.dll
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\bin\Debug\net8.0\ProyectoVeterinaria.pdb
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\ProyectoVeterinaria.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\ProyectoVeterinaria.AssemblyInfoInputs.cache
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\ProyectoVeterinaria.AssemblyInfo.cs
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\ProyectoVeterinaria.csproj.CoreCompileInputs.cache
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\ProyectoVeterinaria.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\ProyectoVeterinaria.RazorAssemblyInfo.cache
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\ProyectoVeterinaria.RazorAssemblyInfo.cs
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\ProyectoVeterinaria.sourcelink.json
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\staticwebassets\msbuild.ProyectoVeterinaria.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\staticwebassets\msbuild.build.ProyectoVeterinaria.props
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.ProyectoVeterinaria.props
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.ProyectoVeterinaria.props
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\scopedcss\bundle\ProyectoVeterinaria.styles.css
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\scopedcss\projectbundle\ProyectoVeterinaria.bundle.scp.css
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\ProyectoVeterinaria.dll
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\refint\ProyectoVeterinaria.dll
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\ProyectoVeterinaria.pdb
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\ProyectoVeterinaria.genruntimeconfig.cache
+C:\Users\Josea\Source\Repos\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria\obj\Debug\net8.0\ref\ProyectoVeterinaria.dll

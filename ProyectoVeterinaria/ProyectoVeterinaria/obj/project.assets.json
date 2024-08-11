@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Wstov\\.nuget\\packages\\": {}
+    "C:\\Users\\Josea\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\ProyectoVeterinaria.csproj",
+      "projectUniqueName": "C:\\Users\\Josea\\Source\\Repos\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\ProyectoVeterinaria.csproj",
       "projectName": "ProyectoVeterinaria",
-      "projectPath": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\ProyectoVeterinaria.csproj",
-      "packagesPath": "C:\\Users\\Wstov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Wstov\\Desktop\\Proyecto Analisis y Modelado\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\obj\\",
+      "projectPath": "C:\\Users\\Josea\\Source\\Repos\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\ProyectoVeterinaria.csproj",
+      "packagesPath": "C:\\Users\\Josea\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Josea\\Source\\Repos\\ProyectoVeterinaria_SC603_SC702_SC803\\ProyectoVeterinaria\\ProyectoVeterinaria\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Wstov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Josea\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -29,7 +29,8 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.pkg.github.com/RODRIGUEZBARBOZAVALERIA/index.json": {}
       },
       "frameworks": {
         "net8.0": {
