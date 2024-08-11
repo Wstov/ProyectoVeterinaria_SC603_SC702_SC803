@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Wstov\Desktop\Proyecto Analisis y Modelado\ProyectoVeterinaria_SC603_SC702_SC803\ProyectoVeterinaria\ProyectoVeterinaria
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Wstov/Desktop/Proyecto Analisis y Modelado/ProyectoVeterinaria_SC603_SC702_SC803/ProyectoVeterinaria/ProyectoVeterinaria/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Wstov/Desktop/Proyecto Analisis y Modelado/ProyectoVeterinaria_SC603_SC702_SC803/ProyectoVeterinaria/ProyectoVeterinaria/Views/Contabilidad/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFiaWxpZGFkXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -84,6 +88,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Wstov/Desktop/Proyecto Analisis y Modelado/ProyectoVeterinaria_SC603_SC702_SC803/ProyectoVeterinaria/ProyectoVeterinaria/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wstov/Desktop/Proyecto Analisis y Modelado/ProyectoVeterinaria_SC603_SC702_SC803/ProyectoVeterinaria/ProyectoVeterinaria/Views/User/RegistroMascota.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZWdpc3Ryb01hc2NvdGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Wstov/Desktop/Proyecto Analisis y Modelado/ProyectoVeterinaria_SC603_SC702_SC803/ProyectoVeterinaria/ProyectoVeterinaria/Views/_ViewImports.cshtml]

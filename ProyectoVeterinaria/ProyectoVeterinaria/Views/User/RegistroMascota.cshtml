@@ -1,0 +1,58 @@
+﻿<section class="mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <!-- Form Container with shadow and padding -->
+                <div class="shadow p-4 mb-5 bg-body rounded">
+                    <h2 class="text-center mb-4">Registro de Mascota</h2>
+                    <form>
+                        <fieldset>
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="birthDate" class="form-label">Fecha de Nacimiento</label>
+                                <input type="date" class="form-control" id="birthDate" name="birthDate" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="breed" class="form-label">Raza</label>
+                                <input type="text" class="form-control" id="breed" name="breed" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="gender" class="form-label">Género</label>
+                                <select class="form-select" id="gender" name="gender" required>
+                                    <option value="Hembra">Hembra</option>
+                                    <option value="Macho">Macho</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="color" class="form-label">Color</label>
+                                <input type="text" class="form-control" id="color" name="color" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="weight" class="form-label">Peso (kg)</label>
+                                <input type="number" class="form-control" id="weight" name="weight" step="0.1" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="vaccines" class="form-label">Vacunas</label>
+                                <select class="form-select" id="vaccines" name="vaccines" required>
+                                    <option value="Sí">Sí</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="ownerName" class="form-label">Nombre del Dueño</label>
+                                <input type="text" class="form-control" id="ownerName" name="ownerName" required>
+                            </div>
+
+                            <div class="d-grid gap-2 mt-3">
+                                <button class="btn btn-lg btn-primary" type="submit">Registrar Mascota</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

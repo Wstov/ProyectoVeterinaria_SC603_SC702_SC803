@@ -1,1 +1,112 @@
-﻿
+﻿@{
+    ViewData["Veterinaria El Gandero"] = "Administrador";
+}
+
+<section class="mt-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Expedientes de Mascotas</h2>
+        <!-- Botón para crear un nuevo expediente -->
+        <div class="mb-3 text-center">
+            <a class="btn btn-primary" href="@Url.Action("RegistroMascota")">Registrar Mascota</a>
+        </div>
+        <!-- Barra de búsqueda -->
+        <div class="col-md-12">
+            <form class="d-flex" role="search">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Buscar expediente" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+                </div>
+            </form>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Código de Expediente</th>
+                        <th>Dueño</th>
+                        <th>Mascota</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Raza</th>
+                        <th>Género</th>
+                        <th>Peso</th>
+                        <th>Vacunas</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>José Pérez</td>
+                        <td>Luna</td>
+                        <td>12/03/2018</td>
+                        <td>Labrador Retriever</td>
+                        <td>Hembra</td>
+                        <td>25 kg</td>
+                        <td>Sí</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">Editar</button>
+                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>Ana Martínez</td>
+                        <td>Max</td>
+                        <td>05/09/2020</td>
+                        <td>Bulldog Francés</td>
+                        <td>Macho</td>
+                        <td>12 kg</td>
+                        <td>Sí</td>
+
+                        <td>
+                            <button class="btn btn-sm btn-info">Editar</button>
+                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>003</td>
+                        <td>Mario Sánchez</td>
+                        <td>Coco</td>
+                        <td>22/11/2017</td>
+                        <td>Golden Retriever</td>
+                        <td>Macho</td>
+                        <td>30 kg</td>
+                        <td>Sí</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">Editar</button>
+                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>004</td>
+                        <td>Laura García</td>
+                        <td>Bella</td>
+                        <td>14/02/2021</td>
+                        <td>Chihuahua</td>
+                        <td>Hembra</td>
+                        <td>3 kg</td>
+                        <td>Sí</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">Editar</button>
+                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>005</td>
+                        <td>Juan Rodríguez</td>
+                        <td>Rocky</td>
+                        <td>30/07/2019</td>
+                        <td>Beagle</td>
+                        <td>Macho</td>
+                        <td>15 kg</td>
+                        <td>Sí</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">Editar</button>
+                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
