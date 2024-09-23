@@ -62,6 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Usuarios.sql" />
-    <Build Include="dbo\Tables\Prueba.sql" />
+    <Build Include="dbo\Tables\Roles.sql" />
   </ItemGroup>
 </Project>
