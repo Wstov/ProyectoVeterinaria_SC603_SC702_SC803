@@ -1,0 +1,6 @@
+﻿CREATE TABLE Expediente (
+    ExpedienteID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    CodigoExpediente VARCHAR(50) NOT NULL,
+    MascotaID UNIQUEIDENTIFIER NOT NULL,
+    FOREIGN KEY (MascotaID) REFERENCES Mascota(MascotaID)
+);

@@ -70,5 +70,18 @@
     <Build Include="dbo\Tables\Empleado.sql" />
     <Build Include="dbo\Tables\Vacaciones.sql" />
     <Build Include="dbo\Tables\Capacitaciones.sql" />
+    <Build Include="dbo\Tables\CodigosPromocion.sql" />
+    <Build Include="dbo\Tables\Carrito.sql" />
+    <Build Include="dbo\Tables\Facturacion.sql" />
+    <Build Include="dbo\Tables\HistorialCompra.sql" />
+    <Build Include="dbo\Tables\Mascota.sql" />
+    <Build Include="dbo\Tables\Expediente.sql" />
+    <Build Include="dbo\Tables\Consulta.sql" />
+    <Build Include="dbo\Tables\Campania.sql" />
+    <Build Include="dbo\Tables\Presupuesto.sql" />
+    <Build Include="dbo\Tables\Marketing.sql" />
+    <Build Include="dbo\Tables\Gasto.sql" />
+    <Build Include="dbo\Tables\Ingreso.sql" />
+    <Build Include="dbo\Tables\CierresFinancieros.sql" />
   </ItemGroup>
 </Project>
