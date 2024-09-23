@@ -63,5 +63,6 @@
   <ItemGroup>
     <Build Include="dbo\Tables\Usuarios.sql" />
     <Build Include="dbo\Tables\Roles.sql" />
+    <Build Include="dbo\Tables\Horarios.sql" />
   </ItemGroup>
 </Project>
