@@ -64,5 +64,11 @@
     <Build Include="dbo\Tables\Usuarios.sql" />
     <Build Include="dbo\Tables\Roles.sql" />
     <Build Include="dbo\Tables\Horarios.sql" />
+    <Build Include="dbo\Tables\Productos.sql" />
+    <Build Include="dbo\Tables\Stock.sql" />
+    <Build Include="dbo\Tables\Horario.sql" />
+    <Build Include="dbo\Tables\Empleado.sql" />
+    <Build Include="dbo\Tables\Vacaciones.sql" />
+    <Build Include="dbo\Tables\Capacitaciones.sql" />
   </ItemGroup>
 </Project>
