@@ -3,9 +3,9 @@
     UsuarioID UNIQUEIDENTIFIER NOT NULL,
     NombreAnimal VARCHAR(100) NOT NULL,
     NombreMascota VARCHAR(100) NOT NULL,
-    FechaNacimiento DATETIME NOT NULL,
+    FechaNacimiento DATETIME NOT NULL,  -- Unificación de Fecha y Hora
     Raza VARCHAR(100) NOT NULL,
     Genero VARCHAR(10) NOT NULL,
-    Descripcion varchar(100) NOT NULL,
-    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(Id)
+    Características VARCHAR(MAX) NOT NULL,
+    FOREIGN KEY (UsuarioID) REFERENCES Personas(Id)
 );

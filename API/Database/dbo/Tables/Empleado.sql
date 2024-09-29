@@ -3,7 +3,5 @@
     UsuarioID UNIQUEIDENTIFIER NOT NULL,
     Puesto VARCHAR(100) NOT NULL,
     Especialidad VARCHAR(100) NOT NULL,
-    HorarioID UNIQUEIDENTIFIER NOT NULL,
-    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(Id),
-    FOREIGN KEY (HorarioID) REFERENCES Horario(HorarioID)
+    FOREIGN KEY (UsuarioID) REFERENCES Personas(Id)
 );

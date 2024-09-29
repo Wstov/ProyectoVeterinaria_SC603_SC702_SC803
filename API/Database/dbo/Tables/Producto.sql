@@ -1,0 +1,10 @@
+﻿CREATE TABLE Producto (
+    ProductoID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    Nombre VARCHAR(100) NOT NULL,
+    Categoria VARCHAR(100) NOT NULL,
+    Presentacion VARCHAR(50) NOT NULL,
+    Precio DECIMAL(25, 2) NOT NULL,
+    Cantidad INT NOT NULL,
+    Descripcion VARCHAR(MAX) NOT NULL,
+    Imagen VARBINARY(MAX) NULL
+);

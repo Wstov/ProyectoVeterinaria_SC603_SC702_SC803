@@ -3,6 +3,6 @@
     UsuarioID UNIQUEIDENTIFIER NOT NULL,
     CarritoID UNIQUEIDENTIFIER NOT NULL,
     MetodoPago VARCHAR(50) NOT NULL,
-    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(Id),
+    FOREIGN KEY (UsuarioID) REFERENCES Personas(Id),
     FOREIGN KEY (CarritoID) REFERENCES Carrito(CarritoID)
 );

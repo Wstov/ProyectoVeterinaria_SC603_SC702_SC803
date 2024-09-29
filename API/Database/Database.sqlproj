@@ -57,31 +57,28 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="dbo" />
-    <Folder Include="dbo\Tables" />
     <Folder Include="dbo\SP" />
+    <Folder Include="dbo\Tables" />
   </ItemGroup>
   <ItemGroup>
+    <Build Include="dbo\Tables\Personas.sql" />
     <Build Include="dbo\Tables\Usuarios.sql" />
     <Build Include="dbo\Tables\Roles.sql" />
-    <Build Include="dbo\Tables\Horarios.sql" />
-    <Build Include="dbo\Tables\Productos.sql" />
-    <Build Include="dbo\Tables\Stock.sql" />
-    <Build Include="dbo\Tables\Horario.sql" />
+    <Build Include="dbo\Tables\UsuariosxRoles.sql" />
+    <Build Include="dbo\Tables\Producto.sql" />
     <Build Include="dbo\Tables\Empleado.sql" />
-    <Build Include="dbo\Tables\Vacaciones.sql" />
-    <Build Include="dbo\Tables\Capacitaciones.sql" />
     <Build Include="dbo\Tables\CodigosPromocion.sql" />
     <Build Include="dbo\Tables\Carrito.sql" />
     <Build Include="dbo\Tables\Facturacion.sql" />
     <Build Include="dbo\Tables\HistorialCompra.sql" />
     <Build Include="dbo\Tables\Mascota.sql" />
     <Build Include="dbo\Tables\Expediente.sql" />
-    <Build Include="dbo\Tables\Consulta.sql" />
     <Build Include="dbo\Tables\Campania.sql" />
-    <Build Include="dbo\Tables\Presupuesto.sql" />
-    <Build Include="dbo\Tables\Marketing.sql" />
-    <Build Include="dbo\Tables\Gasto.sql" />
-    <Build Include="dbo\Tables\Ingreso.sql" />
-    <Build Include="dbo\Tables\CierresFinancieros.sql" />
+    <Build Include="dbo\Tables\RegistroCitas.sql" />
+    <Build Include="dbo\SP\getOneProducto.sql" />
+    <Build Include="dbo\SP\getAllProductos.sql" />
+    <Build Include="dbo\SP\addProducto.sql" />
+    <Build Include="dbo\SP\editProducto.sql" />
+    <Build Include="dbo\SP\deleteProducto.sql" />
   </ItemGroup>
 </Project>
