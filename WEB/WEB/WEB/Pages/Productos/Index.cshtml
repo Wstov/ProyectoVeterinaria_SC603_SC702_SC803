@@ -1,0 +1,322 @@
+﻿@page
+@model WEB.Pages.Productos.IndexModel
+@{
+}
+<section class="mt-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Nuestros Productos</h2>
+        <div class="row mb-4">
+            <!-- Barra de búsqueda -->
+            <div class="col-md-12">
+                <form class="d-flex" role="search">
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Buscar productos" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model.producto != null)
+            {
+                @foreach (var producto in Model.producto)
+                {
+                    <div class="col-md-3 mb-4">
+                        <div class="card shadow-sm h-100">
+                            <img src="data:image /png;base64,@producto.ImagenConvertida" class="card-img-top" alt="Vacuna Triple Felina">
+                            <div class="card-body">
+                                <h5 class="card-title">@Html.DisplayFor(modelItem => producto.Nombre)</h5>
+                                <p class="card-text">@Html.DisplayFor(modelItem => producto.Categoria)</p>
+                                <p class="card-text">@Html.DisplayFor(modelItem => producto.Presentacion)</p>
+                                <p class="card-text">@Html.DisplayFor(modelItem => producto.Precio)</p>
+                                <div>
+                                    <label for="exampleSelect1" class="form-label">Cantidad disponible: @Html.DisplayFor(modelItem => producto.Cantidad)</label>
+                                    <select class="form-select" id="exampleSelect1">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                                <p class="card-text" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Vacuna para gatos que protege contra el moquillo felino, la rinotraqueitis y el calicivirus.</p>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary" id="liveToastBtn">Agregar al Carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            
+            else
+            {
+                <div class="alert alert-danger" role="alert">
+                    No hay productos para mostrar. Añade uno.
+                </div>
+            }
+
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm h-100">
+                    <img src="ruta_de_imagen.jpg" class="card-img-top" alt="Vacuna Triple Felina">
+                    <div class="card-body">
+                        <h5 class="card-title">Vacuna Triple Felina</h5>
+                        <p class="card-text">Categoría: Medicamento</p>
+                        <p class="card-text">Presentación: 50 ml</p>
+                        <p class="card-text">Precio: ₡4500.00</p>
+                        <div>
+                            <label for="exampleSelect1" class="form-label">Cantidad</label>
+                            <select class="form-select" id="exampleSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <p class="card-text" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Vacuna para gatos que protege contra el moquillo felino, la rinotraqueitis y el calicivirus.</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" id="liveToastBtn">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm h-100">
+                    <img src="ruta_de_imagen_antiparasitario.jpg" class="card-img-top" alt="Antiparasitario Canino">
+                    <div class="card-body">
+                        <h5 class="card-title">Antiparasitario Canino</h5>
+                        <p class="card-text">Categoría: Medicamento</p>
+                        <p class="card-text">Presentación: 50 ml</p>
+                        <p class="card-text">Precio: ₡6000.00</p>
+                        <div>
+                            <label for="cantidadAntiparasitario" class="form-label">Cantidad</label>
+                            <select class="form-select" id="cantidadAntiparasitario">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <p class="card-text" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Solución líquida para eliminar parásitos internos en perros.</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" id="liveToastBtn">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Shampoo Antipulgas -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm h-100">
+                    <img src="ruta_de_imagen_shampoo.jpg" class="card-img-top" alt="Shampoo Antipulgas">
+                    <div class="card-body">
+                        <h5 class="card-title">Shampoo Antipulgas</h5>
+                        <p class="card-text">Categoría: Higiene</p>
+                        <p class="card-text">Presentación: 250 ml</p>
+                        <p class="card-text">Precio: ₡5000.00</p>
+                        <div>
+                            <label for="cantidadShampoo" class="form-label">Cantidad</label>
+                            <select class="form-select" id="cantidadShampoo">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <p class="card-text" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Shampoo para perros y gatos que elimina y previene las pulgas.</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" id="liveToastBtn">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Colirio Oftálmico Canino -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm h-100">
+                    <img src="ruta_de_imagen_colirio.jpg" class="card-img-top" alt="Colirio Oftálmico Canino">
+                    <div class="card-body">
+                        <h5 class="card-title">Colirio Oftálmico Canino</h5>
+                        <p class="card-text">Categoría: Medicamento</p>
+                        <p class="card-text">Presentación: 10 ml</p>
+                        <p class="card-text">Precio: ₡9000.00</p>
+                        <div>
+                            <label for="cantidadColirio" class="form-label">Cantidad</label>
+                            <select class="form-select" id="cantidadColirio">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <p class="card-text" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Colirio para tratar infecciones oculares en perros.</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" id="liveToastBtn">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm h-100">
+                    <img src="ruta_de_imagen_jeringas.jpg" class="card-img-top" alt="Jeringas Desechables">
+                    <div class="card-body">
+                        <h5 class="card-title">Jeringas Desechables</h5>
+                        <p class="card-text">Categoría: Material Médico</p>
+                        <p class="card-text">Presentación: 5 ml</p>
+                        <p class="card-text">Precio: ₡800.00</p>
+                        <div>
+                            <label for="cantidadJeringas" class="form-label">Cantidad</label>
+                            <select class="form-select" id="cantidadJeringas">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <p class="card-text" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Paquete de 10 jeringas desechables para uso veterinario.</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" id="liveToastBtn">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Collar Antipulgas -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm h-100">
+                    <img src="ruta_de_imagen_collar.jpg" class="card-img-top" alt="Collar Antipulgas">
+                    <div class="card-body">
+                        <h5 class="card-title">Collar Antipulgas</h5>
+                        <p class="card-text">Categoría: Accesorio</p>
+                        <p class="card-text">Presentación: N/A</p>
+                        <p class="card-text">Precio: ₡7500.00</p>
+                        <div>
+                            <label for="cantidadCollar" class="form-label">Cantidad</label>
+                            <select class="form-select" id="cantidadCollar">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <p class="card-text" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Collar que protege a perros y gatos contra pulgas y garrapatas.</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" id="liveToastBtn">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6: Desparasitante Oral Felino -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm h-100">
+                    <img src="ruta_de_imagen_desparasitante.jpg" class="card-img-top" alt="Desparasitante Oral Felino">
+                    <div class="card-body">
+                        <h5 class="card-title">Desparasitante Oral Felino</h5>
+                        <p class="card-text">Categoría: Medicamento</p>
+                        <p class="card-text">Presentación: 20 ml</p>
+                        <p class="card-text">Precio: ₡4000.00</p>
+                        <div>
+                            <label for="cantidadDesparasitante" class="form-label">Cantidad</label>
+                            <select class="form-select" id="cantidadDesparasitante">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <p class="card-text" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Medicamento líquido para desparasitar gatos de manera eficaz.</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" id="liveToastBtn">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7: Vitaminas para Perros -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm h-100">
+                    <img src="ruta_de_imagen_vitaminas.jpg" class="card-img-top" alt="Vitaminas para Perros">
+                    <div class="card-body">
+                        <h5 class="card-title">Vitaminas para Perros</h5>
+                        <p class="card-text">Categoría: Suplemento</p>
+                        <p class="card-text">Presentación: 100 ml</p>
+                        <p class="card-text">Precio: ₡3000.00</p>
+                        <div>
+                            <label for="cantidadVitaminas" class="form-label">Cantidad</label>
+                            <select class="form-select" id="cantidadVitaminas">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <p class="card-text" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Suplemento vitamínico para mejorar la salud y el bienestar de los perros.</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" id="liveToastBtn">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 8: Gotas Otológicas Caninas -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm h-100">
+                    <img src="ruta_de_imagen_gotas.jpg" class="card-img-top" alt="Gotas Otológicas Caninas">
+                    <div class="card-body">
+                        <h5 class="card-title">Gotas Otológicas Caninas</h5>
+                        <p class="card-text">Categoría: Medicamento</p>
+                        <p class="card-text">Presentación: 10 ml</p>
+                        <p class="card-text">Precio: ₡10000.00</p>
+                        <div>
+                            <label for="cantidadGotas" class="form-label">Cantidad</label>
+                            <select class="form-select" id="cantidadGotas">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <p class="card-text" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gotas para el tratamiento de infecciones en los oídos de perros.</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" id="liveToastBtn">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Fin del ejemplo de card -->
+        </div>
+    </div>
+</section>
+<div><a href="/Home/" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="..." class="rounded me-2" alt="...">
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>
+
+
+<script src="~/js/toastProducto.js" asp-append-version="true"></script>
+<script src="~/js/toastProducto.js" asp-append-version="true"></script>

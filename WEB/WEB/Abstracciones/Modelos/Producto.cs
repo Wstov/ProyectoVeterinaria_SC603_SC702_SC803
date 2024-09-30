@@ -19,7 +19,7 @@ namespace Abstracciones.Modelos
         public string? Categoria { get; set; }
 
         [Required(ErrorMessage = "La Presentacion es obligatoria.")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "La Presentacion es obligatoria y ser mayor a 3 caracteres y menor a 50 carcacteres.")]
+        [StringLength(50, MinimumLength = 6, ErrorMessage = "La Presentacion es obligatoria y ser mayor a 6 caracteres y menor a 50 carcacteres.")]
         public string? Presentacion { get; set; }
 
         [Required(ErrorMessage = "El precio del producto es obligatorio.")]
@@ -33,4 +33,4 @@ namespace Abstracciones.Modelos
         public byte[]? Imagen { get; set; }
         public string? ImagenConvertida { get; set; }
     }
-}   
+}

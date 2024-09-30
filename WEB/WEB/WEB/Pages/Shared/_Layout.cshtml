@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["El Ganadero"] - ProyectoVeterinaria</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/carrito.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ProyectoVeterinaria.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        @* NAV *@
+        <nav class="navbar navbar-expand-lg bg-primary px-lg-5" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand text-light" href="#">Logo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Productos/Index">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="Inventario" asp-action="Index">Inventario</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="Contabilidad" asp-action="Index">Contabilidad</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="Marketing" asp-action="Index">Marketing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="GestionPersonal" asp-action="Index">Gestion de Personal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="GestionExpediente" asp-action="Index">Expedientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="Admin" asp-action="Index">Administrador</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="User" asp-action="Index">Mascotas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="Cita" asp-action="Index">Citas</a>
+                        </li>
+
+                    </ul>
+                    <a class="btn-cart" asp-area="" asp-controller="PuntoVenta" asp-action="Carrito">
+                        <svg class="icon-cart" viewBox="0 0 24.38 30.52" height="30.52" width="24.38">
+                            <title>icon-cart</title>
+                            <path transform="translate(-3.62 -0.85)" d="M28,27.3,26.24,7.51a.75.75,0,0,0-.76-.69h-3.7a6,6,0,0,0-12,0H6.13a.76.76,0,0,0-.76.69L3.62,27.3v.07a4.29,4.29,0,0,0,4.52,4H23.48a4.29,4.29,0,0,0,4.52-4ZM15.81,2.37a4.47,4.47,0,0,1,4.46,4.45H11.35a4.47,4.47,0,0,1,4.46-4.45Zm7.67,27.48H8.13a2.79,2.79,0,0,1-3-2.45L6.83,8.34h3V11a.76.76,0,0,0,1.52,0V8.34h8.92V11a.76.76,0,0,0,1.52,0V8.34h3L26.48,27.4a2.79,2.79,0,0,1-3,2.44Zm0,0"></path>
+                        </svg>
+
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        @* END *@
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+                <div class="col mb-3">
+                    <div class="lc-block mb-3">
+                        <a class="navbar-brand " href="">
+                            Logo
+                        </a>
+                    </div>
+                    <div class="lc-block">
+                        <div editable="rich">
+
+                            <p class="text-muted">© 2024 Veterinaria El Ganadero, Inc</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col offset-md-2 mb-3">
+                    <div class="lc-block mb-4">
+                        <div editable="rich">
+                            <h4>Inicio</h4>
+                        </div>
+                    </div>
+                    <!-- /lc-block -->
+                    <div class="lc-block small">
+                        <style>
+                            .footer-links-list ul {
+                                padding-left: 0
+                            }
+
+                                .footer-links-list ul li {
+                                    margin-bottom: 15px;
+                                    list-style-type: none;
+                                    padding-left: 0
+                                }
+
+                            .footer-links-list a {
+                                text-decoration: none;
+                                color: var(--bs-body-color);
+                            }
+                        </style>
+                        <div editable="rich" class="footer-links-list">
+
+                            <ul>
+                                <li><a href="#">Primer Item</a> </li>
+                                <li><a href="#">Segundo Item</a></li>
+                                <li><a href="#">Tercer Item</a> </li>
+                                <li><a href="#">Cuarto Item</a> </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <!-- /lc-block -->
+                </div>
+                <div class="col mb-3">
+                    <div class="lc-block mb-4">
+                        <div editable="rich">
+                            <h4>Nosotros</h4>
+                        </div>
+                    </div>
+                    <!-- /lc-block -->
+                    <div class="lc-block small">
+                        <div editable="rich" class="footer-links-list">
+
+                            <ul>
+                                <li><a href="#">Historia</a> </li>
+                                <li><a href="#">Trabaja con nosotros</a></li>
+                                <li><a href="#">Blog</a> </li>
+                                <li><a href="#">Notricias</a> </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <!-- /lc-block -->
+                </div>
+                <div class="col mb-3">
+                    <div class="lc-block mb-4">
+                        <div editable="rich">
+                            <h4>Redes</h4>
+                        </div>
+                    </div>
+                    <!-- /lc-block -->
+                    <div class="lc-block small">
+                        <div editable="rich" class="footer-links-list">
+
+                            <ul>
+                                <li><a href="#">Primer Elemento</a> </li>
+                                <li><a href="#">Segundo Elemento</a> </li>
+                                <li><a href="#">Tercer Elemento</a> </li>
+                                <li><a href="#">Cuarto Elemento</a> </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <!-- /lc-block -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
