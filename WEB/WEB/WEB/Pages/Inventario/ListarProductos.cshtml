@@ -1,0 +1,66 @@
+﻿@page
+@model WEB.Pages.Inventario.ListarProductosModel
+@{
+}
+@if (Model.producto != null && Model.producto.Any())
+{
+    <h2 class="text-center mb-4">Productos Registrados</h2>
+    <section class="mt-5">
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nombre del Producto</th>
+                            <th>Categoría</th>
+                            <th>Presentación</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Descripción</th>
+                            <th>Imagen</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var producto in Model.producto)
+                        {
+                            <tr>
+                                <td><h5 class="card-title">@Html.DisplayFor(modelItem => producto.Nombre)</h5></td>
+                                <td><h5 class="card-title">@Html.DisplayFor(modelItem => producto.Categoria)</h5></td>
+                                <td><h5 class="card-title">@Html.DisplayFor(modelItem => producto.Presentacion)</h5></td>
+                                <td><h5 class="card-title">@Html.DisplayFor(modelItem => producto.Precio)</h5></td>
+                                <td><h5 class="card-title">@Html.DisplayFor(modelItem => producto.Cantidad)</h5></td>
+                                <td><h5 class="card-title">@Html.DisplayFor(modelItem => producto.Descripcion)</h5></td>
+                                <td>
+                                    <img src="data:image/png;base64,@producto.ImagenConvertida" alt="Imagen" class="img-fluid" width="100">
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm btn-info w-100" asp-page="/Inventario/Editar" asp-route-ProductoID="@producto.ProductoID">Editar</a>
+                                    <a class="btn btn-sm btn-danger w-100" asp-page="/Inventario/Eliminar" asp-route-ProductoID="@producto.ProductoID">Eliminar</a>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <div><a href="/Inventario/" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
+}
+else
+{
+    <br>
+    <div class="alert alert-danger" role="alert">
+       
+        No hay productos para mostrar. Añade uno.
+
+    </div>
+    <div>
+        <a class="btn btn-lg btn-success me-md-2" asp-area="" asp-page="/Inventario/Agregar">Registrar Producto </a>
+    </div>
+    <br>
+    <div>
+        <div><a href="/Inventario/" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
+    </div>
+}

@@ -1,0 +1,46 @@
+﻿@page
+@model WEB.Pages.Inventario.IndexModel
+@{
+}
+
+<div class="container py-5 my-4 bg-light text-dark text-center">
+    <div class="row pt-4 mb-2">
+        <div class="col-md-12">
+            <div class="lc-block">
+                <div editable="rich">
+                    <p class="h4 text-muted">Farmacia Veterinaria El Gandero</p>
+                </div><!-- /lc-block -->
+
+            </div><!-- /col -->
+        </div>
+        <div class="row justify-content-center mb-4">
+
+            <div class="lc-block col-xl-8">
+                <h1 editable="inline" class="display-2 fw-bold">Administrador <span class="text-success">Inventario</span> </h1>
+            </div><!-- /lc-block -->
+
+        </div>
+        <div class="row justify-content-center mb-4">
+
+            <div class="lc-block col-xl-6 lh-lg">
+                <div editable="rich">
+                    <p class="">
+                        &nbsp;Aliquam erat volutpat. In pellentesque scelerisque auctor. Ut porta lacus eget nisi fermentum lobortis. Vestibulum facilisis tempor
+                        ipsum, ut rhoncus magna ultricies laoreet. Proin vehicula erat eget libero accumsan iaculis.
+                    </p>
+                </div>
+            </div><!-- /lc-block -->
+
+        </div>
+        <div class="row pb-4">
+            <div class="col-md-12 d-">
+                <div class="lc-block d-grid gap-3 d-md-block">
+                   <a class="btn btn-lg btn-success me-md-2" asp-area="" asp-page="/Inventario/Agregar">Registrar Producto </a>
+
+                    <a class="btn btn-lg btn-primary" asp-area="" asp-page="/Inventario/ListarProductos">Listar Productos </a>
+                    <a href="/Home/" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a>
+                </div>
+            </div><!-- /col -->
+        </div>
+    </div>
+</div>

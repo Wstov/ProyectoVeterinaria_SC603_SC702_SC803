@@ -1,0 +1,17 @@
+﻿@page
+@model WEB.Pages.Inventario.EliminarModel
+@{
+}
+<h1>Eliminar Producto</h1>
+<h3> Quiere eliminar este Producto?</h3>
+<form method="post">
+    <input type="hidden" asp-for="producto.ProductoID" />
+
+    <dt>@Html.DisplayNameFor(model => model.producto.Nombre): @Html.DisplayFor(model => model.producto.Nombre)</dt>
+    <dt>@Html.DisplayNameFor(model => model.producto.Descripcion): @Html.DisplayFor(model => model.producto.Descripcion)</dt>
+    <dt>@Html.DisplayNameFor(model => model.producto.Precio): @Html.DisplayFor(model => model.producto.Precio)</dt>
+    <input type="submit" value="Eliminar" class="btn btn alert-danger" />
+    <br />
+    <br>
+    <a asp-page="./ListarProductos" class="btn btn-secondary w-10">Regresar</a>
+</form>
