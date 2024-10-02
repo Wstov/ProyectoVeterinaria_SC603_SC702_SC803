@@ -1,0 +1,107 @@
+﻿@page
+@model WEB.Pages.Cita.IndexModel
+@{
+}
+<section class="mt-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Citas Veterinarias</h2>
+        <!-- Botón para crear una nueva cita -->
+        <div class="mb-3 text-center">
+            <a class="btn btn-primary" href="@Url.Action("RegistroCita")">Crear Nueva Cita</a>
+        </div>
+        <!-- Barra de búsqueda -->
+        <div class="col-md-12">
+            <form class="d-flex" role="search">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Buscar cita" aria-label="Buscar cita" aria-describedby="button-addon2">
+                    <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+                </div>
+            </form>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Código de Cita</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Dueño</th>
+                        <th>Mascota</th>
+                        <th>Motivo</th>
+                        <th>Veterinario Asignado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Ejemplo de una fila -->
+                    <tr>
+                        <td>001</td>
+                        <td>2024-08-12</td>
+                        <td>10:00 AM</td>
+                        <td>Ana Martínez</td>
+                        <td>Rocky</td>
+                        <td>Chequeo anual</td>
+                        <td>Dr. Carlos López</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">Editar</button>
+                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>2024-08-12</td>
+                        <td>11:30 AM</td>
+                        <td>Juan Pérez</td>
+                        <td>Bella</td>
+                        <td>Vacunación</td>
+                        <td>Dra. Laura Gómez</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">Editar</button>
+                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>003</td>
+                        <td>2024-08-13</td>
+                        <td>02:00 PM</td>
+                        <td>Laura Gómez</td>
+                        <td>Max</td>
+                        <td>Problemas de movilidad</td>
+                        <td>Dr. Andrés Ruiz</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">Editar</button>
+                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>004</td>
+                        <td>2024-08-13</td>
+                        <td>03:30 PM</td>
+                        <td>Carlos López</td>
+                        <td>Luna</td>
+                        <td>Revisión de alergia</td>
+                        <td>Dra. Marta Fernández</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">Editar</button>
+                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>005</td>
+                        <td>2024-08-14</td>
+                        <td>09:00 AM</td>
+                        <td>Marta Ruiz</td>
+                        <td>Toby</td>
+                        <td>Control de peso</td>
+                        <td>Dr. Ricardo Morales</td>
+                        <td>
+                            <button class="btn btn-sm btn-info">Editar</button>
+                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div><a href="/Home/" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
+    </div>
+</section>

@@ -1,0 +1,52 @@
+﻿@page
+@model WEB.Pages.Cita.RegistroCitaModel
+@{
+}
+<section class="mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <!-- Form Container with shadow and padding -->
+                <div class="shadow p-4 mb-5 bg-body rounded">
+                    <h2 class="text-center mb-4">Crear Nueva Cita Veterinaria</h2>
+                    <form>
+                        <fieldset>
+                            <div class="mb-3">
+                                <label for="appointmentCode" class="form-label">Código de Cita</label>
+                                <input type="text" class="form-control" id="appointmentCode" name="appointmentCode" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="appointmentDate" class="form-label">Fecha</label>
+                                <input type="date" class="form-control" id="appointmentDate" name="appointmentDate" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="appointmentTime" class="form-label">Hora</label>
+                                <input type="time" class="form-control" id="appointmentTime" name="appointmentTime" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="ownerName" class="form-label">Dueño</label>
+                                <input type="text" class="form-control" id="ownerName" name="ownerName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="petName" class="form-label">Mascota</label>
+                                <input type="text" class="form-control" id="petName" name="petName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reason" class="form-label">Motivo</label>
+                                <textarea class="form-control" id="reason" name="reason" rows="3" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="assignedVet" class="form-label">Veterinario Asignado</label>
+                                <input type="text" class="form-control" id="assignedVet" name="assignedVet" required>
+                            </div>
+                            <div class="d-grid gap-2 mt-3">
+                                <button class="btn btn-lg btn-primary" type="submit">Crear Cita</button>
+                            </div>
+                            <div><a href="/Cita/" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

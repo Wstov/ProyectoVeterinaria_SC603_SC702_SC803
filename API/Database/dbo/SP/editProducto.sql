@@ -6,7 +6,7 @@
     @Precio DECIMAL(25, 2),
     @Cantidad INT,
     @Descripcion VARCHAR(MAX),
-    @Imagen VARBINARY(MAX)
+    @Imagen VARBINARY(MAX) = NULL -- Parámetro por defecto
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -18,6 +18,9 @@ BEGIN
         Precio = @Precio,
         Cantidad = @Cantidad,
         Descripcion = @Descripcion,
-        Imagen = @Imagen
+        Imagen = CASE 
+                    WHEN @Imagen IS NOT NULL THEN @Imagen 
+                    ELSE Imagen 
+                 END
     WHERE ProductoID = @ProductoID;
 END
