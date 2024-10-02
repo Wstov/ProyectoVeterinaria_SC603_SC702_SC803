@@ -80,5 +80,10 @@
     <Build Include="dbo\SP\addProducto.sql" />
     <Build Include="dbo\SP\editProducto.sql" />
     <Build Include="dbo\SP\deleteProducto.sql" />
+    <Build Include="dbo\SP\addCitas.sql" />
+    <Build Include="dbo\SP\deleteCitas.sql" />
+    <Build Include="dbo\SP\editCitas.sql" />
+    <Build Include="dbo\SP\getCitas.sql" />
+    <Build Include="dbo\SP\getAllCitas.sql" />
   </ItemGroup>
 </Project>
