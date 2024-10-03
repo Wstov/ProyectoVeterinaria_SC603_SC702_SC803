@@ -14,7 +14,8 @@
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'No puedes seleccionar una fecha en el pasado.'
+                text: 'No puedes seleccionar una fecha en el pasado.',
+                confirmButtonColor: '#137ea7'
             });
             return;
         }
@@ -23,7 +24,8 @@
             Swal.fire({
                 icon: 'error',
                 title: 'Días Cerrados',
-                text: 'Los domingos están cerrados.'
+                text: 'Los domingos están cerrados.',
+                confirmButtonColor: '#137ea7'
             });
             return;
         }
@@ -32,7 +34,8 @@
             Swal.fire({
                 icon: 'error',
                 title: 'Horario Cerrado',
-                text: 'Los sábados solo se atiende entre las 7:00 y 17:00.'
+                text: 'Los sábados solo se atiende entre las 7:00 y 17:00.',
+                confirmButtonColor: '#137ea7'
             });
             return;
         }
@@ -41,7 +44,8 @@
             Swal.fire({
                 icon: 'error',
                 title: 'Horario Cerrado',
-                text: 'De lunes a viernes solo se atiende entre las 7:00 y 18:00.'
+                text: 'De lunes a viernes solo se atiende entre las 7:00 y 18:00.',
+                confirmButtonColor: '#137ea7'
             });
             return;
         }

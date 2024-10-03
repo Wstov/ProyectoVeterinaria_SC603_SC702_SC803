@@ -27,7 +27,7 @@ namespace API.Controller
         {
             return Ok(await _citaBW.Editar(cita));
         }
-        [HttpDelete]
+        [HttpDelete()]
         public async Task<IActionResult> Eliminar(Guid CitaID)
         {
             return Ok(await _citaBW.Eliminar(CitaID));

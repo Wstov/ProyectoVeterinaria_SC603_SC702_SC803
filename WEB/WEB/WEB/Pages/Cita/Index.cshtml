@@ -43,7 +43,7 @@
                                 <td>@Html.DisplayFor(modelItem => citas.VeterinarioAsignadoID)</td>
                                 <td>
                                     <a class="btn btn-sm btn-info w-100" asp-page="/Cita/Editar" asp-route-CitaID="@citas.CitaID">Editar</a>
-                                    <button class="btn btn-sm btn-danger" data-id="@citas.CitaID" onclick="eliminarCita(this)">Eliminar</button>
+                                    <button class="btn btn-sm btn-danger w-100" data-id="@citas.CitaID" onclick="eliminarCita(this)">Eliminar</button>
                                 </td>
                             </tr>
                         }
@@ -71,19 +71,19 @@ else
     </div>
 }
 
-<!--
+
     <script>
     async function eliminarCita(button) {
         const citaId = button.getAttribute('data-id');
         const confirmacion = confirm('¿Estás seguro de que deseas eliminar esta cita?');
 
         if (confirmacion) {
-            const response = await fetch(`https://localhost:7138/api/Cita?CitaID=${citaId}`, {
+            const response = await fetch(`https://localhost:7184/api/Cita?CitaID=${citaId}`, {
                 method: 'DELETE'
             });
 
             if (response.ok) {
-                // Eliminar la fila de la tabla si la cita fue eliminada correctamente
+
                 document.getElementById(`cita-${citaId}`).remove();
                 alert('Cita eliminada correctamente.');
             } else {
@@ -92,5 +92,5 @@ else
         }
     }
 </script>
- -->
+
 
