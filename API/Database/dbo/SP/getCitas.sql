@@ -1,6 +1,8 @@
 ﻿CREATE PROCEDURE getCitas
+    @PersonaID UNIQUEIDENTIFIER
 AS
 BEGIN
-    SELECT CitaID, CodigoCita, FechaHora, Dueño, MascotaID, Motivo, VeterinarioAsignadoID
-    FROM RegistroCitas;
+    SELECT * 
+    FROM RegistroCitas
+    WHERE PersonaID = @PersonaID;
 END;

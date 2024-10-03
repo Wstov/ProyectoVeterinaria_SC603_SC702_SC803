@@ -1,20 +1,19 @@
-﻿CREATE PROCEDURE editCitas
+﻿CREATE PROCEDURE editCita
     @CitaID UNIQUEIDENTIFIER,
-    @CodigoCita VARCHAR(50),
     @FechaHora DATETIME,
-    @Dueño VARCHAR(100),
-    @MascotaID UNIQUEIDENTIFIER,
+    @Dueno VARCHAR(100),
+    @MascotaID UNIQUEIDENTIFIER,  
     @Motivo VARCHAR(MAX),
-    @VeterinarioAsignadoID UNIQUEIDENTIFIER
+    @VeterinarioAsignadoID UNIQUEIDENTIFIER,
+    @PersonaID UNIQUEIDENTIFIER
 AS
 BEGIN
     UPDATE RegistroCitas
-    SET CodigoCita = @CodigoCita,
-        FechaHora = @FechaHora,
-        Dueño = @Dueño,
+    SET FechaHora = @FechaHora,
+        Dueno = @Dueno,
         MascotaID = @MascotaID,
         Motivo = @Motivo,
-        VeterinarioAsignadoID = @VeterinarioAsignadoID
+        VeterinarioAsignadoID = @VeterinarioAsignadoID,
+        PersonaID = @PersonaID
     WHERE CitaID = @CitaID;
 END;
-

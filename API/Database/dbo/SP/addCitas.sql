@@ -1,13 +1,12 @@
-﻿CREATE PROCEDURE addCitas
-    @CodigoCita VARCHAR(50),
+﻿CREATE PROCEDURE addCita
     @FechaHora DATETIME,
-    @Dueño VARCHAR(100),
-    @MascotaID UNIQUEIDENTIFIER,
+    @Dueno VARCHAR(100),
+    @MascotaID UNIQUEIDENTIFIER,  
     @Motivo VARCHAR(MAX),
-    @VeterinarioAsignadoID UNIQUEIDENTIFIER
+    @VeterinarioAsignadoID UNIQUEIDENTIFIER,
+    @PersonaID UNIQUEIDENTIFIER
 AS
 BEGIN
-    INSERT INTO RegistroCitas (CodigoCita, FechaHora, Dueño, MascotaID, Motivo, VeterinarioAsignadoID)
-    VALUES (@CodigoCita, @FechaHora, @Dueño, @MascotaID, @Motivo, @VeterinarioAsignadoID);
+    INSERT INTO RegistroCitas (FechaHora, Dueno, MascotaID, Motivo, VeterinarioAsignadoID, PersonaID)
+    VALUES (@FechaHora, @Dueno, @MascotaID, @Motivo, @VeterinarioAsignadoID, @PersonaID);
 END;
-
