@@ -38,6 +38,11 @@ namespace BW
            return await _citaDA.Obtener(PersonaID);
         }
 
+        public async Task<Cita> ObtenerOne(Guid CitaID)
+        {
+            return await _citaDA.ObtenerOne(CitaID);
+        }
+
         public async Task<IEnumerable<Cita>> ObtenerTodos()
         {
             return await _citaDA.ObtenerTodos();

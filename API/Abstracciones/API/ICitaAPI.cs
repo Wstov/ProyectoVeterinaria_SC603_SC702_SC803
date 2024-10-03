@@ -14,6 +14,8 @@ namespace Abstracciones.API
         public Task<IActionResult> Obtener(Guid PersonaID);
         [HttpGet]
         public Task<IActionResult> Obtener();
+        [HttpGet]
+        public Task<IActionResult> ObtenerOne(Guid CitaID);
         [HttpPost]
         public Task<IActionResult> Agregar(Cita cita);
         [HttpPut]

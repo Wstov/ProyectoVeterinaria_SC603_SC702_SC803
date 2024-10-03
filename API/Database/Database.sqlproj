@@ -85,5 +85,6 @@
     <Build Include="dbo\SP\editCitas.sql" />
     <Build Include="dbo\SP\getCitas.sql" />
     <Build Include="dbo\SP\getAllCitas.sql" />
+    <Build Include="dbo\SP\getOneCita.sql" />
   </ItemGroup>
 </Project>

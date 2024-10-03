@@ -1,0 +1,69 @@
+﻿@page
+@model WEB.Pages.Cita.EditarModel
+@{
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nueva Cita Veterinaria</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+
+</head>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="shadow p-4 mb-5 bg-body rounded">
+                <h2 class="text-center mb-4">Editar Cita</h2>
+<form method="post">
+    <input type="hidden" asp-for="cita.CitaID" />
+    <fieldset>
+        <div class="mb-3">
+            <label for="appointmentDate" class="form-label">Fecha y hora</label>
+            <input asp-for="cita.FechaHora" id="appointmentDate" class="form-control" type="datetime-local">
+            <span asp-validation-for="cita.FechaHora" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="ownerName" class="form-label">Dueño</label>
+            <input asp-for="cita.Dueno" class="form-control">
+            <span asp-validation-for="cita.Dueno" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="petName" class="form-label">Mascota</label>
+            <input asp-for="cita.MascotaID" class="form-control">
+            <span asp-validation-for="cita.MascotaID" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="reason" class="form-label">Motivo</label>
+            <input asp-for="cita.Motivo" class="form-control">
+            <span asp-validation-for="cita.Motivo" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="assignedVet" class="form-label">Veterinario Asignado</label>
+            <input asp-for="cita.VeterinarioAsignadoID" class="form-control">
+            <span asp-validation-for="cita.VeterinarioAsignadoID" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="assignedVet" class="form-label">ID persona</label>
+            <input asp-for="cita.PersonaID" class="form-control">
+            <span asp-validation-for="cita.PersonaID" class="text-danger"></span>
+        </div>
+        <div class="d-grid gap-2 mt-3">
+            <input class="btn btn-lg btn-primary" type="submit" value="Editar" />
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+        <div><a href="/Cita/" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
+    </fieldset>
+</form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/validacionH.js"></script>
+}

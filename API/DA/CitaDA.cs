@@ -73,6 +73,18 @@ namespace DA
             return consulta.Select(c => c.CitaID);
         }
 
+        public async Task<Cita> ObtenerOne(Guid CitaID)
+        {
+            string sql = @"getOneCita";
+
+            var consulta = await _sqlConnection.QueryAsync<Cita>(sql, new { CitaID = CitaID });
+
+            if (!consulta.Any())
+                return null;
+
+            return consulta.First();
+        }
+
         public async Task<IEnumerable<Cita>> ObtenerTodos()
         {
             string sql = @"getAllCitas";

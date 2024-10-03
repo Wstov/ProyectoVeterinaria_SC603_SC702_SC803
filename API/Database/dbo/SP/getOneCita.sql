@@ -1,0 +1,8 @@
+﻿CREATE PROCEDURE getOneCita
+    @CitaID UNIQUEIDENTIFIER
+AS
+BEGIN
+    SELECT * 
+    FROM RegistroCitas
+    WHERE CitaID = @CitaID;
+END;

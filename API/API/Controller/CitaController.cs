@@ -43,5 +43,11 @@ namespace API.Controller
         {
             return Ok(await _citaBW.ObtenerTodos());
         }
+        [Route("one")]
+        [HttpGet]
+        public async Task<IActionResult> ObtenerOne(Guid CitaID)
+        {
+            return Ok(await _citaBW.ObtenerOne(CitaID));
+        }
     }
 }
