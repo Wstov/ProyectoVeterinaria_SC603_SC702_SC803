@@ -1,13 +1,32 @@
 using Abstracciones.BC;
 using Abstracciones.BW;
 using Abstracciones.DA;
+using Abstracciones.Modelos;
 using BC;
 using BW;
 using DA;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        var tokenConfig = builder.Configuration.GetSection("Token").Get<TokenConfiguracion>();
 
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = tokenConfig.Issuer,
+            ValidAudience = tokenConfig.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfig.Key))
+        };
+    });
 // Add services to the container.
 
 builder.Services.AddControllers();

@@ -1,4 +1,5 @@
-﻿CREATE Procedure  RolesxUsuario
+﻿
+CREATE Procedure  RolesxUsuario
 @IdPersona UNIQUEIDENTIFIER
 AS
 BEGIN

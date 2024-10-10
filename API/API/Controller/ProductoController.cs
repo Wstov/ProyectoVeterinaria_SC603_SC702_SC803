@@ -1,11 +1,13 @@
 ﻿using Abstracciones.API;
 using Abstracciones.BW;
 using Abstracciones.Modelos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controller
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductoController : ControllerBase, IProductoAPI
@@ -36,6 +38,7 @@ namespace API.Controller
         {
             return Ok(await _productosBW.Obtener(ProductoID));
         }
+        [AllowAnonymous]
         [Route("all")]
         [HttpGet]
         public async Task<IActionResult> Obtener()
