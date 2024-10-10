@@ -1,10 +1,12 @@
 using BC;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
 
 namespace WEB.Pages.Inventario
 {
+    [Authorize(Roles = "1")]
     public class ListarProductosModel : PageModel
     {
        

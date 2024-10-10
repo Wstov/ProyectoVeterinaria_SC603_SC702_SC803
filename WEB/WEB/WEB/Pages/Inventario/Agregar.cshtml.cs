@@ -5,9 +5,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace WEB.Pages.Inventario
 {
+    [Authorize(Roles = "1")]
     public class AgregarModel : PageModel
     {
-
+     
         private Configuracion _configuracion;
 
         [BindProperty] public Producto producto { get; set; } = default!;

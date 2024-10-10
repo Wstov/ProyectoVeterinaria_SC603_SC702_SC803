@@ -1,10 +1,12 @@
 using Abstracciones.Modelos;
 using BC;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace WEB.Pages.Cita
 {
+    [Authorize(Roles = "1,2,3")]
     public class RegistroCitaModel : PageModel
     {
         private Configuracion _configuracion;

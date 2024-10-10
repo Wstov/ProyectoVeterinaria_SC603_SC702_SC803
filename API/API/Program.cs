@@ -45,11 +45,22 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IRepositorioDapper, RepositorioDapper>();
+builder.Services.AddScoped<IUsuarioDA, UsuarioDA>();
+builder.Services.AddScoped<IUsuarioBW, UsuarioBW>();
 builder.Services.AddScoped<IProductoDA, ProductoDA>();
 builder.Services.AddScoped<IProductoBW, ProductoBW>();
 builder.Services.AddScoped<IProductoImagen, ProductoImagenBC>();
 builder.Services.AddScoped<ICitaDA, CitaDA>();
 builder.Services.AddScoped<ICitaBW, CitaBW>();
+
+builder.Services.AddScoped<IPersonaDA, PersonaDA>();
+builder.Services.AddScoped<IPersonaBW, PersonaBW>();
+
+builder.Services.AddScoped<IRolesDA, RolesDA>();
+builder.Services.AddScoped<IRolesBW, RolesBW>();
+
+builder.Services.AddScoped<IRolesxUsuarioDA, RolesxUsuarioDA>();
+builder.Services.AddScoped<IRolesxUsuarioBW, RolesxUsuarioBW>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

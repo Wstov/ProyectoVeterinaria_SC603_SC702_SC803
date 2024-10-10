@@ -1,10 +1,12 @@
 using BC;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
 
 namespace WEB.Pages.Cita
 {
+    [Authorize(Roles = "1,3")]
     public class EditarModel : PageModel
     {
 

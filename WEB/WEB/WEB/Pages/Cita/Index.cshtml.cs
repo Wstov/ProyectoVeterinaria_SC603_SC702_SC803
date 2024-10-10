@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
 using Abstracciones.Modelos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WEB.Pages.Cita
 {
+    [Authorize(Roles = "1,3")]
     public class IndexModel : PageModel
     {
         private Configuracion _configuration;

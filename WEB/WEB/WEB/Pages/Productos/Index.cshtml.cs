@@ -7,6 +7,8 @@ using System.Text.Json;
 
 namespace WEB.Pages.Productos
 {
+    [Authorize(Roles = "1,2,3")]
+
 
     public class IndexModel : PageModel
     {
