@@ -1,5 +1,5 @@
 ﻿CREATE TABLE Usuarios (
     IdPersona UNIQUEIDENTIFIER PRIMARY KEY,
-    Pass NVARCHAR(255) NOT NULL,
+    [Hash]      VARCHAR (MAX)    NULL,
     FOREIGN KEY (IdPersona) REFERENCES Personas(Id) ON DELETE CASCADE
 );

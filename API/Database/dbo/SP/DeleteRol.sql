@@ -1,0 +1,21 @@
+﻿
+CREATE PROCEDURE DeleteRol
+	@Id int
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION;
+    BEGIN TRY
+        DELETE FROM Roles
+			WHERE Id=@Id
+
+        COMMIT TRANSACTION;
+
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+
+        THROW;
+    END CATCH
+END

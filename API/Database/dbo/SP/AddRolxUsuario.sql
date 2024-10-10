@@ -1,0 +1,21 @@
+﻿CREATE PROCEDURE AddRolxUsuario
+    @Id int,
+	@IdPersona UNIQUEIDENTIFIER
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION;
+    BEGIN TRY
+        INSERT INTO UsuariosxRoles(IdRol, IdPersona)
+		VALUES (@Id, @IdPersona);
+
+        COMMIT TRANSACTION;
+
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+
+        THROW;
+    END CATCH
+END

@@ -86,5 +86,19 @@
     <Build Include="dbo\SP\getCitas.sql" />
     <Build Include="dbo\SP\getAllCitas.sql" />
     <Build Include="dbo\SP\getOneCita.sql" />
+    <Build Include="dbo\SP\AddPersona.sql" />
+    <Build Include="dbo\SP\AddRol.sql" />
+    <Build Include="dbo\SP\AddRolxUsuario.sql" />
+    <Build Include="dbo\SP\Agregar_Usuario_MW.sql" />
+    <Build Include="dbo\SP\DeletePersona.sql" />
+    <Build Include="dbo\SP\DeleteRol.sql" />
+    <Build Include="dbo\SP\DeleteRolxUsuario.sql" />
+    <Build Include="dbo\SP\EditPersona.sql" />
+    <Build Include="dbo\SP\EditRol.sql" />
+    <Build Include="dbo\SP\EditRolxUsuario.sql" />
+    <Build Include="dbo\SP\GetPersona.sql" />
+    <Build Include="dbo\SP\Obtener_RolesxUsuario.sql" />
+    <Build Include="dbo\SP\Obtener_Usuario_MW.sql" />
+    <Build Include="dbo\SP\RolesxUsuario.sql" />
   </ItemGroup>
 </Project>

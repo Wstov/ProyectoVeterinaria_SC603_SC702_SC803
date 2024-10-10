@@ -1,0 +1,22 @@
+﻿
+CREATE PROCEDURE AddRol
+    @Id int,
+	@Tipo VARCHAR(13)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION;
+    BEGIN TRY
+        INSERT INTO Roles(Id, Tipo)
+		VALUES (@Id, @Tipo);
+
+        COMMIT TRANSACTION;
+
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+
+        THROW;
+    END CATCH
+END

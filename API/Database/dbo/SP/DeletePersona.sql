@@ -1,0 +1,27 @@
+﻿
+CREATE PROCEDURE [dbo].[DeletePersona]
+	@Id UNIQUEIDENTIFIER
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION;
+    BEGIN TRY
+	DELETE FROM UsuariosxRoles
+			WHERE IdPersona=@Id
+
+			DELETE FROM Usuarios
+		WHERE IdPersona=@Id
+
+        DELETE FROM Personas
+			WHERE Id=@Id
+
+        COMMIT TRANSACTION;
+
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+
+        THROW;
+    END CATCH
+END
