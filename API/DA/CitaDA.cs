@@ -5,6 +5,7 @@ using Dapper;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,16 +62,19 @@ namespace DA
             return CitaID;
         }
 
-        public async Task<IEnumerable<Guid>> Obtener(Guid PersonaID)
+        public async Task<IEnumerable<Cita>> Obtener(Guid PersonaID)
         {
-            string sql = @"getCitas";
+            string sql = @"getCitas"; // Suponiendo que este es el nombre del procedimiento almacenado
 
-            var consulta = await _sqlConnection.QueryAsync<Cita>(sql, new { PersonaID = PersonaID });
+            // Ejecutamos la consulta que devuelve una lista de citas
+            var consulta = await _sqlConnection.QueryAsync<Cita>(sql, new { PersonaID = PersonaID }, commandType: CommandType.StoredProcedure);
 
+            // Si no hay citas relacionadas, retornamos null
             if (!consulta.Any())
                 return null;
 
-            return consulta.Select(c => c.CitaID);
+            // Retornamos la lista de citas
+            return consulta;
         }
 
         public async Task<Cita> ObtenerOne(Guid CitaID)

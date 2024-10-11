@@ -2,6 +2,7 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+   
 }
 
 <section>
@@ -24,11 +25,20 @@
                         </p>
                     </div>
                 </div>
-
+                @if (!User.Identity.IsAuthenticated)
+                {
                 <div class="lc-block d-grid gap-2 d-md-flex justify-content-md-start">
-                    <a class="btn btn-outline-secondary px-4" href="@Url.Action("Acceso")" role="button">Ingresar</a>
-                    <a class="btn btn-primary px-4 me-md-2" href="@Url.Action("Registro")" role="button">Registrarme</a>
+                    <h5 style="font-weight:bold; color:red">Inicia Sesion para tener acceso a todos nuestros servicios </h5>
                 </div>
+                    <div class="lc-block d-grid gap-2 d-md-flex justify-content-md-start">
+
+                        <a class="btn btn-outline-secondary px-4" asp-page="/Cuenta/Login" role="button">Ingresar</a>
+                        <a class="btn btn-primary px-4 me-md-2" asp-page="/Cuenta/Registrarse" role="button">Registrarme</a>
+                    </div>
+
+                }
+
+        
 
             </div>
         </div>

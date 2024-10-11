@@ -33,7 +33,7 @@ namespace BW
             return await _citaDA.Eliminar(CitaID);
         }
 
-        public async Task<IEnumerable<Guid>> Obtener(Guid PersonaID)
+        public async Task<IEnumerable<Cita>> Obtener(Guid PersonaID)
         {
            return await _citaDA.Obtener(PersonaID);
         }

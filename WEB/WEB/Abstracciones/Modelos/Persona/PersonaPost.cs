@@ -24,6 +24,7 @@ namespace Abstracciones.Modelos.Persona
         public string? Telefono { get; set; }
 
         [Required(ErrorMessage = "El correo es obligatorio.")]
+        [EmailAddress (ErrorMessage = "Solo se permiten correos electronicos")]
         [StringLength(150, MinimumLength = 5, ErrorMessage = "El correo debe ser mayor a 5 caracteres y menor a 100 caracteres.")]
         [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "El correo debe contener un @ y punto como minimo.")]
         public string? Correo { get; set; }

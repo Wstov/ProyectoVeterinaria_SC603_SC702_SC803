@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controller
 {
-    [Authorize]
+
     [Route("api/[controller]")]
     [ApiController]
     public class CitaController : ControllerBase, ICitaAPI

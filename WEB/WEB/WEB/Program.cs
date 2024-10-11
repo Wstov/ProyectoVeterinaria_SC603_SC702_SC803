@@ -22,6 +22,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 // Registrar el AuthHandler
 builder.Services.AddTransient<AuthHandler>();
+builder.Services.AddSession();
 
 // Configurar el HttpClient con el AuthHandler
 builder.Services.AddHttpClient("ClienteVeterinaria")
@@ -45,7 +46,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 // Seguridad
 app.AutorizacionClaims();

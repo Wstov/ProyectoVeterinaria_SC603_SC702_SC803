@@ -97,6 +97,7 @@ namespace WEB.Pages.Cuenta
             {
                 claims.Add(new Claim(ClaimTypes.NameIdentifier, idUsuarioClaim.Value));
                 claims.Add(new Claim("IdUsuario", idUsuarioClaim.Value));
+                
             }
 
             var rolUsuarioClaim = tokens.Claims.FirstOrDefault(c => c.Type == "NombreRol");

@@ -9,7 +9,7 @@ namespace Abstracciones.DA
 {
     public interface ICitaDA
     {
-        public Task<IEnumerable<Guid>> Obtener(Guid PersonaID);
+        public Task<IEnumerable<Cita>> Obtener(Guid PersonaID);
         public Task <Cita> ObtenerOne(Guid CitaID);
 
         public Task<IEnumerable<Cita>> ObtenerTodos();

@@ -1,6 +1,11 @@
 ﻿@page
 @model WEB.Pages.Cita.RegistroCitaModel
 @{
+    var idUsuario = new Guid();
+    @if (User.Identity.IsAuthenticated)
+    {
+        idUsuario = Abstracciones.Modelos.Autenticacion.ClaimsPrincipalExtensions.GetIdUsuario(User);
+    }
 }
 
 
@@ -38,7 +43,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="assignedVet" class="form-label">ID persona</label>
-                            <input asp-for="cita.PersonaID" class="form-control">
+                            <input asp-for="cita.PersonaID" value="@idUsuario" class="form-control">
                             <span asp-validation-for="cita.PersonaID" class="text-danger"></span>
                         </div>
                         <div class="d-grid gap-2 mt-3">

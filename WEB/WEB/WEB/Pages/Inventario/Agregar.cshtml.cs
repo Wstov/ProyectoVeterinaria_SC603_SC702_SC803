@@ -8,16 +8,17 @@ namespace WEB.Pages.Inventario
     [Authorize(Roles = "1")]
     public class AgregarModel : PageModel
     {
-     
+        private readonly IHttpClientFactory _httpClientFactory;
         private Configuracion _configuracion;
 
         [BindProperty] public Producto producto { get; set; } = default!;
 
         public IFormFile imagen;
 
-        public AgregarModel(Configuracion configuracion)
+        public AgregarModel(Configuracion configuracion, IHttpClientFactory httpClientFactory)
         {
             _configuracion = configuracion;
+            _httpClientFactory = httpClientFactory;
         }
       
         public async Task<ActionResult> OnPost(IFormFile? imagen)
@@ -36,8 +37,7 @@ namespace WEB.Pages.Inventario
 
             string endPoint = _configuracion.ObtenerEndPoint("addProducto");
 
-            //var cliente = new HttpClient();
-            var cliente = new HttpClient();
+            var cliente = _httpClientFactory.CreateClient("ClienteVeterinaria");
 
             var respuesta = await cliente.PostAsJsonAsync<Producto>(endPoint, producto);
 

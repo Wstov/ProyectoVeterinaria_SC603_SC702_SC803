@@ -11,11 +11,13 @@ namespace WEB.Pages.Cita
     {
 
         private Configuracion _configuration;
+        private readonly IHttpClientFactory _httpClientFactory;
         [BindProperty] public Abstracciones.Modelos.Cita cita { get; set; } = default!;
 
-        public EditarModel(Configuracion configuration)
+        public EditarModel(Configuracion configuration, IHttpClientFactory httpClientFactory)
         {
             _configuration = configuration;
+            _httpClientFactory = httpClientFactory;
         }
         public async Task<ActionResult> OnPostAsync()
         {
@@ -26,7 +28,7 @@ namespace WEB.Pages.Cita
 
             string endPoint = _configuration.ObtenerEndPoint("editCita");
 
-            var cliente = new HttpClient();
+            var cliente = _httpClientFactory.CreateClient("ClienteVeterinaria");
 
             var respuesta = await cliente.PutAsJsonAsync<Abstracciones.Modelos.Cita>(endPoint, cita);
             respuesta.EnsureSuccessStatusCode();
@@ -47,7 +49,7 @@ namespace WEB.Pages.Cita
 
             string urlEndPoint = _configuration.ObtenerEndPoint("getOneCita");
 
-            var cliente = new HttpClient();
+            var cliente = _httpClientFactory.CreateClient("ClienteVeterinaria");
 
             var solicitud = new HttpRequestMessage(HttpMethod.Get, string.Format(urlEndPoint, CitaID));
 

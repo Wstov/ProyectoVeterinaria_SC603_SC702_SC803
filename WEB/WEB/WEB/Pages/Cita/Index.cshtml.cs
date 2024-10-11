@@ -11,18 +11,19 @@ namespace WEB.Pages.Cita
     public class IndexModel : PageModel
     {
         private Configuracion _configuration;
-
+        private readonly IHttpClientFactory _httpClientFactory;
         [BindProperty]  public IList<Abstracciones.Modelos.Cita> cita { get; set; } = default!;
 
-        public IndexModel(Configuracion configuration)
+        public IndexModel(Configuracion configuration, IHttpClientFactory httpClientFactory)
         {
             _configuration = configuration;
+            _httpClientFactory = httpClientFactory;
         }
 
         public async Task<ActionResult> OnGet()
         {
             string urlEndPoint = _configuration.ObtenerEndPoint("getAllCita");
-            var cliente = new HttpClient();
+            var cliente = _httpClientFactory.CreateClient("ClienteVeterinaria");
 
             var solicitud = new HttpRequestMessage(HttpMethod.Get, string.Format(urlEndPoint));
 

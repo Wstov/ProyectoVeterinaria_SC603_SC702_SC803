@@ -12,11 +12,13 @@ namespace WEB.Pages.Inventario
     public class EliminarModel : PageModel
     {
         private Configuracion _configuration;
+        private readonly IHttpClientFactory _httpClientFactory;
         [BindProperty] public Producto producto { get; set; } = default!;
 
-        public EliminarModel(Configuracion configuration)
+        public EliminarModel(Configuracion configuration, IHttpClientFactory httpClientFactory)
         {
             _configuration = configuration;
+            _httpClientFactory = httpClientFactory;
         }
         public async Task<ActionResult> OnPost(Guid ProductoID)
         {
@@ -24,7 +26,7 @@ namespace WEB.Pages.Inventario
 
             string endPoint = _configuration.ObtenerEndPoint("deleteProducto");
 
-            var cliente = new HttpClient();
+            var cliente = _httpClientFactory.CreateClient("ClienteVeterinaria");
 
             var solicitud = new HttpRequestMessage(HttpMethod.Delete, string.Format(endPoint, ProductoID));
 

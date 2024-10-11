@@ -10,18 +10,21 @@ namespace WEB.Pages.Cita
     public class RegistroCitaModel : PageModel
     {
         private Configuracion _configuracion;
+        private readonly IHttpClientFactory _httpClientFactory;
         [BindProperty] public Abstracciones.Modelos.Cita cita { get; set; } = default!;
-        public RegistroCitaModel(Configuracion configuracion) { _configuracion = configuracion; }
+        public RegistroCitaModel(Configuracion configuracion, IHttpClientFactory httpClientFactory) { _configuracion = configuracion;
+            _httpClientFactory = httpClientFactory;
+        }
         public async Task<ActionResult> OnPost() {
             if (!ModelState.IsValid)
                 return Page();
 
             string endPoint = _configuracion.ObtenerEndPoint("addCita");
-            var cliente= new HttpClient();
+            var cliente = _httpClientFactory.CreateClient("ClienteVeterinaria");
             var respuesta = await cliente.PostAsJsonAsync<Abstracciones.Modelos.Cita>(endPoint, cita);
             if (respuesta.IsSuccessStatusCode)
             {
-                return RedirectToPage("./Index");
+                return RedirectToPage("../Index");
             }
             return Page();
         }

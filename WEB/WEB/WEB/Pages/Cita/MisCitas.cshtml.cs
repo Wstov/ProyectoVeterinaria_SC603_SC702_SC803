@@ -2,31 +2,36 @@ using BC;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Claims;
 using System.Text.Json;
 
-namespace WEB.Pages.Inventario
+namespace WEB.Pages.Cita
 {
-    [Authorize(Roles = "1")]
-    public class ListarProductosModel : PageModel
+    [Authorize(Roles = "1,2, 3")]
+    public class MisCitasModel : PageModel
     {
-       
         private Configuracion _configuration;
         private readonly IHttpClientFactory _httpClientFactory;
-        public IList<Producto> producto { get; set; } = default!;
-
-        public ListarProductosModel(Configuracion configuration, IHttpClientFactory httpClientFactory)
+        [BindProperty] public IList<Abstracciones.Modelos.Cita> cita { get; set; } = default!;
+        public MisCitasModel(Configuracion configuration, IHttpClientFactory httpClientFactory)
         {
             _configuration = configuration;
             _httpClientFactory = httpClientFactory;
         }
-
         public async Task<ActionResult> OnGet()
         {
-            string urlEndPoint = _configuration.ObtenerEndPoint("getAllProducto");
+            var idUsuario = new Guid();
+            if(User.Identity.IsAuthenticated)
 
+            {
+                idUsuario = Abstracciones.Modelos.Autenticacion.ClaimsPrincipalExtensions.GetIdUsuario(User);
+            }
+
+            string urlEndPoint = _configuration.ObtenerEndPoint("getCitas");
+            var requestUrl = $"{urlEndPoint}?PersonaID={idUsuario}";
             var cliente = _httpClientFactory.CreateClient("ClienteVeterinaria");
 
-            var solicitud = new HttpRequestMessage(HttpMethod.Get, string.Format(urlEndPoint));
+            var solicitud = new HttpRequestMessage(HttpMethod.Get, requestUrl);
 
             var respuesta = await cliente.SendAsync(solicitud);
 
@@ -40,7 +45,7 @@ namespace WEB.Pages.Inventario
                         PropertyNameCaseInsensitive = true
                     };
 
-                    producto = JsonSerializer.Deserialize<List<Producto>>(resultado, options);
+                    cita = JsonSerializer.Deserialize<List<Abstracciones.Modelos.Cita>>(resultado, options);
                 }
                 catch (JsonException ex)
                 {
@@ -51,3 +56,4 @@ namespace WEB.Pages.Inventario
         }
     }
 }
+
