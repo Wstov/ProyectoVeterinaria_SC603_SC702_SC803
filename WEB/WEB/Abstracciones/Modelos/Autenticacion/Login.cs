@@ -13,7 +13,7 @@ namespace Abstracciones.Modelos.Autenticacion
 
         [Required(ErrorMessage = "La contraseña es obligatoria.")]
         [DataType(DataType.Password)]
-        [StringLength(100, MinimumLength = 5, ErrorMessage = "La contraseña debe ser como minimo de 5 caracteres.")]
+        [StringLength(100, MinimumLength = 5, ErrorMessage = "La contraseña debe ser como minimo de 6 caracteres.")]
         [DisplayName("Contraseña")]
         public string? Password { get; set; }
 

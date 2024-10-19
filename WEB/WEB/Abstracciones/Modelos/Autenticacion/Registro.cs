@@ -43,11 +43,11 @@ namespace Abstracciones.Modelos.Autenticacion
         [Required(ErrorMessage = "La contraseña es obligatoria.")]
         [DataType(DataType.Password)]
         [StringLength(100, MinimumLength = 6, ErrorMessage = "La contraseña debe tener al menos 6 caracteres.")]
-        [RegularExpression(@"^(?=.*\d{2,})(?=.*[a-zA-Z]).{6,}$", ErrorMessage = "La contraseña debe tener al menos 6 caracteres y contener al menos 2 números.")]
+        [RegularExpression(@"^(?=.*\d{2,})(?=.*[a-zA-Z]).{6,}$", ErrorMessage = "La contraseña debe tener al menos 6 caracteres y al menos 2 deben ser números.")]
         [DisplayName("Contraseña")]
         public string? Password { get; set; }
 
-        [BindProperty(SupportsGet = true)]
+        [BindProperty(SupportsGet = true)]  
         [Required(ErrorMessage = "Repetir la contraseña es obligatorio.")]
         [DataType(DataType.Password)]
         [StringLength(100, MinimumLength = 6, ErrorMessage = "La contraseña debe tener al menos 6 caracteres.")]

@@ -92,7 +92,7 @@ namespace DA
 
         public async Task<IEnumerable<Persona>> ObtenerTodos()
         {
-            string sql = @"SELECT * FROM View_Personas";
+            string sql = @"SELECT * from Personas";
 
             var consulta = await _sqlConnection.QueryAsync<Persona>(sql);
 

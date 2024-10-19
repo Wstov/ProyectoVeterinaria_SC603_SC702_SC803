@@ -31,5 +31,9 @@ namespace Abstracciones.Modelos.Persona
         [StringLength(150, MinimumLength = 5, ErrorMessage = "El correo debe ser mayor a 5 caracteres y menor a 100 caracteres.")]
         [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "El correo debe contener un @ y punto como minimo.")]
         public string? Correo { get; set; }
+        public string NombreCompleto
+        {
+            get { return $"{Nombre} {Apellido}"; }
+        }
     }
 }

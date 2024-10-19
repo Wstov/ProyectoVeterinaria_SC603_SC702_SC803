@@ -58,7 +58,7 @@ namespace DA
 
         public async Task<IEnumerable<RolesPost>> ObtenerTodos()
         {
-            string sql = @"SELECT * FROM View_Roles";
+            string sql = @"SELECT * FROM Roles";
 
             var consulta = await _sqlConnection.QueryAsync<RolesPost>(sql);
 

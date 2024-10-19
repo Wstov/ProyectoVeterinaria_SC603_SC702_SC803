@@ -42,3 +42,19 @@
     </div>
 
 </main>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var errorLogin = '@TempData["ErrorLogin"]';
+        if (errorLogin) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error de autenticación',
+                text: errorLogin,
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#137ea7'
+            });
+        }
+    });
+</script>

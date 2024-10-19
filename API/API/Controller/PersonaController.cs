@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controller
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PersonaController : ControllerBase, IPersonaAPI
@@ -58,7 +57,6 @@ namespace API.Controller
             return Ok(await _personaBW.Obtener(Id));
         }
 
-        [Authorize(Roles = "1")]
         [HttpGet]
         public async Task<IActionResult> ObtenerTodos()
         {

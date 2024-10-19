@@ -15,6 +15,10 @@
             <div class="shadow p-4 mb-5 bg-body rounded">
                 <h2 class="text-center mb-4">Crear Nueva Cita Veterinaria</h2>
                 <form method="post">
+                    <div class="mb-3">
+                        <input asp-for="cita.PersonaID" type="hidden" value="@idUsuario" class="form-control">
+                        <span asp-validation-for="cita.PersonaID" class="text-danger"></span>
+                    </div>
                     <fieldset>
                         <div class="mb-3">
                             <label for="appointmentDate" class="form-label">Fecha y hora</label>
@@ -23,9 +27,10 @@
                         </div>
                         <div class="mb-3">
                             <label for="ownerName" class="form-label">Dueño</label>
-                            <input asp-for="cita.Dueno" class="form-control">
+                            <input asp-for="cita.Dueno" class="form-control" readonly />
                             <span asp-validation-for="cita.Dueno" class="text-danger"></span>
                         </div>
+
                         <div class="mb-3">
                             <label for="petName" class="form-label">Mascota</label>
                             <input asp-for="cita.MascotaID" class="form-control">
@@ -41,14 +46,10 @@
                             <input asp-for="cita.VeterinarioAsignadoID" class="form-control">
                             <span asp-validation-for="cita.VeterinarioAsignadoID" class="text-danger"></span>
                         </div>
-                        <div class="mb-3">
-                            <label for="assignedVet" class="form-label">ID persona</label>
-                            <input asp-for="cita.PersonaID" value="@idUsuario" class="form-control">
-                            <span asp-validation-for="cita.PersonaID" class="text-danger"></span>
-                        </div>
+                      
                         <div class="d-grid gap-2 mt-3">
                             <input class="btn btn-lg btn-primary" type="submit" value="Agendar" />
-                            <div asp-validation-summary="All" class="text-danger"></div>
+                     
                         </div>
                         <div><a href="/Cita/" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
                     </fieldset>

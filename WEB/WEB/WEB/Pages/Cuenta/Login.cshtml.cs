@@ -66,9 +66,10 @@ namespace WEB.Pages.Cuenta
                 }
                 else
                 {
-                    ModelState.AddModelError("loginInfo", "Correo electrónico o contraseña incorrectos.");
+                    TempData["ErrorLogin"] = "Datos Incorrectos, vuelve a intentarlo";
                 }
             }
+
             return Page();
         }
 

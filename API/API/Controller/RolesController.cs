@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controller
 {
-    [Authorize(Roles = "1")]
     [Route("api/[controller]")]
     [ApiController]
     public class RolesController : ControllerBase, IRolesAPI

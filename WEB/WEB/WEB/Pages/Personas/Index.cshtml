@@ -1,0 +1,48 @@
+﻿@page
+@model WEB.Pages.Personas.IndexModel
+@{
+}
+
+<h1>Personas Registradas a la veterinaria</h1>
+<div class="container">
+   
+    <br /><br /><br />
+    <div class="row justify-content-center" style="background-color: #f9f8fa;">
+        <div class="container">
+            @if (Model.personas != null && Model.personas.Any())
+            {
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre Completo</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var persona in Model.personas)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => persona.Nombre) @Html.DisplayFor(modelItem => persona.Apellido)</td>
+                                <td>@Html.DisplayFor(modelItem => persona.Telefono)</td>
+                                <td>@Html.DisplayFor(modelItem => persona.Correo)</td>
+                                <td>
+                                    <a class="btn btn-secondary" asp-page="../Roles/Index" asp-route-id="@persona.Id"><i class="bi bi-info-circle"></i> Ir a Roles</a>
+                                    <a class="btn btn-warning" asp-page="./EditarPerfil" asp-route-id="@persona.Id"><i class="bi bi-pencil"></i> Editar</a>
+                                    <a class="btn btn-danger" asp-page="./Eliminar" asp-route-id="@persona.Id"><i class="bi bi-pencil"></i> Eliminar</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-danger" role="alert">
+                    No hay personas para mostrar. Añade una.
+                </div>
+            }
+        </div>
+    </div>
+</div>
