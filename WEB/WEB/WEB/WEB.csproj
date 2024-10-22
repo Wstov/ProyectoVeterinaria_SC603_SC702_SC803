@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\Personas\EliminarPersona.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Autorizacion.Abstracciones" Version="1.0.0" />
     <PackageReference Include="Autorizacion.BW" Version="1.0.0" />
     <PackageReference Include="Autorizacion.DA" Version="2.0.0" />
@@ -28,18 +24,6 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\Personas\EliminarPersona.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\Personas\EliminarPersona.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Personas\EliminarPersona.cshtml" />
   </ItemGroup>
 
 </Project>

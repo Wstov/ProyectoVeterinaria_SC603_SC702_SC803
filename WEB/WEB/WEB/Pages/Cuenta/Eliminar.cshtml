@@ -1,9 +1,8 @@
 ﻿@page
-@model WEB.Pages.Personas.EliminarPersonaModel
+@model WEB.Pages.Cuenta.EliminarModel
 @{
 }
-
-<h1>Esta seguro que desea eliminar esta Persona?</h1>
+<h1>Esta seguro que desea eliminar esta Cuenta?</h1>
 <h6>Esta acción no se podrá rehacer.</h6>
 <br />
 
@@ -36,14 +35,14 @@
             <input readonly asp-for="persona.Correo" type="email" class="form-control" id="exampleFormControlInput1">
             <span asp-validation-for="persona.Correo" class="text-danger"></span>
         </div>
-        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <input type="submit" value="Eliminar" class="btn btn-danger w-100" />
         <div asp-validation-summary="All" class="text-danger"></div>
     </form>
     <input type="hidden" id="attentionMessage" value="@TempData["Atención"]" />
 </div>
 
 <div>
-    <a asp-page="./Index">Regresar</a>
+    <a asp-page="./Index" class="btn btn-secondary w-100">Regresar</a>
 </div>
 
 @section Scripts {
@@ -51,6 +50,5 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="~/js/mensajeError.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
