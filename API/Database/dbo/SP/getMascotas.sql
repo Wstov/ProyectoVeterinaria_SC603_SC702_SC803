@@ -1,0 +1,6 @@
+﻿CREATE PROCEDURE getMascotas
+AS
+BEGIN
+    SELECT * FROM Mascota;
+END;
+GO

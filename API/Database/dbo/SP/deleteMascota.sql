@@ -1,0 +1,7 @@
+﻿CREATE PROCEDURE deleteMascota
+    @MascotaID UNIQUEIDENTIFIER
+AS
+BEGIN
+    DELETE FROM Mascota WHERE MascotaID = @MascotaID;
+END;
+GO

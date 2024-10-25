@@ -10,6 +10,7 @@ namespace Abstracciones.Modelos
     public class Cita
     {
         public Guid CitaID { get; set; }
+        [Required(ErrorMessage = "La fecha y hora es obligatoria.")]
         public DateTime? FechaHora { get; set; }
         [Required(ErrorMessage = "El nombre del dueño es obligatorio.")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "El nombre del dueño debe ser mayor a 3 caracteres y menor a 50 carcacteres.")]

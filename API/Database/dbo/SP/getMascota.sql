@@ -1,0 +1,7 @@
+﻿CREATE PROCEDURE getMascota
+    @MascotaID UNIQUEIDENTIFIER
+AS
+BEGIN
+    SELECT * FROM Mascota WHERE MascotaID = @MascotaID;
+END;
+GO

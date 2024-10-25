@@ -100,5 +100,11 @@
     <Build Include="dbo\SP\Obtener_RolesxUsuario.sql" />
     <Build Include="dbo\SP\Obtener_Usuario_MW.sql" />
     <Build Include="dbo\SP\RolesxUsuario.sql" />
+    <Build Include="dbo\SP\addMascota.sql" />
+    <Build Include="dbo\SP\getMascota.sql" />
+    <Build Include="dbo\SP\getMascotas.sql" />
+    <Build Include="dbo\SP\editMascota.sql" />
+    <Build Include="dbo\SP\deleteMascota.sql" />
+    <Build Include="dbo\SP\getMascotasUsuario.sql" />
   </ItemGroup>
 </Project>

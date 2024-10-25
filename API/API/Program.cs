@@ -52,7 +52,8 @@ builder.Services.AddScoped<IProductoBW, ProductoBW>();
 builder.Services.AddScoped<IProductoImagen, ProductoImagenBC>();
 builder.Services.AddScoped<ICitaDA, CitaDA>();
 builder.Services.AddScoped<ICitaBW, CitaBW>();
-
+builder.Services.AddScoped<IMascotaDA, MascotaDA>();
+builder.Services.AddScoped<IMascotaBW, MascotaBW>();
 builder.Services.AddScoped<IPersonaDA, PersonaDA>();
 builder.Services.AddScoped<IPersonaBW, PersonaBW>();
 
