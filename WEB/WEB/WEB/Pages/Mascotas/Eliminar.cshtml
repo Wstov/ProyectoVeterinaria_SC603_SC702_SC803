@@ -1,0 +1,56 @@
+﻿@page
+@model WEB.Pages.Mascotas.EliminarModel
+@{
+}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="shadow p-4 mb-5 bg-body rounded">
+                <h2 class="text-center mb-4">Eliminar Mascota</h2>
+                <p style="text-align:center;">Seguro que quieres eliminar esta mascota?</p>
+                <form method="post">
+                    <input type="hidden" asp-for="mascota.MascotaID" />
+                    <input type="hidden" asp-for="mascota.UsuarioID" />
+                    <fieldset>
+
+                        <div class="mb-3">
+                            <label for="nombreMascota" class="form-label">Nombre de la Mascota</label>
+                            <input asp-for="mascota.NombreMascota" class="form-control" readonly/>
+                            <span asp-validation-for="mascota.NombreMascota" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipoAnimal" class="form-label">Animal</label>
+                            <input asp-for="mascota.NombreAnimal" class="form-control" readonly />
+                            <span asp-validation-for="mascota.NombreAnimal" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="raza" class="form-label">Raza</label>
+                            <input asp-for="mascota.Raza" class="form-control" readonly />
+                            <span asp-validation-for="mascota.Raza" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="genero" class="form-label">Género</label>
+                            <input asp-for="mascota.Genero" class="form-control" readonly />
+                            <span asp-validation-for="mascota.Genero" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="genero" class="form-label">Fecha Nacimiento</label>
+                            <input asp-for="mascota.FechaNacimiento" class="form-control" readonly />
+                            <span asp-validation-for="mascota.FechaNacimiento" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="caracteristicas" class="form-label">Características</label>
+                            <textarea asp-for="mascota.Caracteristicas" class="form-control" readonly></textarea>
+                            <span asp-validation-for="mascota.Caracteristicas" class="text-danger"></span>
+                        </div>
+                        <div class="d-grid gap-2 mt-3">
+                            <input class="btn btn-lg btn-danger" type="submit" value="Eliminar" />
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                        </div>
+                        <div><a href="../Index" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

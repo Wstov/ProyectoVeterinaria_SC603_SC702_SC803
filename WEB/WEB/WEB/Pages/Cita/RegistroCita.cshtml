@@ -8,7 +8,6 @@
     }
 }
 
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
@@ -33,9 +32,16 @@
 
                         <div class="mb-3">
                             <label for="petName" class="form-label">Mascota</label>
-                            <input asp-for="cita.MascotaID" class="form-control">
+                            <select asp-for="cita.MascotaID" class="form-control">
+                                <option value="">Seleccione una mascota</option>
+                                @foreach (var mascota in Model.Mascotas)
+                                {
+                                    <option value="@mascota.MascotaID">@mascota.NombreMascota - @mascota.NombreAnimal</option>
+                                }
+                            </select>
                             <span asp-validation-for="cita.MascotaID" class="text-danger"></span>
                         </div>
+
                         <div class="mb-3">
                             <label for="reason" class="form-label">Motivo</label>
                             <input asp-for="cita.Motivo" class="form-control">
@@ -46,10 +52,9 @@
                             <input asp-for="cita.VeterinarioAsignadoID" class="form-control">
                             <span asp-validation-for="cita.VeterinarioAsignadoID" class="text-danger"></span>
                         </div>
-                      
+
                         <div class="d-grid gap-2 mt-3">
                             <input class="btn btn-lg btn-primary" type="submit" value="Agendar" />
-                     
                         </div>
                         <div><a href="../Index" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
                     </fieldset>
@@ -58,6 +63,7 @@
         </div>
     </div>
 </div>
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

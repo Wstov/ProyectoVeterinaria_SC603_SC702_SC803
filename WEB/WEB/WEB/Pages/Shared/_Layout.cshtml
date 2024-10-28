@@ -33,14 +33,14 @@
                         <li class="nav-item">
                             <a class="nav-link " asp-area="" asp-page="../Index" >Inicio</a>
                         </li>
-                        @if (User.Identity.IsAuthenticated)
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("2"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-page="/Productos/Index">Productos</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link " asp-area="" asp-controller="User" asp-action="Index">Mascotas</a>
+                                <a class="nav-link" asp-area="" asp-page="/Mascotas/MisMacotas">Mascotas</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " asp-page="/Cita/MisCitas">Citas</a>
@@ -67,6 +67,13 @@
                                 <a class="nav-link " asp-area="" asp-page="/Cita/Index">AdminCitas</a>
                             </li>
                            
+                            
+                        }
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("1") || User.IsInRole("3"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/Mascotas/Index">Mascotas</a>
+                            </li>
                             
                         }
                         @if (User.Identity.IsAuthenticated && User.IsInRole("3"))

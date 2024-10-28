@@ -1,0 +1,69 @@
+﻿@page
+@model WEB.Pages.Mascotas.addMascotaModel
+@{
+    var idUsuario = new Guid();
+    @if (User.Identity.IsAuthenticated)
+    {
+        idUsuario = Abstracciones.Modelos.Autenticacion.ClaimsPrincipalExtensions.GetIdUsuario(User);
+    }
+}
+<H1 style="text-align:center">Registra una nueva mascota</H1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="shadow p-4 mb-5 bg-body rounded">
+                <h2 class="text-center mb-4">Agregar Mascota</h2>
+                <form method="post">
+                    <input asp-for="mascota.UsuarioID" type="hidden" value="@idUsuario" class="form-control">
+                    <span asp-validation-for="mascota.UsuarioID" class="text-danger"></span>
+                    <fieldset>
+
+                        <div class="mb-3">
+                            <label for="nombreMascota" class="form-label">Nombre de la Mascota</label>
+                            <input asp-for="mascota.NombreMascota" class="form-control" />
+                            <span asp-validation-for="mascota.NombreMascota" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipoAnimal" class="form-label">Animal</label>
+                            <input asp-for="mascota.NombreAnimal" class="form-control" />
+                            <span asp-validation-for="mascota.NombreAnimal" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="raza" class="form-label">Raza</label>
+                            <input asp-for="mascota.Raza" class="form-control" />
+                            <span asp-validation-for="mascota.Raza" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="genero" class="form-label">Género</label>
+                            <input asp-for="mascota.Genero" class="form-control" />
+                            <span asp-validation-for="mascota.Genero" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="birthDate" class="form-label">Fecha de Nacimiento</label>
+                            <input asp-for="mascota.FechaNacimiento"
+                                   id="birthDate"
+                                   class="form-control"
+                                   
+                                   max="@DateTime.Today.ToString("yyyy-MM-dd")T23:59" />
+                            <span asp-validation-for="mascota.FechaNacimiento" class="text-danger"></span>
+                        </div>
+
+                        
+
+                        <div class="mb-3">
+                            <label for="caracteristicas" class="form-label">Características</label>
+                            <textarea asp-for="mascota.Caracteristicas" class="form-control"></textarea>
+                            <span asp-validation-for="mascota.Caracteristicas" class="text-danger"></span>
+                        </div>
+                        <div class="d-grid gap-2 mt-3">
+                            <input class="btn btn-lg btn-primary" type="submit" value="Agregar" />
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                        </div>
+                        <div><a href="../Index" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

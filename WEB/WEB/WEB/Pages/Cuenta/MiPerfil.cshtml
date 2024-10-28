@@ -45,6 +45,42 @@
 <hr/>
 <div>
     <h2 style="text-align:center">Tus Mascotas</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Animal</th>
+                    <th>Nombre</th>
+                    <th>Raza</th>
+                    <th>Genero</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Caracteristicas</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var mascotas in Model.mascotas)
+                {
+                    <tr id="mascotas-@mascotas.MascotaID">
+
+                        <td>@Html.DisplayFor(modelItem => mascotas.NombreAnimal)</td>
+                        <td>@Html.DisplayFor(modelItem => mascotas.NombreMascota)</td>
+                        <td>@Html.DisplayFor(modelItem => mascotas.Raza)</td>
+                        <td>@Html.DisplayFor(modelItem => mascotas.Genero)</td>
+                        <td>@Html.DisplayFor(modelItem => mascotas.FechaNacimiento)</td>
+                        <td>@Html.DisplayFor(modelItem => mascotas.Caracteristicas)</td>
+                        <td>
+                            <a class="btn btn-sm btn-info w-100" asp-page="/Mascotas/Editar" asp-route-MascotaID="@mascotas.MascotaID">Editar</a>
+                            <a class="btn btn-sm btn-danger w-100" asp-page="/Mascotas/Eliminar" asp-route-MascotaID="@mascotas.MascotaID">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+
+        </table>
+
+    </div>
 </div>
 
 <!-- Modal para editar los datos -->

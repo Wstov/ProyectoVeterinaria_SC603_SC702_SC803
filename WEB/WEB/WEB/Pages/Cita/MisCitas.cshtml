@@ -7,7 +7,7 @@
         idUsuario = Abstracciones.Modelos.Autenticacion.ClaimsPrincipalExtensions.GetIdUsuario(User);
     }
 }
-@if (Model.cita != null && Model.cita.Any())
+@if (Model.Citas != null && Model.Citas.Any())
 {
     <section class="mt-5">
         <div class="container">
@@ -18,10 +18,9 @@
             </div>
             <!-- Botón para crear una nueva cita -->
             <div class="mb-3 text-center">
-                <a class="btn btn-primary"  asp-page="/Cita/RegistroCita">Solicitar Nueva Cita</a>
+                <a class="btn btn-primary" asp-page="/Cita/RegistroCita">Solicitar Nueva Cita</a>
             </div>
-            <!-- Barra de búsqueda -->
-            
+
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
@@ -34,20 +33,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var citas in Model.cita)
+                        @foreach (var cita in Model.Citas)
                         {
-                            <tr id="cita-@citas.CitaID">
-                                <td>@Html.DisplayFor(modelItem => citas.FechaHora)</td>
-                                <td>@Html.DisplayFor(modelItem => citas.Dueno)</td>
-                                <td>@Html.DisplayFor(modelItem => citas.MascotaID)</td>
-                                <td>@Html.DisplayFor(modelItem => citas.Motivo)</td>
-                                <td>@Html.DisplayFor(modelItem => citas.VeterinarioAsignadoID)</td>
+                            <tr id="cita-@cita.CitaID">
+                                <td>@Html.DisplayFor(modelItem => cita.FechaHora)</td>
+                                <td>@Html.DisplayFor(modelItem => cita.Dueno)</td>
+                                <td>
+                                    @{
+                                        var mascotaNombre = Model.MascotasNombres.ContainsKey(cita.MascotaID)
+                                        ? Model.MascotasNombres[cita.MascotaID]
+                                        : "Mascota no encontrada";
+                                    }
+                                    @mascotaNombre
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => cita.Motivo)</td>
+                                <td>@Html.DisplayFor(modelItem => cita.VeterinarioAsignadoID)</td>
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
-           
+
             <div><a href="../Index" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
         </div>
     </section>
@@ -56,9 +62,7 @@ else
 {
     <br>
     <div class="alert alert-danger" role="alert">
-
         No tienes citas pendientes puedes registrar una cita si la necesitas en el siguiente enlace:
-
     </div>
     <div>
         <a class="btn btn-lg btn-success me-md-2" asp-area="" asp-page="/Cita/RegistroCita">Registrar Cita </a>

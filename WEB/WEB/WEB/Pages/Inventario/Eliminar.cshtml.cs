@@ -34,7 +34,7 @@ namespace WEB.Pages.Inventario
 
             if (respuesta.IsSuccessStatusCode)
             {
-                return RedirectToPage("./Index");
+                return RedirectToPage("../Index");
             }
             else
             {

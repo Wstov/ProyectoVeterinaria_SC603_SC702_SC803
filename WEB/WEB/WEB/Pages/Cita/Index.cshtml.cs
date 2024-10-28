@@ -4,15 +4,18 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
 using Abstracciones.Modelos;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Options;
 
 namespace WEB.Pages.Cita
 {
     [Authorize(Roles = "1,3")]
     public class IndexModel : PageModel
     {
-        private Configuracion _configuration;
+        private readonly Configuracion _configuration;
         private readonly IHttpClientFactory _httpClientFactory;
-        [BindProperty]  public IList<Abstracciones.Modelos.Cita> cita { get; set; } = default!;
+
+        [BindProperty] public IList<Abstracciones.Modelos.Cita> Citas { get; set; } = default!;
+        public Dictionary<Guid, (string Nombre, string Tipo)> MascotasInfo { get; set; } = new Dictionary<Guid, (string, string)>();
 
         public IndexModel(Configuracion configuration, IHttpClientFactory httpClientFactory)
         {
@@ -22,31 +25,39 @@ namespace WEB.Pages.Cita
 
         public async Task<ActionResult> OnGet()
         {
-            string urlEndPoint = _configuration.ObtenerEndPoint("getAllCita");
             var cliente = _httpClientFactory.CreateClient("ClienteVeterinaria");
 
-            var solicitud = new HttpRequestMessage(HttpMethod.Get, string.Format(urlEndPoint));
+            // Obtener todas las citas
+            string urlEndPointCitas = _configuration.ObtenerEndPoint("getAllCita");
+            var solicitudCitas = new HttpRequestMessage(HttpMethod.Get, urlEndPointCitas);
+            var respuestaCitas = await cliente.SendAsync(solicitudCitas);
 
-            var respuesta = await cliente.SendAsync(solicitud);
-
-            if (respuesta.IsSuccessStatusCode)
+            if (respuestaCitas.IsSuccessStatusCode)
             {
-                var resultado = await respuesta.Content.ReadAsStringAsync();
-                try
-                {
-                    var options = new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true
-                    };
+                var resultadoCitas = await respuestaCitas.Content.ReadAsStringAsync();
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                Citas = JsonSerializer.Deserialize<List<Abstracciones.Modelos.Cita>>(resultadoCitas, options);
+            }
 
-                    cita = JsonSerializer.Deserialize<List<Abstracciones.Modelos.Cita>>(resultado, options);
-                }
-                catch (JsonException ex)
+            // Obtener todos los datos de las mascotas
+            string urlEndPointMascotas = _configuration.ObtenerEndPoint("allMascotas");
+            var solicitudMascotas = new HttpRequestMessage(HttpMethod.Get, urlEndPointMascotas);
+            var respuestaMascotas = await cliente.SendAsync(solicitudMascotas);
+
+            if (respuestaMascotas.IsSuccessStatusCode)
+            {
+                var resultadoMascotas = await respuestaMascotas.Content.ReadAsStringAsync();
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                var mascotas = JsonSerializer.Deserialize<List<Abstracciones.Modelos.Mascotas>>(resultadoMascotas, options);
+
+                if (mascotas != null)
                 {
-                    return Page();
+                    MascotasInfo = mascotas.ToDictionary(m => m.MascotaID, m => (m.NombreMascota, m.NombreAnimal));
                 }
             }
+
             return Page();
         }
     }
+
 }

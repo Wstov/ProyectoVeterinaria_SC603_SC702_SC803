@@ -12,6 +12,7 @@ namespace WEB.Pages.Cuenta
         private Configuracion _configuracion;
 
         [BindProperty] public Persona persona { get; set; } = default!;
+        [BindProperty] public IList<Abstracciones.Modelos.Mascotas> mascotas { get; set; } = new List<Abstracciones.Modelos.Mascotas>();
 
         public MiPerfilModel(Configuracion configuration, IHttpClientFactory httpClientFactory)
         {
@@ -21,7 +22,7 @@ namespace WEB.Pages.Cuenta
 
         public async Task<ActionResult> OnPost()
         {
-            if (!ModelState.IsValid)        
+            if (!ModelState.IsValid)
                 return Page();
 
             string endPoint = _configuracion.ObtenerEndPoint("EditarPersona");
@@ -33,39 +34,67 @@ namespace WEB.Pages.Cuenta
             if (respuesta.IsSuccessStatusCode)
             {
                 return RedirectToPage("./MiPerfil", new { id = persona.Id });
-            }   
+            }
             return Page();
         }
 
         public async Task<ActionResult> OnGet(Guid id)
         {
-            string urlEndPoint = _configuracion.ObtenerEndPoint("ObtenerPersona");
+            string urlPersonaEndPoint = _configuracion.ObtenerEndPoint("ObtenerPersona");
+            string urlMascotasEndPoint = _configuracion.ObtenerEndPoint("MisMascotas");
 
-            //var cliente = new HttpClient();
+            // Cliente para realizar solicitudes HTTP
             var cliente = _httpClientFactory.CreateClient("ClienteVeterinaria");
 
-            var solicitud = new HttpRequestMessage(HttpMethod.Get, string.Format(urlEndPoint, id));
+            // Solicitar los datos de la persona
+            var solicitudPersona = new HttpRequestMessage(HttpMethod.Get, string.Format(urlPersonaEndPoint, id));
+            var respuestaPersona = await cliente.SendAsync(solicitudPersona);
 
-            var respuesta = await cliente.SendAsync(solicitud);
-
-            if (respuesta.IsSuccessStatusCode)
+            if (respuestaPersona.IsSuccessStatusCode)
             {
-                var resultado = await respuesta.Content.ReadAsStringAsync();
+                var resultadoPersona = await respuestaPersona.Content.ReadAsStringAsync();
                 try
                 {
                     var options = new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true
                     };
-
-                    persona = JsonSerializer.Deserialize<Persona>(resultado, options);
+                    persona = JsonSerializer.Deserialize<Persona>(resultadoPersona, options);
                 }
-                catch (JsonException ex)
+                catch (JsonException)
                 {
                     return Page();
                 }
             }
+
+            // Solicitar las mascotas del cliente
+            var requestUrlMascotas = $"{urlMascotasEndPoint}?PersonaID={id}";
+            var solicitudMascotas = new HttpRequestMessage(HttpMethod.Get, requestUrlMascotas);
+            var respuestaMascotas = await cliente.SendAsync(solicitudMascotas);
+
+            if (respuestaMascotas.IsSuccessStatusCode)
+            {
+                var resultadoMascotas = await respuestaMascotas.Content.ReadAsStringAsync();
+                try
+                {
+                    var options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    mascotas = JsonSerializer.Deserialize<List<Abstracciones.Modelos.Mascotas>>(resultadoMascotas, options);
+                }
+                catch (JsonException)
+                {
+                    ModelState.AddModelError(string.Empty, "No hay mascotas registradas");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Error al obtener las mascotas.");
+            }
+
             return Page();
         }
     }
+
 }

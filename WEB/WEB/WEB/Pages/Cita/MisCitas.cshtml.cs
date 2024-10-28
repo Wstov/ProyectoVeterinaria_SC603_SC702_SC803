@@ -2,6 +2,7 @@ using BC;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Options;
 using System.Security.Claims;
 using System.Text.Json;
 
@@ -10,50 +11,62 @@ namespace WEB.Pages.Cita
     [Authorize(Roles = "1,2, 3")]
     public class MisCitasModel : PageModel
     {
-        private Configuracion _configuration;
+        private readonly Configuracion _configuration;
         private readonly IHttpClientFactory _httpClientFactory;
-        [BindProperty] public IList<Abstracciones.Modelos.Cita> cita { get; set; } = default!;
+
+        [BindProperty] public IList<Abstracciones.Modelos.Cita> Citas { get; set; } = default!;
+        public Dictionary<Guid, string> MascotasNombres { get; set; } = new Dictionary<Guid, string>();
+
         public MisCitasModel(Configuracion configuration, IHttpClientFactory httpClientFactory)
         {
             _configuration = configuration;
             _httpClientFactory = httpClientFactory;
         }
+
         public async Task<ActionResult> OnGet()
         {
-            var idUsuario = new Guid();
-            if(User.Identity.IsAuthenticated)
-
+            var idUsuario = Abstracciones.Modelos.Autenticacion.ClaimsPrincipalExtensions.GetIdUsuario(User);
+            if (idUsuario == Guid.Empty)
             {
-                idUsuario = Abstracciones.Modelos.Autenticacion.ClaimsPrincipalExtensions.GetIdUsuario(User);
+                return RedirectToPage("/Error");
             }
 
-            string urlEndPoint = _configuration.ObtenerEndPoint("getCitas");
-            var requestUrl = $"{urlEndPoint}?PersonaID={idUsuario}";
             var cliente = _httpClientFactory.CreateClient("ClienteVeterinaria");
 
-            var solicitud = new HttpRequestMessage(HttpMethod.Get, requestUrl);
+            // Obtener las citas
+            string urlEndPointCitas = _configuration.ObtenerEndPoint("getCitas");
+            var requestUrlCitas = $"{urlEndPointCitas}?PersonaID={idUsuario}";
+            var solicitudCitas = new HttpRequestMessage(HttpMethod.Get, requestUrlCitas);
+            var respuestaCitas = await cliente.SendAsync(solicitudCitas);
 
-            var respuesta = await cliente.SendAsync(solicitud);
-
-            if (respuesta.IsSuccessStatusCode)
+            if (respuestaCitas.IsSuccessStatusCode)
             {
-                var resultado = await respuesta.Content.ReadAsStringAsync();
-                try
-                {
-                    var options = new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true
-                    };
+                var resultadoCitas = await respuestaCitas.Content.ReadAsStringAsync();
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                Citas = JsonSerializer.Deserialize<List<Abstracciones.Modelos.Cita>>(resultadoCitas, options);
+            }
 
-                    cita = JsonSerializer.Deserialize<List<Abstracciones.Modelos.Cita>>(resultado, options);
-                }
-                catch (JsonException ex)
+            // Obtener los nombres de las mascotas
+            string urlEndPointMascotas = _configuration.ObtenerEndPoint("MisMascotas");
+            var requestUrlMascotas = $"{urlEndPointMascotas}?PersonaID={idUsuario}";
+            var solicitudMascotas = new HttpRequestMessage(HttpMethod.Get, requestUrlMascotas);
+            var respuestaMascotas = await cliente.SendAsync(solicitudMascotas);
+
+            if (respuestaMascotas.IsSuccessStatusCode)
+            {
+                var resultadoMascotas = await respuestaMascotas.Content.ReadAsStringAsync();
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                var mascotas = JsonSerializer.Deserialize<List<Abstracciones.Modelos.Mascotas>>(resultadoMascotas, options);
+
+                if (mascotas != null)
                 {
-                    return Page();
+                    MascotasNombres = mascotas.ToDictionary(m => m.MascotaID, m => m.NombreMascota);
                 }
             }
+
             return Page();
         }
     }
+
 }
 

@@ -2,16 +2,14 @@
 @model WEB.Pages.Cita.IndexModel
 @{
 }
-@if (Model.cita != null && Model.cita.Any())
+@if (Model.Citas != null && Model.Citas.Any())
 {
     <section class="mt-5">
         <div class="container">
             <h2 class="text-center mb-4">Citas Veterinarias Registradas</h2>
-            <!-- Botón para crear una nueva cita -->
             <div class="mb-3 text-center">
                 <a class="btn btn-primary" asp-page="/Cita/RegistroCita">Crear Nueva Cita</a>
             </div>
-            <!-- Barra de búsqueda -->
             <div class="col-md-12">
                 <form class="d-flex" role="search">
                     <div class="input-group mb-3">
@@ -26,24 +24,31 @@
                         <tr>
                             <th>Fecha y Hora</th>
                             <th>Dueño</th>
-                            <th>Mascota</th>
+                            <th>Mascota (Tipo)</th>
                             <th>Motivo</th>
                             <th>Veterinario Asignado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var citas in Model.cita)
+                        @foreach (var cita in Model.Citas)
                         {
-                            <tr id="cita-@citas.CitaID">
-                                <td>@Html.DisplayFor(modelItem => citas.FechaHora)</td>
-                                <td>@Html.DisplayFor(modelItem => citas.Dueno)</td>
-                                <td>@Html.DisplayFor(modelItem => citas.MascotaID)</td>
-                                <td>@Html.DisplayFor(modelItem => citas.Motivo)</td>
-                                <td>@Html.DisplayFor(modelItem => citas.VeterinarioAsignadoID)</td>
+                            <tr id="cita-@cita.CitaID">
+                                <td>@Html.DisplayFor(modelItem => cita.FechaHora)</td>
+                                <td>@Html.DisplayFor(modelItem => cita.Dueno)</td>
                                 <td>
-                                    <a class="btn btn-sm btn-info w-100" asp-page="/Cita/Editar" asp-route-CitaID="@citas.CitaID">Editar</a>
-                                    <button class="btn btn-sm btn-danger w-100" data-id="@citas.CitaID" onclick="eliminarCita(this)">Eliminar</button>
+                                    @{
+                                        var mascotaInfo = Model.MascotasInfo.ContainsKey(cita.MascotaID)
+                                        ? Model.MascotasInfo[cita.MascotaID]
+                                        : ("Mascota no encontrada", "Desconocido");
+                                    }
+                                    @mascotaInfo.Item1 (@mascotaInfo.Item2)
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => cita.Motivo)</td>
+                                <td>@Html.DisplayFor(modelItem => cita.VeterinarioAsignadoID)</td>
+                                <td>
+                                    <a class="btn btn-sm btn-info w-100" asp-page="/Cita/Editar" asp-route-CitaID="@cita.CitaID">Editar</a>
+                                    <button class="btn btn-sm btn-danger w-100" data-id="@cita.CitaID" onclick="eliminarCita(this)">Eliminar</button>
                                 </td>
                             </tr>
                         }
@@ -58,9 +63,7 @@ else
 {
     <br>
     <div class="alert alert-danger" role="alert">
-
         No hay citas pendientes.
-
     </div>
     <div>
         <a class="btn btn-lg btn-success me-md-2" asp-area="" asp-page="/Cita/RegistroCita">Registrar Cita </a>

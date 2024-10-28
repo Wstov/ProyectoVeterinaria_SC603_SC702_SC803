@@ -1,0 +1,71 @@
+﻿@page
+@model WEB.Pages.Mascotas.IndexModel
+@{
+}
+@if (Model.mascotas != null && Model.mascotas.Any())
+{
+    <section class="mt-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Mascotas Registradas</h2>
+        </div>
+        <div class="col-md-12">
+            <form class="d-flex" role="search">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Buscar cita" aria-label="Buscar Mascota" aria-describedby="button-addon2">
+                    <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+                </div>
+            </form>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Propietario</th>
+                        <th>Animal</th>
+                        <th>Nombre</th>
+                        <th>Raza</th>
+                        <th>Genero</th>
+                        <th>Fecha Nacimiento</th>
+                        <th>Caracteristicas</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.MascotasConPropietario)
+                    {
+                        <tr id="mascotas-@item.Mascota.MascotaID">
+                            <td>@item.NombrePropietario</td>
+                            <td>@Html.DisplayFor(modelItem => item.Mascota.NombreAnimal)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Mascota.NombreMascota)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Mascota.Raza)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Mascota.Genero)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Mascota.FechaNacimiento)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Mascota.Caracteristicas)</td>
+                            <td>
+                                <a class="btn btn-sm btn-info w-100" asp-page="/Mascotas/Editar" asp-route-MascotaID="@item.Mascota.MascotaID">Editar</a>
+                                <a class="btn btn-sm btn-danger w-100" asp-page="/Mascotas/Eliminar" asp-route-MascotaID="@item.Mascota.MascotaID">Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+
+            </table>
+         
+        </div>
+    </section>
+    
+}
+else
+{
+    <br>
+    <div class="alert alert-danger" role="alert">
+
+       Aun no hay mascotas registradas
+
+    </div>
+    <br>
+    <div>
+        <div><a href="/Index/" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
+    </div>
+}
