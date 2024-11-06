@@ -56,7 +56,7 @@ namespace WEB.Pages.Mascotas
 
             if (respuesta.IsSuccessStatusCode)
             {
-                return RedirectToPage("./Index");
+                return RedirectToPage("../Index");
             }
             else
             {

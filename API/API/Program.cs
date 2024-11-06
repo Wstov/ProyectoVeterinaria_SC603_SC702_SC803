@@ -56,7 +56,8 @@ builder.Services.AddScoped<IMascotaDA, MascotaDA>();
 builder.Services.AddScoped<IMascotaBW, MascotaBW>();
 builder.Services.AddScoped<IPersonaDA, PersonaDA>();
 builder.Services.AddScoped<IPersonaBW, PersonaBW>();
-
+builder.Services.AddScoped<IExpedienteDA, ExpedienteDA>();
+builder.Services.AddScoped<IExpedienteBW, ExpedienteBW>();
 builder.Services.AddScoped<IRolesDA, RolesDA>();
 builder.Services.AddScoped<IRolesBW, RolesBW>();
 

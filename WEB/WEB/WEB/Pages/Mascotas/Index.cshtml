@@ -2,7 +2,7 @@
 @model WEB.Pages.Mascotas.IndexModel
 @{
 }
-@if (Model.mascotas != null && Model.mascotas.Any())
+@if (Model.MascotasConPropietarioYExpedientes != null && Model.MascotasConPropietarioYExpedientes.Any())
 {
     <section class="mt-5">
         <div class="container">
@@ -11,7 +11,7 @@
         <div class="col-md-12">
             <form class="d-flex" role="search">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Buscar cita" aria-label="Buscar Mascota" aria-describedby="button-addon2">
+                    <input type="text" class="form-control" placeholder="Buscar Mascota" aria-label="Buscar Mascota" aria-describedby="button-addon2">
                     <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
                 </div>
             </form>
@@ -31,7 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.MascotasConPropietario)
+                    @foreach (var item in Model.MascotasConPropietarioYExpedientes)
                     {
                         <tr id="mascotas-@item.Mascota.MascotaID">
                             <td>@item.NombrePropietario</td>
@@ -43,26 +43,63 @@
                             <td>@Html.DisplayFor(modelItem => item.Mascota.Caracteristicas)</td>
                             <td>
                                 <a class="btn btn-sm btn-info w-100" asp-page="/Mascotas/Editar" asp-route-MascotaID="@item.Mascota.MascotaID">Editar</a>
+
                                 <a class="btn btn-sm btn-danger w-100" asp-page="/Mascotas/Eliminar" asp-route-MascotaID="@item.Mascota.MascotaID">Eliminar</a>
+
+                                @if (item.Expedientes.Any())
+                                {
+                                    <button type="button" class="btn btn-sm btn-primary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#expedienteModal-@item.Mascota.MascotaID">
+                                        Ver expediente
+                                    </button>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-sm btn-success w-100 mt-2" asp-page="/Expedientes/Agregar" asp-route-MascotaID="@item.Mascota.MascotaID">
+                                        Agregar expediente
+                                    </a>
+                                }
                             </td>
                         </tr>
+
+                        <!-- Modal para ver/editar/eliminar el expediente -->
+                        @if (item.Expedientes.Any())
+                        {
+                            <div class="modal fade" id="expedienteModal-@item.Mascota.MascotaID" tabindex="-1" aria-labelledby="expedienteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="expedienteModalLabel">Expediente de @item.Mascota.NombreMascota</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @foreach (var expediente in item.Expedientes)
+                                            {
+                                                <div>
+                                                    <p><strong>Diagnóstico:</strong> @expediente.Diagnostico</p>
+                                                    <a class="btn btn-warning" asp-page="/Expedientes/Editar" asp-route-ExpedienteID="@expediente.ExpedienteID">Editar</a>
+                                                    <a class="btn btn-danger" asp-page="/Expedientes/Eliminar" asp-route-ExpedienteID="@expediente.ExpedienteID">Eliminar</a>
+                                                </div>
+                                                <hr />
+                                            }
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
                     }
                 </tbody>
-
-
             </table>
-         
         </div>
     </section>
-    
 }
 else
 {
     <br>
     <div class="alert alert-danger" role="alert">
-
-       Aun no hay mascotas registradas
-
+        Aún no hay mascotas registradas
     </div>
     <br>
     <div>

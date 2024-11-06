@@ -39,11 +39,11 @@ namespace WEB.Pages.Cita
             var cliente = _httpClientFactory.CreateClient("ClienteVeterinaria");
             var solicitudPersona = new HttpRequestMessage(HttpMethod.Get, string.Format(urlEndPointPersona, idUsuario));
             var respuestaPersona = await cliente.SendAsync(solicitudPersona);
-
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             if (respuestaPersona.IsSuccessStatusCode)
             {
                 var resultadoPersona = await respuestaPersona.Content.ReadAsStringAsync();
-                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+               
                 persona = JsonSerializer.Deserialize<Persona>(resultadoPersona, options);
 
                 if (persona != null)
@@ -65,8 +65,18 @@ namespace WEB.Pages.Cita
             if (respuestaMascotas.IsSuccessStatusCode)
             {
                 var resultadoMascotas = await respuestaMascotas.Content.ReadAsStringAsync();
-                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                Mascotas = JsonSerializer.Deserialize<List<Abstracciones.Modelos.Mascotas>>(resultadoMascotas, options);
+
+                if (!string.IsNullOrWhiteSpace(resultadoMascotas))
+                {
+                    Mascotas = JsonSerializer.Deserialize<List<Abstracciones.Modelos.Mascotas>>(resultadoMascotas, options);
+                }
+
+                // Redirigir si no hay mascotas registradas
+                if (Mascotas == null || !Mascotas.Any())
+                {
+                    TempData["Mensaje"] = "Debe registrar una mascota antes de agendar una cita.";
+                   
+                }
             }
             else
             {
@@ -75,6 +85,7 @@ namespace WEB.Pages.Cita
 
             return Page();
         }
+
 
         public async Task<ActionResult> OnPost()
         {

@@ -106,5 +106,11 @@
     <Build Include="dbo\SP\editMascota.sql" />
     <Build Include="dbo\SP\deleteMascota.sql" />
     <Build Include="dbo\SP\getMascotasUsuario.sql" />
+    <Build Include="dbo\SP\getExpediente.sql" />
+    <Build Include="dbo\SP\getExpedientes.sql" />
+    <Build Include="dbo\SP\addExpediente.sql" />
+    <Build Include="dbo\SP\editExpediente.sql" />
+    <Build Include="dbo\SP\deleteExpediente.sql" />
+    <Build Include="dbo\SP\getExpedientesPorMascota.sql" />
   </ItemGroup>
 </Project>

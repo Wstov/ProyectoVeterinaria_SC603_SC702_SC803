@@ -6,7 +6,11 @@
     {
         idUsuario = Abstracciones.Modelos.Autenticacion.ClaimsPrincipalExtensions.GetIdUsuario(User);
     }
+    
 }
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 <div class="container">
     <div class="row justify-content-center">
@@ -71,4 +75,25 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/validacionH.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        @if (TempData["Mensaje"] != null)
+        {
+            <text>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: '@TempData["Mensaje"]',
+                        confirmButtonText: 'Entendido'
+                    }).then((result) => {
+                        // Redirige después de que el usuario cierre la alerta
+                        if (result.isConfirmed) {
+                            window.location.href = '/Mascotas/addMascota'; // Ajusta esta URL al destino deseado
+                        }
+                    });
+            </text>
+        }
+            });
+    </script>
+
 }

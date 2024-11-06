@@ -11,16 +11,19 @@ namespace WEB.Pages.Mascotas
     [Authorize(Roles = "1,3")]
     public class IndexModel : PageModel
     {
-
         private readonly Configuracion _configuration;
         private readonly IHttpClientFactory _httpClientFactory;
-        public class MascotaConPropietario
+
+        public class MascotaConPropietarioYExpedientes
         {
             public Abstracciones.Modelos.Mascotas Mascota { get; set; }
             public string NombrePropietario { get; set; }
+            public IList<Expediente> Expedientes { get; set; } = new List<Expediente>();
         }
+
         [BindProperty] public IList<Abstracciones.Modelos.Mascotas> mascotas { get; set; } = default!;
         [BindProperty] public Persona persona { get; set; } = default!;
+        [BindProperty] public IList<MascotaConPropietarioYExpedientes> MascotasConPropietarioYExpedientes { get; set; } = new List<MascotaConPropietarioYExpedientes>();
         public string SearchTerm { get; set; }
 
         public IndexModel(Configuracion configuration, IHttpClientFactory httpClientFactory)
@@ -29,11 +32,8 @@ namespace WEB.Pages.Mascotas
             _httpClientFactory = httpClientFactory;
         }
 
-        [BindProperty] public IList<MascotaConPropietario> MascotasConPropietario { get; set; } = new List<MascotaConPropietario>();
-
         public async Task<ActionResult> OnGet(string? searchTerm)
         {
-            // Obtener la lista de mascotas
             string urlEndPointMascotas = _configuration.ObtenerEndPoint("allMascotas");
             var cliente = _httpClientFactory.CreateClient("ClienteVeterinaria");
             var solicitudMascotas = new HttpRequestMessage(HttpMethod.Get, urlEndPointMascotas);
@@ -58,29 +58,46 @@ namespace WEB.Pages.Mascotas
 
                 foreach (var mascota in mascotas)
                 {
-                    // Obtener el propietario de cada mascota
+                    // Obtener datos del propietario
                     string urlEndPointPersona = _configuration.ObtenerEndPoint("ObtenerPersona");
                     var solicitudPersona = new HttpRequestMessage(HttpMethod.Get, string.Format(urlEndPointPersona, mascota.UsuarioID));
                     var respuestaPersona = await cliente.SendAsync(solicitudPersona);
 
+                    string nombrePropietario = "Propietario desconocido";
                     if (respuestaPersona.IsSuccessStatusCode)
                     {
                         var resultadoPersona = await respuestaPersona.Content.ReadAsStringAsync();
                         var persona = JsonSerializer.Deserialize<Persona>(resultadoPersona, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-                        // Crear objeto MascotaConPropietario
-                        MascotasConPropietario.Add(new MascotaConPropietario
-                        {
-                            Mascota = mascota,
-                            NombrePropietario = persona?.Nombre ?? "Propietario desconocido"
-                        });
+                        nombrePropietario = persona?.Nombre ?? nombrePropietario;
                     }
+                    string urlEndPointExpedientes = _configuration.ObtenerEndPoint("getExpedientesPorMascota");
+                    var solicitudExpedientes = new HttpRequestMessage(HttpMethod.Get, string.Format(urlEndPointExpedientes, mascota.MascotaID));
+                    var respuestaExpedientes = await cliente.SendAsync(solicitudExpedientes);
+
+                    IList<Expediente> expedientes = new List<Expediente>(); // Lista vacía por defecto
+                    if (respuestaExpedientes.IsSuccessStatusCode)
+                    {
+                        var resultadoExpedientes = await respuestaExpedientes.Content.ReadAsStringAsync();
+                        if (!string.IsNullOrWhiteSpace(resultadoExpedientes)) // Verifica que haya contenido
+                        {
+                            expedientes = JsonSerializer.Deserialize<List<Expediente>>(resultadoExpedientes, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                        }
+                    }
+
+
+                    // Crear objeto MascotaConPropietarioYExpedientes
+                    MascotasConPropietarioYExpedientes.Add(new MascotaConPropietarioYExpedientes
+                    {
+                        Mascota = mascota,
+                        NombrePropietario = nombrePropietario,
+                        Expedientes = expedientes
+                    });
                 }
 
                 // Filtrar por término de búsqueda si es necesario
                 if (!string.IsNullOrEmpty(searchTerm))
                 {
-                    MascotasConPropietario = MascotasConPropietario
+                    MascotasConPropietarioYExpedientes = MascotasConPropietarioYExpedientes
                         .Where(m => m.Mascota.NombreMascota.ToLower().Contains(searchTerm.ToLower()))
                         .ToList();
                 }
@@ -88,6 +105,6 @@ namespace WEB.Pages.Mascotas
 
             return Page();
         }
-
     }
+
 }
