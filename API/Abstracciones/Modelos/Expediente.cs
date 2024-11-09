@@ -17,5 +17,8 @@ namespace Abstracciones.Modelos
         [Required(ErrorMessage = "El Diagnostico es obligatorio.")]
         [StringLength(200, MinimumLength = 5, ErrorMessage = "El Diagnostico debe ser mayor a 5 caracteres y menor a 200 carcacteres.")]
         public string? Diagnostico { get; set; }
+        [Required]
+        public DateTime FechaActu { get; set; }
+
     }
 }

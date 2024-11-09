@@ -11,5 +11,6 @@ namespace Abstracciones.Entidades
         public Guid ExpedienteID { get; set; }
         public Guid MascotaID { get; set; }
         public string Diagnostico { get; set; }
+        public DateTime FechaActu { get; set; }
     }
 }

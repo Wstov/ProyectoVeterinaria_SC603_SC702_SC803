@@ -6,7 +6,8 @@ AS
 BEGIN
     UPDATE Expediente
     SET MascotaID = @MascotaID,
-        Diagnostico = @Diagnostico
+        Diagnostico = @Diagnostico,
+        FechaActu = GETDATE()  
     WHERE ExpedienteID = @ExpedienteID;
 END;
 GO

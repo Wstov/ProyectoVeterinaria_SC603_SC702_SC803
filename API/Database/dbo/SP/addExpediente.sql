@@ -3,7 +3,7 @@
     @Diagnostico VARCHAR(200)
 AS
 BEGIN
-    INSERT INTO Expediente (MascotaID, Diagnostico)
-    VALUES (@MascotaID, @Diagnostico);
+    INSERT INTO Expediente (MascotaID, Diagnostico, FechaActu)
+    VALUES (@MascotaID, @Diagnostico, GETDATE()); 
 END;
 GO

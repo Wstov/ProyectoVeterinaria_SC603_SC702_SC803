@@ -7,19 +7,17 @@
         idUsuario = Abstracciones.Modelos.Autenticacion.ClaimsPrincipalExtensions.GetIdUsuario(User);
     }
 }
-@if (Model.mascotas !=null && Model.mascotas.Any())
+@if (Model.MascotasConExpedientes != null && Model.MascotasConExpedientes.Any())
 {
     <section class="mt-5">
         <div class="container">
-            <h2 class="text-center mb-4">Mis Mascotas </h2>
+            <h2 class="text-center mb-4">Mis Mascotas</h2>
         </div>
         <div class="mt-3">
             <a href="addMascota" class="btn btn-primary">Agregar mascota</a>
         </div>
         <br />
-        <div class="col-md-12">
-           
-        </div>
+        <div class="col-md-12"></div>
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
@@ -27,54 +25,76 @@
                         <th>Animal</th>
                         <th>Nombre</th>
                         <th>Raza</th>
-                        <th>Genero</th>
+                        <th>Género</th>
                         <th>Fecha Nacimiento</th>
-                        <th>Caracteristicas</th>
+                        <th>Características</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var mascotas in Model.mascotas)
+                    @foreach (var mascotaConExp in Model.MascotasConExpedientes)
                     {
-                        <tr id="mascotas-@mascotas.MascotaID">
-
-                            <td>@Html.DisplayFor(modelItem => mascotas.NombreAnimal)</td>
-                            <td>@Html.DisplayFor(modelItem => mascotas.NombreMascota)</td>
-                            <td>@Html.DisplayFor(modelItem => mascotas.Raza)</td>
-                            <td>@Html.DisplayFor(modelItem => mascotas.Genero)</td>
-                            <td>@Html.DisplayFor(modelItem => mascotas.FechaNacimiento)</td>
-                            <td>@Html.DisplayFor(modelItem => mascotas.Caracteristicas)</td>
+                        <tr id="mascotas-@mascotaConExp.Mascota.MascotaID">
+                            <td>@Html.DisplayFor(modelItem => mascotaConExp.Mascota.NombreAnimal)</td>
+                            <td>@Html.DisplayFor(modelItem => mascotaConExp.Mascota.NombreMascota)</td>
+                            <td>@Html.DisplayFor(modelItem => mascotaConExp.Mascota.Raza)</td>
+                            <td>@Html.DisplayFor(modelItem => mascotaConExp.Mascota.Genero)</td>
+                            <td>@Html.DisplayFor(modelItem => mascotaConExp.Mascota.FechaNacimiento)</td>
+                            <td>@Html.DisplayFor(modelItem => mascotaConExp.Mascota.Caracteristicas)</td>
                             <td>
-                                <a class="btn btn-sm btn-info w-100" asp-page="/Mascotas/Editar" asp-route-MascotaID="@mascotas.MascotaID">Editar</a>
-                                <a class="btn btn-sm btn-danger w-100" asp-page="/Mascotas/Eliminar" asp-route-MascotaID="@mascotas.MascotaID">Eliminar</a>
+                                <a class="btn btn-sm btn-info w-100" asp-page="/Mascotas/Editar" asp-route-MascotaID="@mascotaConExp.Mascota.MascotaID">Editar</a>
+                              
+                                <a class="btn btn-sm btn-danger w-100" asp-page="/Mascotas/Eliminar" asp-route-MascotaID="@mascotaConExp.Mascota.MascotaID">Eliminar</a>
+
+                                @if (mascotaConExp.Expedientes != null && mascotaConExp.Expedientes.Any())
+                                {
+                                    <button type="button" class="btn btn-sm btn-primary w-100" data-bs-toggle="modal" data-bs-target="#expedienteModal-@mascotaConExp.Mascota.MascotaID">
+                                        Ver expediente
+                                    </button>
+                                }
+
                             </td>
                         </tr>
+
+                        @* Modal para mostrar los expedientes de la mascota *@
+                        <div class="modal fade" id="expedienteModal-@mascotaConExp.Mascota.MascotaID" tabindex="-1" aria-labelledby="expedienteModalLabel-@mascotaConExp.Mascota.MascotaID" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Expediente de @mascotaConExp.Mascota.NombreMascota</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @foreach (var expediente in mascotaConExp.Expedientes)
+                                        {
+                                            <p><strong>Diagnóstico:</strong> @expediente.Diagnostico</p>
+                                            <p><strong>Fecha Actualización:</strong> @expediente.FechaActu.ToString("dd/MM/yyyy")</p>
+                                            <hr />
+                                        }
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     }
                 </tbody>
-
-
             </table>
-
         </div>
     </section>
-
-
-    
 }
 else
 {
     <br>
     <div class="alert alert-danger" role="alert">
-
-        No tienes Mascotas Registradas puedes registrar una cita si la necesitas en el siguiente enlace:
-
+        No tienes Mascotas Registradas. Puedes registrar una cita si la necesitas en el siguiente enlace:
     </div>
     <div>
-        <a class="btn btn-lg btn-success me-md-2" asp-area="" asp-page="/Mascotas/addMascota">Registrar Mascota </a>
+        <a class="btn btn-lg btn-success me-md-2" asp-page="/Mascotas/addMascota">Registrar Mascota</a>
     </div>
     <br>
     <div>
-        <div><a href="../Index" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
+        <a href="../Index" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a>
     </div>
 }
-

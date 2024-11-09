@@ -28,7 +28,7 @@ namespace DA
             await _sqlConnection.ExecuteAsync(sql, new
             {
                 MascotaID = expediente.MascotaID,
-                Diagnostico = expediente.Diagnostico
+                Diagnostico = expediente.Diagnostico,
             }, commandType: CommandType.StoredProcedure);
             return expediente.ExpedienteID;
         }
@@ -40,7 +40,7 @@ namespace DA
             {
                 ExpedienteID = expediente.ExpedienteID,
                 MascotaID = expediente.MascotaID,
-                Diagnostico = expediente.Diagnostico
+                Diagnostico = expediente.Diagnostico,
             }, commandType: CommandType.StoredProcedure);
             return expediente.ExpedienteID;
         }

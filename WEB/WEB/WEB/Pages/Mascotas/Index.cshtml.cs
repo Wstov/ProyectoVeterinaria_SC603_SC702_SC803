@@ -58,7 +58,6 @@ namespace WEB.Pages.Mascotas
 
                 foreach (var mascota in mascotas)
                 {
-                    // Obtener datos del propietario
                     string urlEndPointPersona = _configuration.ObtenerEndPoint("ObtenerPersona");
                     var solicitudPersona = new HttpRequestMessage(HttpMethod.Get, string.Format(urlEndPointPersona, mascota.UsuarioID));
                     var respuestaPersona = await cliente.SendAsync(solicitudPersona);
@@ -78,14 +77,12 @@ namespace WEB.Pages.Mascotas
                     if (respuestaExpedientes.IsSuccessStatusCode)
                     {
                         var resultadoExpedientes = await respuestaExpedientes.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrWhiteSpace(resultadoExpedientes)) // Verifica que haya contenido
+                        if (!string.IsNullOrWhiteSpace(resultadoExpedientes)) 
                         {
                             expedientes = JsonSerializer.Deserialize<List<Expediente>>(resultadoExpedientes, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
                         }
                     }
 
-
-                    // Crear objeto MascotaConPropietarioYExpedientes
                     MascotasConPropietarioYExpedientes.Add(new MascotaConPropietarioYExpedientes
                     {
                         Mascota = mascota,
@@ -93,8 +90,6 @@ namespace WEB.Pages.Mascotas
                         Expedientes = expedientes
                     });
                 }
-
-                // Filtrar por término de búsqueda si es necesario
                 if (!string.IsNullOrEmpty(searchTerm))
                 {
                     MascotasConPropietarioYExpedientes = MascotasConPropietarioYExpedientes

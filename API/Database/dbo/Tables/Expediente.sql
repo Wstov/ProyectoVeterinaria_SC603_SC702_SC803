@@ -1,6 +1,7 @@
 ﻿CREATE TABLE Expediente (
     ExpedienteID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     MascotaID UNIQUEIDENTIFIER NOT NULL,
-    Diagnostico VARCHAR(200) NOT NULL
+    Diagnostico VARCHAR(200) NOT NULL,
+    FechaActu DATETIME NOT NULL
     FOREIGN KEY (MascotaID) REFERENCES Mascota(MascotaID)
 );
