@@ -112,5 +112,12 @@
     <Build Include="dbo\SP\editExpediente.sql" />
     <Build Include="dbo\SP\deleteExpediente.sql" />
     <Build Include="dbo\SP\getExpedientesPorMascota.sql" />
+    <Build Include="dbo\Tables\DetallesCarrito.sql" />
+    <Build Include="dbo\SP\AgregarProductoCarrito.sql" />
+    <Build Include="dbo\SP\EliminarProductoCarrito.sql" />
+    <Build Include="dbo\SP\EditarCantidadProductoCarrito.sql" />
+    <Build Include="dbo\SP\ObtenerCarritoUsuario.sql" />
+    <Build Include="dbo\SP\LimpiarCarrito.sql" />
+    <Build Include="dbo\SP\CerrarCarrito.sql" />
   </ItemGroup>
 </Project>

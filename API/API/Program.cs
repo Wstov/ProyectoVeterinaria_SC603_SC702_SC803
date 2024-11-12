@@ -60,7 +60,8 @@ builder.Services.AddScoped<IExpedienteDA, ExpedienteDA>();
 builder.Services.AddScoped<IExpedienteBW, ExpedienteBW>();
 builder.Services.AddScoped<IRolesDA, RolesDA>();
 builder.Services.AddScoped<IRolesBW, RolesBW>();
-
+builder.Services.AddScoped<ICarritoDA, CarritoDA>();
+builder.Services.AddScoped<ICarritoBW, CarritoBW>();
 builder.Services.AddScoped<IRolesxUsuarioDA, RolesxUsuarioDA>();
 builder.Services.AddScoped<IRolesxUsuarioBW, RolesxUsuarioBW>();
 var app = builder.Build();
