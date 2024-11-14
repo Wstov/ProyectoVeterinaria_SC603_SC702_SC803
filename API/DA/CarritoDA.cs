@@ -1,5 +1,6 @@
 ﻿using Abstracciones.DA;
 using Abstracciones.Modelos;
+using Abstracciones.Modelos.Persona;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using System;
@@ -26,6 +27,7 @@ namespace DA
         {
             string sql = @"ObtenerCarritoUsuario";
             var carrito = await _sqlConnection.QueryFirstOrDefaultAsync<Carrito>(sql, new { PersonaID = personaId }, commandType: CommandType.StoredProcedure);
+            Console.WriteLine($"CarritoID: {carrito?.CarritoID}, PersonaID: {carrito?.PersonaID}, Estado: {carrito?.Estado}");
             return carrito;
         }
 

@@ -9,7 +9,7 @@ namespace Abstracciones.DA
 {
     public interface ICarritoDA
     {
-        Task<Carrito> ObtenerCarritoActivoPorPersona(Guid PersonaID); 
+        Task<Carrito> ObtenerCarritoActivoPorPersona(Guid personaId); 
         Task<Guid> CrearCarrito(Guid PersonaID);
         Task<Guid> FinalizarCarrito(Guid CarritoID);  
         Task<IEnumerable<DetallesCarrito>> ObtenerDetallesPorCarrito(Guid personaId); 

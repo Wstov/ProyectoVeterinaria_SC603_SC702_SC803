@@ -19,9 +19,9 @@ namespace BW
             _carritoDA = carritoDA;
         }
 
-        public async Task<Carrito> ObtenerCarritoActivoPorPersona(Guid personaID)
+        public async Task<Carrito> ObtenerCarritoActivoPorPersona(Guid personaId)
         {
-            return await _carritoDA.ObtenerCarritoActivoPorPersona(personaID);
+            return await _carritoDA.ObtenerCarritoActivoPorPersona(personaId);
         }
 
         public async Task<Guid> CrearCarrito(Guid personaID)

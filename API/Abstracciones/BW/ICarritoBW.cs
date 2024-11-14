@@ -9,7 +9,7 @@ namespace Abstracciones.BW
 {
     public interface ICarritoBW
     {
-        Task<Carrito> ObtenerCarritoActivoPorPersona(Guid PersonaID);
+        Task<Carrito> ObtenerCarritoActivoPorPersona(Guid personaId);
         Task<Guid> CrearCarrito(Guid PersonaID);
         Task<Guid> FinalizarCarrito(Guid CarritoID);
 

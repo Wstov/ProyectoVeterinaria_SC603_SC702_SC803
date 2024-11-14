@@ -23,6 +23,7 @@ namespace API.Controllers
             var carrito = await _carritoBW.ObtenerCarritoActivoPorPersona(personaId);
             if (carrito == null)
                 return NotFound("No se encontró el carrito activo.");
+        
             return Ok(carrito);
         }
 
@@ -35,8 +36,8 @@ namespace API.Controllers
             return Ok(detalles);
         }
 
-        [HttpPost("crear")]
-        public async Task<IActionResult> CrearCarrito([FromBody] Guid personaId)
+        [HttpPost("crear/{personaId}")]
+        public async Task<IActionResult> CrearCarrito(Guid personaId)
         {
             var carritoId = await _carritoBW.CrearCarrito(personaId);
             return Ok(new { CarritoID = carritoId });

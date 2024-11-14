@@ -2,11 +2,18 @@
 @model WEB.Pages.Productos.IndexModel
 @{
 }
+@{
+    Guid idUsuario = Guid.Empty;
+    if (User.Identity.IsAuthenticated)
+    {
+        idUsuario = Abstracciones.Modelos.Autenticacion.ClaimsPrincipalExtensions.GetIdUsuario(User);
+    }
+}
+
 <section class="mt-5">
     <div class="container">
         <h2 class="text-center mb-4">Nuestros Productos</h2>
         <div class="row mb-4">
-            <!-- Barra de búsqueda -->
             <div class="col-md-12">
                 <form class="d-flex" role="search" method="get">
                     <div class="input-group mb-3">
@@ -15,9 +22,7 @@
                         <a href="/Productos/Index" class="btn btn-secondary">Limpiar</a>
                     </div>
                 </form>
-
             </div>
-            
         </div>
         <div class="row">
             @if (Model.producto != null)
@@ -25,27 +30,30 @@
                 @foreach (var producto in Model.producto)
                 {
                     <div class="col-md-3 mb-4">
-                        <div class="card shadow-sm h-100">
-                            <img src="data:image /png;base64,@producto.ImagenConvertida" class="card-img-top" alt="Vacuna Triple Felina">
-                            <div class="card-body">
+                        <div class="card shadow-sm h-100 d-flex flex-column">
+                            <img src="data:image/png;base64,@producto.ImagenConvertida" class="card-img-top" alt="@producto.Nombre">
+                            <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">@Html.DisplayFor(modelItem => producto.Nombre)</h5>
                                 <p class="card-text"><strong>Precio: </strong>@Html.DisplayFor(modelItem => producto.Precio)</p>
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-primary" onclick="openProductModal('@producto.ImagenConvertida', '@producto.Nombre', '@producto.Precio', '@producto.Categoria', '@producto.Presentacion', '@producto.Cantidad', '@producto.Descripcion')">Ver detalles</button>
-
+                                <p class="card-text"><strong>SKU: </strong>@Html.DisplayFor(modelItem => producto.ProductoID)</p>
+                                <div class="d-grid gap-2 mt-auto">
+                                    <button class="btn btn-primary" onclick="openProductModal('@producto.ImagenConvertida', '@producto.Nombre', '@producto.Precio', '@producto.Categoria', '@producto.Presentacion', '@producto.Cantidad', '@producto.Descripcion', '@producto.ProductoID')">
+                                        Ver detalles
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 }
             }
-            
             else
             {
                 <div class="alert alert-danger" role="alert">
                     No hay productos para mostrar.
                 </div>
             }
+
+            <!-- Modal de detalles del producto -->
             <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -64,36 +72,33 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button class="btn btn-primary" id="liveToastBtn">Agregar al carrito</button>
+                            <!-- Botón de Agregar al carrito con el ID correcto -->
+                            <button class="btn btn-primary" id="addToCartButton" onclick="agregarAlCarrito()">Agregar al carrito</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-          
         </div>
     </div>
 </section>
+
 <div><a href="../Index" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
 
+<!-- Toast de confirmación -->
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
     <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
-            <img src="..." class="rounded me-2" alt="...">
-            <strong class="me-auto">Bootstrap</strong>
-            <small>11 mins ago</small>
+            <strong class="me-auto">Notificación</strong>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
         <div class="toast-body">
-            Hello, world! This is a toast message.
+            Mensaje de confirmación
         </div>
     </div>
 </div>
 
 <script>
-    function openProductModal(imagen, nombre, precio, categoria, presentacion, cantidad, descripcion) {
-        // Set the product information in the modal
+    function openProductModal(imagen, nombre, precio, categoria, presentacion, cantidad, descripcion, productoId) {
         document.getElementById('modalImage').src = 'data:image/png;base64,' + imagen;
         document.getElementById('modalNombre').textContent = nombre;
         document.getElementById('modalPrecio').textContent = precio;
@@ -102,11 +107,144 @@
         document.getElementById('modalCantidad').textContent = cantidad;
         document.getElementById('modalDescripcion').textContent = descripcion;
 
-        // Show the modal
+        document.getElementById('addToCartButton').setAttribute('data-product-id', productoId);
+
         var productModal = new bootstrap.Modal(document.getElementById('productModal'));
         productModal.show();
     }
-</script>
+    async function agregarAlCarrito() {
+        const productoId = document.getElementById('addToCartButton').getAttribute('data-product-id');
+        const cantidad = 1; 
+        const personaId = '@idUsuario'; 
 
-<script src="~/js/toastProducto.js" asp-append-version="true"></script>
-<script src="~/js/toastProducto.js" asp-append-version="true"></script>
+        const carritoId = await obtenerCarritoActivo(personaId);
+
+        if (!carritoId) {
+            const nuevoCarritoId = await crearCarrito(personaId);
+            if (!nuevoCarritoId) {
+                
+                Swal.fire('Error', 'No se pudo verificar el carrito. Intenta nuevamente.', 'error');
+                return;
+            }
+            carritoId = nuevoCarritoId;
+        }
+
+        const requestBody = {
+            detalleID: '3fa85f64-5717-4562-b3fc-2c963f66afa6', 
+            carritoID: carritoId,
+            productoID: productoId,
+            cantidad: cantidad,
+            precioUnitario: 0.01  
+        };
+
+        const url = `https://localhost:7184/api/Carrito/${carritoId}/agregar?personaId=${personaId}`;
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'  
+                },
+                body: JSON.stringify(requestBody)  
+            });
+
+            if (response.ok) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "Producto agregado al carrito exitosamente"
+                });
+            } else {
+                const errorData = await response.json();
+                console.error('Error al agregar producto al carrito:', errorData.message);
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "error",
+                    title: "Error al agregar producto al carrito"
+                });
+            }
+        } catch (error) {
+            console.error('Error en la solicitud:', error);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "error",
+                title: "No se pudo conectar al servidor"
+            });
+        }
+    }
+
+    async function obtenerCarritoActivo(personaId) {
+        const url = `https://localhost:7184/api/Carrito/activo/${personaId}`; 
+
+        try {
+            const response = await fetch(url);
+            if (response.ok) {
+                const data = await response.json();
+                return data.carritoId; 
+            } else {
+                return null;
+            }
+        } catch (error) {
+            console.error('Error al obtener carrito activo:', error);
+            return null;
+        }
+    }
+
+    async function crearCarrito(personaId) {
+        const url = `https://localhost:7184/api/Carrito/crear/${personaId}`;
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'  
+                },
+             
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                return data.carritoId;
+            } else {
+                console.error('Error al crear el carrito');
+                return null;
+            }
+        } catch (error) {
+            console.error('Error en la solicitud de creación del carrito:', error);
+            return null;
+        }
+    }
+
+
+
+</script>

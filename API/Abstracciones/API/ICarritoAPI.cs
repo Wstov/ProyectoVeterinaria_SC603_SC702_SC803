@@ -14,8 +14,8 @@ namespace Abstracciones.API
         Task<IActionResult> ObtenerCarritoActivo(Guid personaId);
         [HttpGet("api/carrito/{carritoId}/detalles")]
         Task<IActionResult> ObtenerDetallesCarrito(Guid personaId);
-        [HttpPost("api/carrito/crear")]
-        Task<IActionResult> CrearCarrito([FromBody] Guid personaId);
+        [HttpPost("api/carrito/crear/{personaId}")]
+        Task<IActionResult> CrearCarrito( Guid personaId);
         [HttpPut("api/carrito/{carritoId}/finalizar")]
         Task<IActionResult> FinalizarCarrito(Guid carritoId);
         [HttpPost("api/carrito/{carritoId}/agregar")]
