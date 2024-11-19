@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\carrito.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\carrito.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autorizacion.Abstracciones" Version="1.0.0" />
     <PackageReference Include="Autorizacion.BW" Version="1.0.0" />
     <PackageReference Include="Autorizacion.DA" Version="2.0.0" />

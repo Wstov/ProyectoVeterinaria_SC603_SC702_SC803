@@ -22,10 +22,12 @@ namespace API.Controllers
         {
             var carrito = await _carritoBW.ObtenerCarritoActivoPorPersona(personaId);
             if (carrito == null)
-                return NotFound("No se encontró el carrito activo.");
-        
+            {
+                return Ok(new { estado = false, mensaje = "No se encontró un carrito activo para este usuario." });
+            }
             return Ok(carrito);
         }
+
 
         [HttpGet("{personaId}/detalles")]
         public async Task<IActionResult> ObtenerDetallesCarrito(Guid personaId)
@@ -46,11 +48,9 @@ namespace API.Controllers
         [HttpPut("{carritoId}/finalizar")]
         public async Task<IActionResult> FinalizarCarrito(Guid carritoId)
         {
-            await _carritoBW.FinalizarCarrito(carritoId);  // Aquí no se necesita el Guid de retorno
+            await _carritoBW.FinalizarCarrito(carritoId);  
             return Ok(new { Message = "Carrito finalizado exitosamente." });
         }
-
-        // El método debe tener exactamente la misma firma que en la interfaz
         [HttpPost("{carritoId}/agregar")]
         public async Task<IActionResult> AgregarProductoAlCarrito([FromBody] DetallesCarrito detalle, Guid carritoId, Guid personaId)
         {

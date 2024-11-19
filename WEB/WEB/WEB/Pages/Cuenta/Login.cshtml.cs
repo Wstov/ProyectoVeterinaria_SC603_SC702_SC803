@@ -56,6 +56,7 @@ namespace WEB.Pages.Cuenta
 
                 if (token != null && token.ValidacionExitosa)
                 {
+                    TempData["LoginExitoso"] = true;
                     JwtSecurityToken? tokens = leerInformacionToken();
 
                     var perfiles = tokens.Claims.Where(c => c.Type == ClaimTypes.Role);
@@ -94,6 +95,7 @@ namespace WEB.Pages.Cuenta
         };
 
             var idUsuarioClaim = tokens.Claims.FirstOrDefault(c => c.Type == "IdUsuario");
+            var idUsuario = User.FindFirst("IdUsuario")?.Value;
             if (idUsuarioClaim != null)
             {
                 claims.Add(new Claim(ClaimTypes.NameIdentifier, idUsuarioClaim.Value));

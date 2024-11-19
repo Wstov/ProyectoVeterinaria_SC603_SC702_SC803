@@ -25,7 +25,7 @@ namespace DA
 
         public async Task<Carrito> ObtenerCarritoActivoPorPersona(Guid personaId)
         {
-            string sql = @"ObtenerCarritoUsuario";
+            string sql = @"ObtenerCarritoActivo";
             var carrito = await _sqlConnection.QueryFirstOrDefaultAsync<Carrito>(sql, new { PersonaID = personaId }, commandType: CommandType.StoredProcedure);
             Console.WriteLine($"CarritoID: {carrito?.CarritoID}, PersonaID: {carrito?.PersonaID}, Estado: {carrito?.Estado}");
             return carrito;

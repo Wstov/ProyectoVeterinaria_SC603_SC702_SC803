@@ -37,8 +37,9 @@
                         @if (User.Identity.IsAuthenticated && User.IsInRole("2"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-page="/Productos/Index">Productos</a>
+                                <a id="link-productos" class="nav-link" asp-area="" asp-page="/Productos/Index">Productos</a>
                             </li>
+
 
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-page="/Mascotas/MisMacotas">Mascotas</a>
@@ -231,7 +232,67 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script >
+        document.getElementById("link-productos").addEventListener("click", async function (event) {
+            event.preventDefault();
 
+            const personaId = '@User.FindFirst("IdUsuario")?.Value';
+
+            let carritoId = await obtenerCarritoActivo(personaId);
+
+            if (!carritoId) {
+                carritoId = await crearCarrito(personaId);
+                window.location.href = '/Productos/Index';
+            }
+
+            localStorage.setItem('carritoId', carritoId);
+            console.log("Carrito activo:", carritoId);
+            window.location.href = '/Productos/Index';
+        });
+
+        async function obtenerCarritoActivo(personaId) {
+            const url = `https://localhost:7184/api/Carrito/activo/${personaId}`;
+
+            try {
+                const response = await fetch(url);
+                if (response.ok) {
+                    const data = await response.json();
+                    return data.carritoID;
+                } else {
+                    return null;
+                }
+            } catch (error) {
+                console.error('Error al obtener carrito activo:', error);
+                return null;
+            }
+        }
+
+        async function crearCarrito(personaId) {
+            const url = `https://localhost:7184/api/Carrito/crear/${personaId}`;
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    return data.carritoId;
+                } else {
+                    console.error('Error al crear el carrito');
+                    return null;
+                }
+            } catch (error) {
+                console.error('Error en la solicitud de creación del carrito:', error);
+                return null;
+            }
+        }
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

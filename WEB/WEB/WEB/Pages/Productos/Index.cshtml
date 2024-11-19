@@ -9,9 +9,23 @@
         idUsuario = Abstracciones.Modelos.Autenticacion.ClaimsPrincipalExtensions.GetIdUsuario(User);
     }
 }
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 <section class="mt-5">
     <div class="container">
+        <div class="cart-icon-container position-fixed top-0 end-0 m-3">
+            <a href="javascript:void(0);"
+               class="btn btn-outline-secondary position-relative"
+               onclick="abrirModalCarrito()">
+                <i class="fa fa-shopping-cart" style="font-size: 1.5rem;"></i>
+                <span id="cartItemCount"
+                      class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    0
+                </span>
+            </a>
+        </div>
+
         <h2 class="text-center mb-4">Nuestros Productos</h2>
         <div class="row mb-4">
             <div class="col-md-12">
@@ -53,7 +67,6 @@
                 </div>
             }
 
-            <!-- Modal de detalles del producto -->
             <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -72,7 +85,6 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <!-- Botón de Agregar al carrito con el ID correcto -->
                             <button class="btn btn-primary" id="addToCartButton" onclick="agregarAlCarrito()">Agregar al carrito</button>
                         </div>
                     </div>
@@ -82,9 +94,12 @@
     </div>
 </section>
 
+<style>
+    .cart-icon-container {
+        z-index: 1; 
+    }
+</style>
 <div><a href="../Index" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
-
-<!-- Toast de confirmación -->
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
     <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
@@ -96,8 +111,192 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cartModalLabel">Detalles del Carrito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="cartItemsContainer">
+                </div>
+                <hr>
+                <p class="text-end"><strong>Subtotal:</strong> ₡<span id="cartTotal">0</span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a href="/Carrito/Finalizar" class="btn btn-primary">Finalizar Compra</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
+    async function abrirModalCarrito() {
+        const personaId = '@idUsuario';
+        const urlDetalles = `https://localhost:7184/api/Carrito/${personaId}/detalles`;
+
+        try {
+            const response = await fetch(urlDetalles);
+            if (response.ok) {
+                const detalles = await response.json();
+                mostrarDetallesCarrito(detalles);
+            } 
+        } catch (error) {
+            console.error('Error en la solicitud:', error);
+            Swal.fire('Error', 'No se pudo conectar al servidor.', 'error');
+        }
+
+        const cartModal = bootstrap.Modal.getInstance(document.getElementById('cartModal'));
+        if (cartModal) {
+            cartModal.hide();
+        }
+        const newCartModal = new bootstrap.Modal(document.getElementById('cartModal'));
+        newCartModal.show();
+    }
+
+    async function mostrarDetallesCarrito(detalles) {
+        const cartItemsContainer = document.getElementById('cartItemsContainer');
+        cartItemsContainer.innerHTML = ''; 
+        let total = 0;
+
+        if (detalles.length === 0) {
+            cartItemsContainer.innerHTML = '<p>El carrito está vacío.</p>';
+        } else {
+            for (const detalle of detalles) {
+                const productoNombre = await obtenerNombreProducto(detalle.productoID);
+                total += detalle.montoTotal;
+
+                const productoHtml = `
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <p class="mb-0"><strong>Producto:</strong> ${productoNombre}</p>
+                                <p class="mb-0"><strong>Cantidad:</strong> ${detalle.cantidad}</p>
+                                <p class="mb-0"><strong>Precio Unitario:</strong> ₡${detalle.precioUnitario}</p>
+                            </div>
+                            <div>
+                                <button class="btn btn-danger btn-sm" onclick="eliminarProducto('${detalle.carritoID}', '${detalle.productoID}', ${detalles.length})">
+                                    Eliminar
+                                </button>
+                                <button class="btn btn-primary btn-sm" onclick="abrirModalActualizarCantidad('${detalle.carritoID}', '${detalle.productoID}', ${detalle.cantidad})">
+                                    Editar cantidad
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                cartItemsContainer.innerHTML += productoHtml;
+            }
+        }
+
+        document.getElementById('cartTotal').textContent = total.toFixed(2);
+    }
+
+    async function obtenerNombreProducto(productoID) {
+        const urlProducto = `https://localhost:7184/api/Producto?ProductoID=${productoID}`;
+        try {
+            const response = await fetch(urlProducto);
+            if (response.ok) {
+                const producto = await response.json();
+                return producto.nombre;
+            } else {
+                console.error(`Error al obtener el nombre del producto con ID: ${productoID}`);
+                return 'Nombre no disponible';
+            }
+        } catch (error) {
+            console.error('Error en la solicitud:', error);
+            return 'Nombre no disponible';
+        }
+    }
+
+    async function eliminarProducto(carritoID, productoID, totalProductos) {
+        const urlEliminar = `https://localhost:7184/api/Carrito/${carritoID}/producto/${productoID}`;
+        try {
+            const response = await fetch(urlEliminar, { method: 'DELETE' });
+            if (response.ok) {
+                Swal.fire('Eliminado', 'Producto eliminado del carrito.', 'success');
+
+                if (totalProductos === 1) {
+                    const cartModal = bootstrap.Modal.getInstance(document.getElementById('cartModal'));
+
+                    cartModal.hide();
+                    
+                } else {
+                    abrirModalCarrito();
+                }
+            } else {
+                console.error('Error al eliminar el producto del carrito');
+                Swal.fire('Error', 'No se pudo eliminar el producto.', 'error');
+            }
+        } catch (error) {
+            console.error('Error en la solicitud:', error);
+            Swal.fire('Error', 'No se pudo conectar al servidor.', 'error');
+        }
+    }
+
+    function abrirModalActualizarCantidad(carritoID, productoID, cantidadActual) {
+        Swal.fire({
+            title: 'Actualizar cantidad',
+            input: 'number',
+            inputLabel: `Cantidad actual: ${cantidadActual}`,
+            inputValue: cantidadActual,
+            inputAttributes: {
+                min: 1
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Actualizar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const nuevaCantidad = parseInt(result.value, 10);
+                if (nuevaCantidad > 0) {
+                    actualizarCantidadProducto(carritoID, productoID, nuevaCantidad);
+                } else {
+                    Swal.fire('Error', 'La cantidad debe ser mayor que cero.', 'error');
+                }
+            }
+        });
+    }
+
+    async function actualizarCantidadProducto(carritoID, productoID, nuevaCantidad) {
+        const urlActualizar = `https://localhost:7184/api/Carrito/${carritoID}/producto/${productoID}/actualizar`;
+        try {
+            const response = await fetch(urlActualizar, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(nuevaCantidad)
+            });
+
+            if (response.ok) {
+                Swal.fire('Actualizado', 'Cantidad actualizada correctamente.', 'success');
+                abrirModalCarrito();
+            } else {
+                console.error('Error al actualizar la cantidad del producto');
+                Swal.fire('Error', 'No se pudo actualizar la cantidad.', 'error');
+            }
+        } catch (error) {
+            console.error('Error en la solicitud:', error);
+            Swal.fire('Error', 'No se pudo conectar al servidor.', 'error');
+        }
+    }
+
+</script>
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const personaId = '@idUsuario';
+        let carritoId = await obtenerCarritoActivo(personaId);
+
+        if (carritoId) {
+            await actualizarCantidadDesdeCarrito(personaId);
+        } else {
+            actualizarCantidadCarrito(0);
+        }
+    });
+
     function openProductModal(imagen, nombre, precio, categoria, presentacion, cantidad, descripcion, productoId) {
         document.getElementById('modalImage').src = 'data:image/png;base64,' + imagen;
         document.getElementById('modalNombre').textContent = nombre;
@@ -106,35 +305,32 @@
         document.getElementById('modalPresentacion').textContent = presentacion;
         document.getElementById('modalCantidad').textContent = cantidad;
         document.getElementById('modalDescripcion').textContent = descripcion;
-
         document.getElementById('addToCartButton').setAttribute('data-product-id', productoId);
 
         var productModal = new bootstrap.Modal(document.getElementById('productModal'));
         productModal.show();
     }
+
     async function agregarAlCarrito() {
         const productoId = document.getElementById('addToCartButton').getAttribute('data-product-id');
-        const cantidad = 1; 
-        const personaId = '@idUsuario'; 
-
-        const carritoId = await obtenerCarritoActivo(personaId);
+        const cantidad = 1;
+        const personaId = '@idUsuario';
+        let carritoId = await obtenerCarritoActivo(personaId);
 
         if (!carritoId) {
-            const nuevoCarritoId = await crearCarrito(personaId);
-            if (!nuevoCarritoId) {
-                
+            carritoId = await crearCarrito(personaId);
+            if (!carritoId) {
                 Swal.fire('Error', 'No se pudo verificar el carrito. Intenta nuevamente.', 'error');
                 return;
             }
-            carritoId = nuevoCarritoId;
         }
 
         const requestBody = {
-            detalleID: '3fa85f64-5717-4562-b3fc-2c963f66afa6', 
+            detalleID: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
             carritoID: carritoId,
             productoID: productoId,
             cantidad: cantidad,
-            precioUnitario: 0.01  
+            precioUnitario: 0.01
         };
 
         const url = `https://localhost:7184/api/Carrito/${carritoId}/agregar?personaId=${personaId}`;
@@ -143,74 +339,54 @@
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'  
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(requestBody)  
+                body: JSON.stringify(requestBody)
             });
 
             if (response.ok) {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.onmouseenter = Swal.stopTimer;
-                        toast.onmouseleave = Swal.resumeTimer;
-                    }
-                });
-                Toast.fire({
+                await actualizarCantidadDesdeCarrito(personaId);
+
+                Swal.fire({
                     icon: "success",
-                    title: "Producto agregado al carrito exitosamente"
+                    title: "Producto agregado al carrito exitosamente",
+                    toast: true,
+                    position: "bottom-end",
+                    timer: 3000,
+                    showConfirmButton: false
                 });
             } else {
-                const errorData = await response.json();
-                console.error('Error al agregar producto al carrito:', errorData.message);
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.onmouseenter = Swal.stopTimer;
-                        toast.onmouseleave = Swal.resumeTimer;
-                    }
-                });
-                Toast.fire({
+                console.error('Error al agregar producto al carrito');
+                Swal.fire({
                     icon: "error",
-                    title: "Error al agregar producto al carrito"
+                    title: "Error al agregar producto al carrito",
+                    toast: true,
+                    position: "bottom-end",
+                    timer: 3000,
+                    showConfirmButton: false
                 });
             }
         } catch (error) {
             console.error('Error en la solicitud:', error);
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "top-end",
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.onmouseenter = Swal.stopTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                }
-            });
-            Toast.fire({
+            Swal.fire({
                 icon: "error",
-                title: "No se pudo conectar al servidor"
+                title: "No se pudo conectar al servidor",
+                toast: true,
+                position: "bottom-end",
+                timer: 3000,
+                showConfirmButton: false
             });
         }
     }
 
     async function obtenerCarritoActivo(personaId) {
-        const url = `https://localhost:7184/api/Carrito/activo/${personaId}`; 
+        const url = `https://localhost:7184/api/Carrito/activo/${personaId}`;
 
         try {
             const response = await fetch(url);
             if (response.ok) {
                 const data = await response.json();
-                return data.carritoId; 
+                return data.carritoID;
             } else {
                 return null;
             }
@@ -227,9 +403,8 @@
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'  
-                },
-             
+                    'Content-Type': 'application/json'
+                }
             });
 
             if (response.ok) {
@@ -245,6 +420,27 @@
         }
     }
 
+    async function actualizarCantidadDesdeCarrito(personaId) {
+        const urlDetalles = `https://localhost:7184/api/Carrito/${personaId}/detalles`;
 
+        try {
+            const response = await fetch(urlDetalles);
+            if (response.ok) {
+                const detalles = await response.json();
+                const totalProductos = detalles.reduce((total, item) => total + item.cantidad, 0);
+                actualizarCantidadCarrito(totalProductos);
+            } else {
+                console.error('Error al obtener los detalles del carrito');
+                actualizarCantidadCarrito(0);
+            }
+        } catch (error) {
+            console.error('Error al obtener detalles del carrito:', error);
+            actualizarCantidadCarrito(0);
+        }
+    }
 
+    function actualizarCantidadCarrito(cantidad) {
+        const cartItemCount = document.getElementById('cartItemCount');
+        cartItemCount.textContent = cantidad;
+    }
 </script>
