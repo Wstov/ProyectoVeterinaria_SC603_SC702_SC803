@@ -1,0 +1,22 @@
+﻿@page
+@model WEB.Pages.Personas.VeterinarioModel
+@{
+}
+<h1>Editar Especialidad</h1>
+<br />
+<div class="container">
+    <form method="post">
+        <input type="hidden" asp-for="@Model.EmpleadoID" />
+        <input type="hidden" asp-for="@Model.UsuarioID" />
+        <div class="mb-3">
+            <label for="especialidadInput" class="form-label"><b>Especialidad</b></label>
+            <input asp-for="Especialidad" type="text" class="form-control" id="especialidadInput" />
+            <span asp-validation-for="Especialidad" class="text-danger"></span>
+        </div>
+        <input type="submit" value="Guardar Cambios" class="btn btn-success" />
+        <div asp-validation-summary="All" class="text-danger"></div>
+    </form>
+    <div>
+        <a href="./Index" class="btn btn-secondary">Volver</a>
+    </div>
+</div>

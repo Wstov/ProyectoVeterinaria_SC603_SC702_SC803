@@ -1,3 +1,4 @@
+using Abstracciones.Modelos;
 using Abstracciones.Modelos.Persona;
 using BC;
 using Microsoft.AspNetCore.Authorization;
@@ -14,6 +15,7 @@ namespace WEB.Pages.Personas
         private Configuracion _configuration;
 
         public IList<Persona> personas { get; set; } = default!;
+        public IList<VeterinarioGet> veterinarios { get; set; } = default!;
         public string SearchTerm { get; set; }
 
         public IndexModel(Configuracion configuration, IHttpClientFactory httpClientFactory)
@@ -24,21 +26,41 @@ namespace WEB.Pages.Personas
 
         public async Task<ActionResult> OnGet()
         {
-            string urlEndPoint = _configuration.ObtenerEndPoint("ObtenerPersonas");
+            // Obtener personas
+            string urlEndPointPersonas = _configuration.ObtenerEndPoint("ObtenerPersonas");
             var cliente = _httpClientFactory.CreateClient("ClienteVeterinaria");
 
-            var solicitud = new HttpRequestMessage(HttpMethod.Get, string.Format(urlEndPoint));
-            var respuesta = await cliente.SendAsync(solicitud);
+            var solicitudPersonas = new HttpRequestMessage(HttpMethod.Get, string.Format(urlEndPointPersonas));
+            var respuestaPersonas = await cliente.SendAsync(solicitudPersonas);
 
-            if (respuesta.IsSuccessStatusCode)
+            if (respuestaPersonas.IsSuccessStatusCode)
             {
-                var resultado = await respuesta.Content.ReadAsStringAsync();
+                var resultado = await respuestaPersonas.Content.ReadAsStringAsync();
                 var options = new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 };
                 personas = JsonSerializer.Deserialize<List<Persona>>(resultado, options) ?? new List<Persona>();
+            }
+            string urlEndPointVeterinarios = _configuration.ObtenerEndPoint("getVeterinarios");
+            var solicitudVeterinarios = new HttpRequestMessage(HttpMethod.Get, string.Format(urlEndPointVeterinarios));
+            var respuestaVeterinarios = await cliente.SendAsync(solicitudVeterinarios);
 
+            if (respuestaVeterinarios.IsSuccessStatusCode)
+            {
+                var resultado = await respuestaVeterinarios.Content.ReadAsStringAsync();
+                if (!string.IsNullOrWhiteSpace(resultado)) 
+                {
+                    var options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    veterinarios = JsonSerializer.Deserialize<List<VeterinarioGet>>(resultado, options) ?? new List<VeterinarioGet>();
+                }
+                else
+                {
+                    veterinarios = new List<VeterinarioGet>(); 
+                }
             }
 
             return Page();

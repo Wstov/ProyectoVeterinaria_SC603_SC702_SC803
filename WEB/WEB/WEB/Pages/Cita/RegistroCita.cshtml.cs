@@ -94,7 +94,7 @@ namespace WEB.Pages.Cita
             var respuesta = await cliente.PostAsJsonAsync<Abstracciones.Modelos.Cita>(endPoint, cita);
             if (respuesta.IsSuccessStatusCode)
             {
-                return RedirectToPage("../Index");
+                return RedirectToPage("/Cita/MisCitas");
             }
             return Page();
         }

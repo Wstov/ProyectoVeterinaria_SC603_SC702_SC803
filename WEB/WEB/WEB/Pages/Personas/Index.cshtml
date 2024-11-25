@@ -2,11 +2,9 @@
 @model WEB.Pages.Personas.IndexModel
 @{
 }
-
-<h1>Personas Registradas a la veterinaria</h1>
+</br>
+<h2 style="font-weight:bold;">Personas Registradas a la veterinaria</h2>
 <div class="container">
-   
-    <br /><br /><br />
     <div class="row justify-content-center" style="background-color: #f9f8fa;">
         <div class="container">
             @if (Model.personas != null && Model.personas.Any())
@@ -46,3 +44,179 @@
         </div>
     </div>
 </div>
+
+</br>
+<h2 style="font-weight:bold;">Veterinarios Registrados</h2>
+<div class="container">
+    <div class="row justify-content-center" style="background-color: #f9f8fa;">
+        <div class="container">
+
+            @if (Model.veterinarios != null && Model.veterinarios.Any())
+            {
+                <!-- Botón para abrir el modal -->
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#agregarVeterinarioModal">Agregar Veterinario</button>
+                <hr />
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre Completo</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Especialidad</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var veterinario in Model.veterinarios)
+                        {
+                            <tr>
+                                <td>@veterinario.Nombre @veterinario.Apellido</td>
+                                <td>@veterinario.Telefono</td>
+                                <td>@veterinario.Correo</td>
+                                <td>@veterinario.Especialidad</td>
+                                <td>
+                                    <a class="btn btn-warning" asp-page="./Veterinario" asp-route-id="@veterinario.EmpleadoID">
+                                        <i class="bi bi-pencil"></i> Editar
+                                    </a>
+                                    <button class="btn btn-danger"
+                                            onclick="confirmarEliminar('@veterinario.EmpleadoID', '@veterinario.Nombre @veterinario.Apellido')">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-danger" role="alert">
+                    No hay veterinarios Registrados
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#agregarVeterinarioModal">Agregar Veterinario</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="agregarVeterinarioModal" tabindex="-1" aria-labelledby="agregarVeterinarioModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="agregarVeterinarioModalLabel">Agregar Veterinario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formAgregarVeterinario">
+                    <div class="mb-3">
+                        <label for="personaSelect" class="form-label">Seleccionar Persona</label>
+                        <select class="form-select" id="personaSelect" required>
+                            <option selected disabled value="">Seleccione una persona</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="especialidadInput" class="form-label">Especialidad</label>
+                        <input type="text" class="form-control" id="especialidadInput" placeholder="Ej. Perros y Gatos" required />
+                    </div>
+                    <button type="submit" class="btn btn-success">Agregar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        fetch("https://localhost:7184/api/Persona")
+            .then(response => response.json())
+            .then(personas => {
+                const personaSelect = document.getElementById("personaSelect");
+                personas.forEach(persona => {
+                    const option = document.createElement("option");
+                    option.value = persona.id;
+                    option.textContent = `${persona.nombre} ${persona.apellido}`;
+                    personaSelect.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error("Error al cargar las personas:", error);
+                Swal.fire("Error", "No se pudo cargar la lista de personas.", "error");
+            });
+
+        document.getElementById("formAgregarVeterinario").addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const personaID = document.getElementById("personaSelect").value;
+            const especialidad = document.getElementById("especialidadInput").value;
+
+            if (!personaID || !especialidad) {
+                Swal.fire("Error", "Debe completar todos los campos.", "error");
+                return;
+            }
+
+            fetch("https://localhost:7184/api/Empleado", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    UsuarioID: personaID,
+                    Especialidad: especialidad
+                })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        Swal.fire("Éxito", "Veterinario agregado correctamente.", "success")
+                            .then(() => location.reload()); // Recargar la página
+                    } else {
+                        Swal.fire("Error", "No se pudo agregar el veterinario.", "error");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error al agregar veterinario:", error);
+                    Swal.fire("Error", "Hubo un problema al conectar con el servidor.", "error");
+                });
+        });
+    });
+    function confirmarEliminar(empleadoID, nombreCompleto) {
+        Swal.fire({
+            title: '¿Deseas eliminar a este usuario como Veterinario?',
+            text: `El usuario ${nombreCompleto} perderá los privilegios de veterinario, pero su cuenta seguirá activa.`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://localhost:7184/api/Empleado?empleadoID=${empleadoID}`, {
+                    method: 'DELETE'
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            Swal.fire(
+                                'Eliminado',
+                                'El veterinario ha sido eliminado exitosamente.',
+                                'success'
+                            ).then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire(
+                                'Error',
+                                'No se pudo eliminar al veterinario. Inténtalo más tarde.',
+                                'error'
+                            );
+                        }
+                    })
+                    .catch(() => {
+                        Swal.fire(
+                            'Error',
+                            'Hubo un problema al conectar con el servidor.',
+                            'error'
+                        );
+                    });
+            }
+        });
+    }
+</script>

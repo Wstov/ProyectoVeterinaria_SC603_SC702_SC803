@@ -52,10 +52,13 @@
                             <span asp-validation-for="cita.Motivo" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
-                            <label for="assignedVet" class="form-label">Veterinario Asignado</label>
-                            <input asp-for="cita.VeterinarioAsignadoID" class="form-control">
+                            <label for="assignedVet" class="form-label">Asignar Veterinario </label>
+                            <select asp-for="cita.VeterinarioAsignadoID" id="assignedVet" class="form-control">
+                                <option value="">Seleccione un veterinario</option>
+                            </select>
                             <span asp-validation-for="cita.VeterinarioAsignadoID" class="text-danger"></span>
                         </div>
+
 
                         <div class="d-grid gap-2 mt-3">
                             <input class="btn btn-lg btn-primary" type="submit" value="Agendar" />
@@ -86,14 +89,36 @@
                         text: '@TempData["Mensaje"]',
                         confirmButtonText: 'Entendido'
                     }).then((result) => {
-                        // Redirige después de que el usuario cierre la alerta
                         if (result.isConfirmed) {
-                            window.location.href = '/Mascotas/addMascota'; // Ajusta esta URL al destino deseado
+                            window.location.href = '/Mascotas/addMascota'; 
                         }
                     });
             </text>
         }
             });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            
+            fetch("https://localhost:7184/api/Empleado/all")
+                .then(response => {
+                    if (!response.ok) throw new Error("Error al cargar veterinarios.");
+                    return response.json();
+                })
+                .then(veterinarios => {
+                    const dropdown = document.getElementById("assignedVet");
+                    veterinarios.forEach(vet => {
+                        const option = document.createElement("option");
+                        option.value = vet.empleadoID;
+                        option.textContent = `${vet.nombre} ${vet.apellido} - ${vet.especialidad}`;
+                        dropdown.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error al cargar veterinarios:", error);
+                    Swal.fire("Error", "No se pudo cargar la lista de veterinarios.", "error");
+                });
+        });
     </script>
 
 }

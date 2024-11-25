@@ -16,7 +16,6 @@
                 <h3>Aqui encontraras un registro de todas las citas que has solicitado, tanto pasadas como pendientes</h3>
                 <p>Si deseas cancelar o cambiar alguna cita registrada debes llamar a nuestro telefono: <strong>2773-3172</strong> o puedes enviar un mensaje al WhatsApp al numero: 8395-4347 </p>
             </div>
-            <!-- Botón para crear una nueva cita -->
             <div class="mb-3 text-center">
                 <a class="btn btn-primary" asp-page="/Cita/RegistroCita">Solicitar Nueva Cita</a>
             </div>
@@ -47,7 +46,9 @@
                                     @mascotaNombre
                                 </td>
                                 <td>@Html.DisplayFor(modelItem => cita.Motivo)</td>
-                                <td>@Html.DisplayFor(modelItem => cita.VeterinarioAsignadoID)</td>
+                                <td>
+                                    <span id="vet-@cita.VeterinarioAsignadoID">Cargando...</span>
+                                </td>
                             </tr>
                         }
                     </tbody>
@@ -71,4 +72,27 @@ else
     <div>
         <div><a href="../Index" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
     </div>
+}
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const vetElements = document.querySelectorAll("[id^='vet-']");
+
+            vetElements.forEach(el => {
+                const empleadoID = el.id.replace("vet-", "");
+                fetch(`https://localhost:7184/api/Empleado/one?empleadoID=${empleadoID}`)
+                    .then(response => {
+                        if (response.ok) return response.json();
+                        throw new Error("Error al obtener el veterinario");
+                    })
+                    .then(data => {
+                        el.textContent = `${data.nombre} ${data.apellido} - ${data.especialidad}`;
+                    })
+                    .catch(error => {
+                        el.textContent = "Error al cargar datos del veterinario";
+                        console.error(error);
+                    });
+            });
+        });
+    </script>
 }
