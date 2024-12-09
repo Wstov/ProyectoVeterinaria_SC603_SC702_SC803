@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
 
-namespace WEB.Pages.Cuenta
+namespace WEB.Pages.Productos
 {
     [Authorize(Roles = "1,2,3")]
-    public class MiPerfilModel : PageModel
+    public class ComprarModel : PageModel
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private Configuracion _configuracion;
@@ -16,7 +16,7 @@ namespace WEB.Pages.Cuenta
         [BindProperty] public Persona persona { get; set; } = default!;
         [BindProperty] public IList<Abstracciones.Modelos.Mascotas> mascotas { get; set; } = new List<Abstracciones.Modelos.Mascotas>();
 
-        public MiPerfilModel(Configuracion configuration, IHttpClientFactory httpClientFactory)
+        public ComprarModel(Configuracion configuration, IHttpClientFactory httpClientFactory)
         {
             _configuracion = configuration;
             _httpClientFactory = httpClientFactory;
@@ -35,15 +35,15 @@ namespace WEB.Pages.Cuenta
 
             if (respuesta.IsSuccessStatusCode)
             {
-                return RedirectToPage("./MiPerfil", new { id = persona.Id });
+                return Page();
             }
+
             return Page();
         }
 
         public async Task<ActionResult> OnGet(Guid id)
         {
             string urlPersonaEndPoint = _configuracion.ObtenerEndPoint("ObtenerPersona");
-            string urlMascotasEndPoint = _configuracion.ObtenerEndPoint("MisMascotas");
 
             // Cliente para realizar solicitudes HTTP
             var cliente = _httpClientFactory.CreateClient("ClienteVeterinaria");
@@ -69,34 +69,9 @@ namespace WEB.Pages.Cuenta
                 }
             }
 
-            // Solicitar las mascotas del cliente
-            var requestUrlMascotas = $"{urlMascotasEndPoint}?PersonaID={id}";
-            var solicitudMascotas = new HttpRequestMessage(HttpMethod.Get, requestUrlMascotas);
-            var respuestaMascotas = await cliente.SendAsync(solicitudMascotas);
-
-            if (respuestaMascotas.IsSuccessStatusCode)
-            {
-                var resultadoMascotas = await respuestaMascotas.Content.ReadAsStringAsync();
-                try
-                {
-                    var options = new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true
-                    };
-                    mascotas = JsonSerializer.Deserialize<List<Abstracciones.Modelos.Mascotas>>(resultadoMascotas, options);
-                }
-                catch (JsonException)
-                {
-                    ModelState.AddModelError(string.Empty, "No hay mascotas registradas");
-                }
-            }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "Error al obtener las mascotas.");
-            }
+           
 
             return Page();
         }
     }
-
 }

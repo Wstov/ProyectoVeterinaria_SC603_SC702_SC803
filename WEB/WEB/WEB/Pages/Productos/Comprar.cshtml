@@ -1,0 +1,200 @@
+﻿@page
+@model WEB.Pages.Productos.ComprarModel
+@{
+}
+@{
+    Guid idUsuario = Guid.Empty;
+    if (User.Identity.IsAuthenticated)
+    {
+        idUsuario = Abstracciones.Modelos.Autenticacion.ClaimsPrincipalExtensions.GetIdUsuario(User);
+    }
+}
+<h1>Finaliza tu compra</h1>
+<br />
+<h2 style="text-align:center">Desglose de la compra</h2>
+<div id="desgloseCompraContainer" class="container">
+    <p>Cargando el desglose de tu compra...</p>
+</div>
+<hr />
+
+<h2 style="text-align:center">Datos del Perfil del Comprador</h2>
+<div class="container">
+    <form method="post">
+        <input type="hidden" asp-for="@Model.persona.Id" />
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"><b>Nombre</b></label>
+            <input readonly asp-for="persona.Nombre" type="text" class="form-control" id="exampleFormControlInput1">
+            <span asp-validation-for="persona.Nombre" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"><b>Apellidos</b></label>
+            <input readonly asp-for="persona.Apellido" type="text" class="form-control" id="exampleFormControlInput1">
+            <span asp-validation-for="persona.Apellido" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"><b>Dirección de Envio</b></label>
+            <textarea readonly asp-for="persona.Direccion" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <span asp-validation-for="persona.Direccion" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"><b>Teléfono</b></label>
+            <input readonly asp-for="persona.Telefono" type="text" class="form-control" id="exampleFormControlInput1">
+            <span asp-validation-for="persona.Telefono" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"><b>Correo electrónico</b></label>
+            <input readonly asp-for="persona.Correo" type="email" class="form-control" id="exampleFormControlInput1">
+            <span asp-validation-for="persona.Correo" class="text-danger"></span>
+        </div>
+        <!-- Botón para abrir el modal -->
+        <button type="button" class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#editModal">Editar Datos</button>
+        <div asp-validation-summary="All" class="text-danger"></div>
+    </form>
+</div>
+
+<!-- Modal para editar los datos -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <!-- Clase para centrar el modal verticalmente -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Editar Perfil</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <input type="hidden" asp-for="@Model.persona.Id" />
+                    <div class="mb-3">
+                        <label for="editNombre" class="form-label"><b>Nombre</b></label>
+                        <input asp-for="persona.Nombre" type="text" class="form-control" id="editNombre">
+                        <span asp-validation-for="persona.Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editApellido" class="form-label"><b>Apellidos</b></label>
+                        <input asp-for="persona.Apellido" type="text" class="form-control" id="editApellido">
+                        <span asp-validation-for="persona.Apellido" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editDireccion" class="form-label">Dirección</label>
+                        <textarea asp-for="persona.Direccion" class="form-control" id="editDireccion" rows="3"></textarea>
+                        <span asp-validation-for="persona.Direccion" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editTelefono" class="form-label"><b>Teléfono</b></label>
+                        <input asp-for="persona.Telefono" type="text" class="form-control" id="editTelefono">
+                        <span asp-validation-for="persona.Telefono" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editCorreo" class="form-label"><b>Correo electrónico</b></label>
+                        <input asp-for="persona.Correo" type="email" class="form-control" id="editCorreo">
+                        <span asp-validation-for="persona.Correo" class="text-danger"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Cancelar</button>
+                        <input type="submit" value="Guardar cambios" class="btn btn-primary w-100" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<h2 style="text-align:center">Metodo de Pago</h2>
+<p>Por favor selecciona un metodo de pago</p>
+<div class="container">
+
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', async function () {
+        const personaId = '@idUsuario';
+        const urlDetalles = `https://localhost:7184/api/Carrito/${personaId}/detalles`;
+
+        try {
+            const response = await fetch(urlDetalles);
+            if (response.ok) {
+                const detalles = await response.json();
+                mostrarDesgloseCompra(detalles);
+            } else {
+                console.error('Error al obtener los detalles del carrito');
+                document.getElementById('desgloseCompraContainer').innerHTML = '<p>No se pudo cargar el desglose de la compra.</p>';
+            }
+        } catch (error) {
+            console.error('Error en la solicitud:', error);
+            document.getElementById('desgloseCompraContainer').innerHTML = '<p>No se pudo conectar al servidor.</p>';
+        }
+    });
+
+    async function mostrarDesgloseCompra(detalles) {
+        const desgloseContainer = document.getElementById('desgloseCompraContainer');
+        desgloseContainer.innerHTML = ''; // Limpia el contenedor.
+
+        if (detalles.length === 0) {
+            desgloseContainer.innerHTML = '<p>El carrito está vacío.</p>';
+            return;
+        }
+
+        let total = 0;
+        let desgloseHtml = `
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            `;
+
+        for (const detalle of detalles) {
+            const productoNombre = await obtenerNombreProducto(detalle.productoID);
+            const subtotal = detalle.cantidad * detalle.precioUnitario;
+            total += subtotal;
+
+            desgloseHtml += `
+            <tr>
+                <td>${productoNombre}</td>
+                <td>${detalle.cantidad}</td>
+                <td>₡${detalle.precioUnitario.toFixed(2)}</td>
+                <td>₡${subtotal.toFixed(2)}</td>
+            </tr>
+            `;
+        }
+
+        desgloseHtml += `
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="3" style="text-align:right">Total:</th>
+                <th>₡${total.toFixed(2)}</th>
+            </tr>
+        </tfoot>
+    </table>
+        `;
+
+        desgloseContainer.innerHTML = desgloseHtml;
+    }
+
+    async function obtenerNombreProducto(productoID) {
+        const urlProducto = `https://localhost:7184/api/Producto?ProductoID=${productoID}`;
+        try {
+            const response = await fetch(urlProducto);
+            if (response.ok) {
+                const producto = await response.json();
+                return producto.nombre;
+            } else {
+                console.error(`Error al obtener el nombre del producto con ID: ${productoID}`);
+                return 'Nombre no disponible';
+            }
+        } catch (error) {
+            console.error('Error en la solicitud:', error);
+            return 'Nombre no disponible';
+        }
+    }
+</script>
+
+
+@section Scripts {
+    @Html.RenderPartialAsync("_ValidationScriptsPartial")
+}
