@@ -16,7 +16,16 @@ namespace API.Controllers
         {
             _carritoBW = carritoBW;
         }
-
+        [HttpGet("finalizados/{carritoId}")]
+        public async Task<IActionResult> ObtenerCarritosFinalizados(Guid carritoId)
+        {
+            var carritosFinalizados = await _carritoBW.ObtenerCarritosFinalizados(carritoId);
+            if (carritosFinalizados == null || !carritosFinalizados.Any())
+            {
+                return NotFound("No se encontraron carritos finalizados.");
+            }
+            return Ok(carritosFinalizados);
+        }
         [HttpGet("activo/{personaId}")]
         public async Task<IActionResult> ObtenerCarritoActivo(Guid personaId)
         {
@@ -77,4 +86,5 @@ namespace API.Controllers
             return Ok(new { Message = "Producto eliminado correctamente." });
         }
     }
+
 }

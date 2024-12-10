@@ -64,6 +64,8 @@ builder.Services.AddScoped<ICarritoDA, CarritoDA>();
 builder.Services.AddScoped<ICarritoBW, CarritoBW>();
 builder.Services.AddScoped<IRolesxUsuarioDA, RolesxUsuarioDA>();
 builder.Services.AddScoped<IRolesxUsuarioBW, RolesxUsuarioBW>();
+builder.Services.AddScoped<IFacturaBW, FacturaBW>();
+builder.Services.AddScoped<IFacturaDA, FacturaDA>();
 builder.Services.AddScoped<IEmpleadoDA, EmpleadoDA>();
 builder.Services.AddScoped<IEmpleadoBW, EmpleadoBW>();
 var app = builder.Build();

@@ -1,0 +1,63 @@
+﻿@page
+@model WEB.Pages.Productos.PedidosModel
+@{
+}
+<h1>Pedidos Realizados</h1>
+@if (Model.Facturas != null && Model.Facturas.Any())
+{
+    <section class="mt-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Facturas Registradas</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Comprador</th>
+                            <th>Productos</th>
+                            <th>Método de Pago</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var factura in Model.Facturas)
+                        {
+                            <tr id="factura-@factura.FacturaID">
+                                <td>@Html.DisplayFor(modelItem => factura.Fecha)</td>
+                                <td>
+                                    @{
+                                        var nombreDueno = Model.DuenosInfo.ContainsKey(factura.IdPersona)
+                                        ? Model.DuenosInfo[factura.IdPersona]
+                                        : "Dueño no encontrado";
+                                    }
+                                    @nombreDueno
+                                </td>
+                                <td>
+                                    @if (factura.ProductosDetalles != null && factura.ProductosDetalles.Any())
+                                    {
+                                        <ul>
+                                            @foreach (var detalle in factura.ProductosDetalles)
+                                            {
+                                                <li>@detalle</li>
+                                            }
+                                        </ul>
+                                    }
+                                    else
+                                    {
+                                        <span>Sin detalles</span>
+                                    }
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => factura.MetodoPago)</td>
+                                <td>@Html.DisplayFor(modelItem => factura.Total)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div><a asp-page="../Index" class="btn btn-secondary w-100" style="margin-top:10px">Volver</a></div>
+        </div>
+    </section>
+}
+
+

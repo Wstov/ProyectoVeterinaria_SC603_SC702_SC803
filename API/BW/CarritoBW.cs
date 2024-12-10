@@ -18,7 +18,10 @@ namespace BW
         {
             _carritoDA = carritoDA;
         }
-
+        public async Task<IEnumerable<DetallesCarrito>> ObtenerCarritosFinalizados(Guid carritoId)
+        {
+            return await _carritoDA.ObtenerCarritosFinalizados(carritoId);
+        }
         public async Task<Carrito> ObtenerCarritoActivoPorPersona(Guid personaId)
         {
             return await _carritoDA.ObtenerCarritoActivoPorPersona(personaId);

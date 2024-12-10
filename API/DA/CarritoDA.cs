@@ -22,7 +22,15 @@ namespace DA
             _repositorioDapper = repositorioDapper;
             _sqlConnection = _repositorioDapper.ObtenerRepositorioDapper();
         }
-
+        public async Task<IEnumerable<DetallesCarrito>> ObtenerCarritosFinalizados(Guid carritoId)
+        {
+            string sql = "ObtenerCarritosFinalizados";
+            var result = await _sqlConnection.QueryAsync<DetallesCarrito>(
+                sql, new { carritoId=carritoId},
+                commandType: CommandType.StoredProcedure
+            );
+            return result;
+        }
         public async Task<Carrito> ObtenerCarritoActivoPorPersona(Guid personaId)
         {
             string sql = @"ObtenerCarritoActivo";

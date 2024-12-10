@@ -17,5 +17,6 @@ namespace Abstracciones.BW
         Task<Guid> AgregarProductoAlCarrito(Guid CarritoID, DetallesCarrito detalle, Guid personaId);
         Task<Guid> ActualizarCantidadProducto(Guid CarritoID, Guid ProductoID, int nuevaCantidad);
         Task<Guid> EliminarProductoDelCarrito(Guid CarritoID, Guid ProductoID);
+        Task<IEnumerable<DetallesCarrito>> ObtenerCarritosFinalizados(Guid carritoId);
     }
 }

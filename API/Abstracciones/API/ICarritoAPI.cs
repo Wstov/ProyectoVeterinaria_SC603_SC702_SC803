@@ -25,5 +25,7 @@ namespace Abstracciones.API
         Task<IActionResult> ActualizarCantidadProducto(Guid carritoId, Guid productoId, [FromBody] int nuevaCantidad);
         [HttpDelete("api/carrito/{carritoId}/producto/{productoId}")]
         Task<IActionResult> EliminarProductoDelCarrito(Guid carritoId, Guid productoId);
+        [HttpGet("api/carrito/finalizados")]
+        Task<IActionResult> ObtenerCarritosFinalizados(Guid carritoId);
     }
 }
