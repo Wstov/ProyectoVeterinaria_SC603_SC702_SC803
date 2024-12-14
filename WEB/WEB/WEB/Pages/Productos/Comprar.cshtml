@@ -9,6 +9,7 @@
         idUsuario = Abstracciones.Modelos.Autenticacion.ClaimsPrincipalExtensions.GetIdUsuario(User);
     }
 }
+<script src="https://www.paypal.com/sdk/js?client-id=AYxc_eVSJMaNCyt4Shwgs_LXLz5I0gGe6W9LW0BES4RYmi1-Sj5yTMeuQ9ocDW7P-qnzKnRzQZ2VZMSU&currency=USD"></script>
 <h1>Finaliza tu compra</h1>
 <br />
 <h2 style="text-align:center">Desglose de la compra</h2>
@@ -210,25 +211,8 @@
 </script>
 <script>
     document.getElementById('btnComprar').addEventListener('click', async function () {
-        const idUsuario = '@idUsuario';
+        const idUsuario = '@idUsuario'; 
         const carritoActivo = await obtenerCarritoActivo(idUsuario);
-        async function obtenerCarritoActivo(idUsuario) {
-            try {
-                const response = await fetch(`https://localhost:7184/api/Carrito/activo/${idUsuario}`);
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data.carritoID) {
-                        return data;
-                    }
-                }
-                return null;
-            } catch (error) {
-                console.error('Error al obtener el carrito activo:', error);
-                alert('Error al obtener el carrito activo.');
-                return null;
-            }
-        }
-      
         const metodoPago = document.getElementById('metodoPago').value;
         const comentario = document.getElementById('comentario').value;
         const total = await calcularTotalCompra();
@@ -237,23 +221,85 @@
             alert('Por favor, selecciona un carrito, un método de pago y asegúrate de que el total sea válido.');
             return;
         }
-    
 
         if (!carritoActivo) {
             alert('No se encontró un carrito activo.');
             return;
         }
 
-        const idCarrito = carritoActivo.carritoID; 
-        console.log('carrito: '+ idCarrito)
+        const idCarrito = carritoActivo.carritoID;
         const factura = {
             IdPersona: idUsuario,
             IdCarrito: idCarrito,
             MetodoPago: metodoPago,
             Total: total,
-            Comentarios: comentario || '', 
+            Comentarios: comentario || '',
         };
 
+        const tasaDeCambio = await obtenerTasaDeCambio();
+        if (!tasaDeCambio) {
+            alert('No se pudo obtener la tasa de cambio actual.');
+            return;
+        }
+
+        const totalEnDolares = total * tasaDeCambio;
+        if (isNaN(totalEnDolares) || totalEnDolares <= 0) {
+            alert('El total convertido a dólares no es válido.');
+            return;
+        }
+
+        factura.TotalDolares = totalEnDolares.toFixed(2); 
+        console.log(`Total en dólares: ${factura.TotalDolares}`);
+
+        if (metodoPago === "Tarjeta") {
+            paypal.Buttons({
+                createOrder: function (data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: totalEnDolares.toFixed(2), 
+                            },
+                            description: `Pago de carrito ${idCarrito}`
+                        }]
+                    });
+                },
+                onApprove: async function (data, actions) {
+                    return actions.order.capture().then(async function (details) {
+                        console.log('Transacción exitosa:', details);
+                        factura.TransactionId = details.id; 
+                        factura.MetodoPago = "PayPal-Tarjeta";
+
+                        await registrarFactura(factura, idCarrito);
+                    });
+                },
+                onError: function (err) {
+                    console.error('Error en el pago de PayPal:', err);
+                    alert('Hubo un error al procesar el pago con PayPal. Revisa la consola para más detalles.');
+                }
+            }).render('#paypal-container');
+        } else {
+            await registrarFactura(factura, idCarrito);
+        }
+    });
+
+    async function obtenerTasaDeCambio() {
+        try {
+            const response = await fetch('https://v6.exchangerate-api.com/v6/aaa83a4cfa81cdcb8fec4ee7/latest/CRC'); 
+            const data = await response.json();
+
+            if (data.result === 'success') {
+                return data.conversion_rates.USD; 
+            } else {
+                console.error('Error al obtener la tasa de cambio:', data.error);
+                return null;
+            }
+        } catch (error) {
+            console.error('Error en la solicitud de tasa de cambio:', error);
+            return null;
+        }
+    }
+
+    async function registrarFactura(factura, idCarrito) {
         try {
             const response = await fetch('https://localhost:7184/api/Factura', {
                 method: 'POST',
@@ -284,13 +330,13 @@
             } else {
                 Swal.fire('Error', 'Hubo un error al realizar la compra. Intenta nuevamente.', 'error');
             }
-            
+
         } catch (error) {
             console.error('Error al hacer la solicitud:', error);
             alert('Error al procesar la compra.');
         }
-    });
-   
+    }
+
     async function calcularTotalCompra() {
         const desgloseContainer = document.getElementById('desgloseCompraContainer');
         const rows = desgloseContainer.querySelectorAll('tbody tr');
@@ -303,7 +349,27 @@
 
         return total;
     }
+
+    async function obtenerCarritoActivo(idUsuario) {
+        try {
+            const response = await fetch(`https://localhost:7184/api/Carrito/activo/${idUsuario}`);
+            if (response.ok) {
+                const data = await response.json();
+                if (data.carritoID) {
+                    return data;
+                }
+            }
+            return null;
+        } catch (error) {
+            console.error('Error al obtener el carrito activo:', error);
+            alert('Error al obtener el carrito activo.');
+            return null;
+        }
+    }
 </script>
+
+<br></br>
+<div id="paypal-container" style="justify-content:center; align-items:center"></div>
 
 @section Scripts {
     @Html.RenderPartialAsync("_ValidationScriptsPartial")
