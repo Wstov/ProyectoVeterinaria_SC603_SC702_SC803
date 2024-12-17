@@ -4,10 +4,10 @@
     {
         idUsuario = Abstracciones.Modelos.Autenticacion.ClaimsPrincipalExtensions.GetIdUsuario(User);
     }
- 
+
 }
 
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -25,15 +25,14 @@
         @* NAV *@
         <nav class="navbar navbar-expand-lg bg-primary px-lg-5" data-bs-theme="dark">
             <div class="container-fluid">
-                <img src="~/img/Logo.png" alt="Logo" style="width: 70px; height: auto;" />
-                @* <a class="navbar-brand text-light" href="#">Logo</a> *@
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarColor01">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-page="../Index" >Inicio</a>
+                            <a class="nav-link " asp-area="" asp-page="../Index">Inicio</a>
                         </li>
                         @if (User.Identity.IsAuthenticated && User.IsInRole("2"))
                         {
@@ -48,8 +47,8 @@
                             <li class="nav-item">
                                 <a class="nav-link " asp-page="/Cita/MisCitas">Citas</a>
                             </li>
-                            
-                           
+
+
 
                         }
                         @if (User.Identity.IsAuthenticated && User.IsInRole("1"))
@@ -62,22 +61,23 @@
                                 <a class="nav-link" asp-area="" asp-page="/Personas/Index">Administrador</a>
                             </li>
 
+
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-page="/Productos/Pedidos">Pedidos</a>
                             </li>
-                           
+
                             <li class="nav-item">
                                 <a class="nav-link " asp-area="" asp-page="/Cita/Index">AdminCitas</a>
                             </li>
-                           
-                            
+
+
                         }
                         @if (User.Identity.IsAuthenticated && User.IsInRole("1") || User.IsInRole("3"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-page="/Mascotas/Index">Mascotas</a>
                             </li>
-                            
+
                         }
                         @if (User.Identity.IsAuthenticated && User.IsInRole("3"))
                         {
@@ -85,18 +85,18 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-page="/Cita/Index">AdminCitas</a>
                             </li>
-                      
+
                             <li class="nav-item">
                                 <a class="nav-link " asp-area="" asp-controller="GestionExpediente" asp-action="Index">Expedientes</a>
                             </li>
-                           
+
 
 
 
                         }
                         @if (User.Identity.IsAuthenticated)
                         {
-                           
+
                             <li class="nav-item">
                                 <a class="nav-link text" asp-route-id="@idUsuario" asp-page="/Cuenta/MiPerfil">
                                     <i class="bi bi-person-video"> @User.Identity.Name</i>
@@ -108,8 +108,8 @@
 
                         }
 
-                       
-                       
+
+
                         else
                         {
                             <li class="nav-item">
@@ -119,7 +119,7 @@
                         }
 
                     </ul>
-                   
+
                 </div>
             </div>
         </nav>
@@ -137,10 +137,9 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
                 <div class="col mb-3">
                     <div class="lc-block mb-3">
-                        <img src="~/img/Logo.png" alt="Logo" style="width: 150px; height: auto;" />
-@*                         <a class="navbar-brand " href="">
+                        <a class="navbar-brand " href="">
                             Logo
-                        </a> *@
+                        </a>
                     </div>
                     <div class="lc-block">
                         <div editable="rich">
@@ -237,27 +236,21 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script >
+    <script>
         document.getElementById("link-productos").addEventListener("click", async function (event) {
             event.preventDefault();
-
             const personaId = '@User.FindFirst("IdUsuario")?.Value';
-
             let carritoId = await obtenerCarritoActivo(personaId);
-
             if (!carritoId) {
                 carritoId = await crearCarrito(personaId);
                 window.location.href = '/Productos/Index';
             }
-
             localStorage.setItem('carritoId', carritoId);
             console.log("Carrito activo:", carritoId);
             window.location.href = '/Productos/Index';
         });
-
         async function obtenerCarritoActivo(personaId) {
             const url = `https://localhost:7184/api/Carrito/activo/${personaId}`;
-
             try {
                 const response = await fetch(url);
                 if (response.ok) {
@@ -271,10 +264,8 @@
                 return null;
             }
         }
-
         async function crearCarrito(personaId) {
             const url = `https://localhost:7184/api/Carrito/crear/${personaId}`;
-
             try {
                 const response = await fetch(url, {
                     method: 'POST',
@@ -282,7 +273,6 @@
                         'Content-Type': 'application/json'
                     }
                 });
-
                 if (response.ok) {
                     const data = await response.json();
                     return data.carritoId;
@@ -299,4 +289,3 @@
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>
-</html>
