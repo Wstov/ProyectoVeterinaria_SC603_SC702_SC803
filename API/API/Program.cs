@@ -35,7 +35,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin",
         builder => builder
-            .WithOrigins("https://localhost:7238")
+            .WithOrigins("https://veterinariaelganadero.azurewebsites.net")
             .AllowAnyMethod()
             .AllowAnyHeader());
 });
