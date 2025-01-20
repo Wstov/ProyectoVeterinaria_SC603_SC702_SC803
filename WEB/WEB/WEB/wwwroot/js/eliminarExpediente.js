@@ -17,7 +17,7 @@
 
 async function deleteExpediente(expedienteID) {
     try {
-        const response = await fetch(`https://localhost:7184/api/Expediente?ExpedienteID=${expedienteID}`, {
+        const response = await fetch(`https://apiveterinaria.azurewebsites.net/api/Expediente?ExpedienteID=${expedienteID}`, {
             method: 'DELETE'
         });
 

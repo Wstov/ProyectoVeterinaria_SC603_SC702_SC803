@@ -100,7 +100,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             
-            fetch("https://localhost:7184/api/Empleado/all")
+            fetch("https://apiveterinaria.azurewebsites.net/api/Empleado/all")
                 .then(response => {
                     if (!response.ok) throw new Error("Error al cargar veterinarios.");
                     return response.json();

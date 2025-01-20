@@ -135,7 +135,7 @@
 <script>
     async function abrirModalCarrito() {
         const personaId = '@idUsuario';
-        const urlDetalles = `https://localhost:7184/api/Carrito/${personaId}/detalles`;
+        const urlDetalles = `https://apiveterinaria.azurewebsites.net/api/Carrito/${personaId}/detalles`;
 
         try {
             const response = await fetch(urlDetalles);
@@ -193,7 +193,7 @@
     }
 
     async function obtenerNombreProducto(productoID) {
-        const urlProducto = `https://localhost:7184/api/Producto?ProductoID=${productoID}`;
+        const urlProducto = `https://apiveterinaria.azurewebsites.net/api/Producto?ProductoID=${productoID}`;
         try {
             const response = await fetch(urlProducto);
             if (response.ok) {
@@ -210,7 +210,7 @@
     }
 
     async function eliminarProducto(carritoID, productoID, totalProductos) {
-        const urlEliminar = `https://localhost:7184/api/Carrito/${carritoID}/producto/${productoID}`;
+        const urlEliminar = `https://apiveterinaria.azurewebsites.net/api/Carrito/${carritoID}/producto/${productoID}`;
         try {
             const response = await fetch(urlEliminar, { method: 'DELETE' });
             if (response.ok) {
@@ -259,7 +259,7 @@
     }
 
     async function actualizarCantidadProducto(carritoID, productoID, nuevaCantidad) {
-        const urlActualizar = `https://localhost:7184/api/Carrito/${carritoID}/producto/${productoID}/actualizar`;
+        const urlActualizar = `https://apiveterinaria.azurewebsites.net/api/Carrito/${carritoID}/producto/${productoID}/actualizar`;
         try {
             const response = await fetch(urlActualizar, {
                 method: 'PUT',
@@ -333,7 +333,7 @@
             precioUnitario: 0.01
         };
 
-        const url = `https://localhost:7184/api/Carrito/${carritoId}/agregar?personaId=${personaId}`;
+        const url = `https://apiveterinaria.azurewebsites.net/api/Carrito/${carritoId}/agregar?personaId=${personaId}`;
 
         try {
             const response = await fetch(url, {
@@ -380,7 +380,7 @@
     }
 
     async function obtenerCarritoActivo(personaId) {
-        const url = `https://localhost:7184/api/Carrito/activo/${personaId}`;
+        const url = `https://apiveterinaria.azurewebsites.net/api/Carrito/activo/${personaId}`;
 
         try {
             const response = await fetch(url);
@@ -397,7 +397,7 @@
     }
 
     async function crearCarrito(personaId) {
-        const url = `https://localhost:7184/api/Carrito/crear/${personaId}`;
+        const url = `https://apiveterinaria.azurewebsites.net/api/Carrito/crear/${personaId}`;
 
         try {
             const response = await fetch(url, {
@@ -421,7 +421,7 @@
     }
 
     async function actualizarCantidadDesdeCarrito(personaId) {
-        const urlDetalles = `https://localhost:7184/api/Carrito/${personaId}/detalles`;
+        const urlDetalles = `https://apiveterinaria.azurewebsites.net/api/Carrito/${personaId}/detalles`;
 
         try {
             const response = await fetch(urlDetalles);

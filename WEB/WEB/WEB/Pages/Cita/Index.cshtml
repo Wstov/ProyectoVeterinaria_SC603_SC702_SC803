@@ -81,7 +81,7 @@ else
         const confirmacion = confirm('¿Estás seguro de que deseas eliminar esta cita?');
 
         if (confirmacion) {
-            const response = await fetch(`https://localhost:7184/api/Cita?CitaID=${citaId}`, {
+            const response = await fetch(`https://apiveterinaria.azurewebsites.net/api/Cita?CitaID=${citaId}`, {
                 method: 'DELETE'
             });
 

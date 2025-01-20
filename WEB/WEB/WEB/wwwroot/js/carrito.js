@@ -36,7 +36,7 @@ async function agregarAlCarrito() {
         precioUnitario: 0.01
     };
 
-    const url = `https://localhost:7184/api/Carrito/${carritoId}/agregar?personaId=${personaId}`;
+    const url = `https://apiveterinaria.azurewebsites.net/api/Carrito/${carritoId}/agregar?personaId=${personaId}`;
 
     try {
         const response = await fetch(url, {
@@ -81,7 +81,7 @@ async function agregarAlCarrito() {
 }
 
 async function obtenerCarritoActivo(personaId) {
-    const url = `https://localhost:7184/api/Carrito/activo/${personaId}`;
+    const url = `https://apiveterinaria.azurewebsites.net/api/Carrito/activo/${personaId}`;
 
     try {
         const response = await fetch(url);
@@ -98,7 +98,7 @@ async function obtenerCarritoActivo(personaId) {
 }
 
 async function crearCarrito(personaId) {
-    const url = `https://localhost:7184/api/Carrito/crear/${personaId}`;
+    const url = `https://apiveterinaria.azurewebsites.net/api/Carrito/crear/${personaId}`;
 
     try {
         const response = await fetch(url, {

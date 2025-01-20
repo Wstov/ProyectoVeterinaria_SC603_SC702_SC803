@@ -126,7 +126,7 @@ else
         let MascotaID = document.getElementById('MascotaID').value;
         let diagnostico = document.getElementById('Diagnostico').value;
 
-        const response = await fetch('https://localhost:7184/api/Expediente', {
+        const response = await fetch('https://apiveterinaria.azurewebsites.net/api/Expediente', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

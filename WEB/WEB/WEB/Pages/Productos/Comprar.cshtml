@@ -123,7 +123,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', async function () {
         const personaId = '@idUsuario';
-        const urlDetalles = `https://localhost:7184/api/Carrito/${personaId}/detalles`;
+        const urlDetalles = `https://apiveterinaria.azurewebsites.net/api/Carrito/${personaId}/detalles`;
 
         try {
             const response = await fetch(urlDetalles);
@@ -193,7 +193,7 @@
     }
 
     async function obtenerNombreProducto(productoID) {
-        const urlProducto = `https://localhost:7184/api/Producto?ProductoID=${productoID}`;
+        const urlProducto = `https://apiveterinaria.azurewebsites.net/api/Producto?ProductoID=${productoID}`;
         try {
             const response = await fetch(urlProducto);
             if (response.ok) {
@@ -301,7 +301,7 @@
 
     async function registrarFactura(factura, idCarrito) {
         try {
-            const response = await fetch('https://localhost:7184/api/Factura', {
+            const response = await fetch('https://apiveterinaria.azurewebsites.net/api/Factura', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -317,7 +317,7 @@
                     icon: 'success',
                     confirmButtonText: 'Aceptar'
                 }).then(async () => {
-                    const finalizarResponse = await fetch(`https://localhost:7184/api/Carrito/${idCarrito}/finalizar`, {
+                    const finalizarResponse = await fetch(`https://apiveterinaria.azurewebsites.net/api/Carrito/${idCarrito}/finalizar`, {
                         method: 'PUT',
                     });
 
@@ -352,7 +352,7 @@
 
     async function obtenerCarritoActivo(idUsuario) {
         try {
-            const response = await fetch(`https://localhost:7184/api/Carrito/activo/${idUsuario}`);
+            const response = await fetch(`https://apiveterinaria.azurewebsites.net/api/Carrito/activo/${idUsuario}`);
             if (response.ok) {
                 const data = await response.json();
                 if (data.carritoID) {

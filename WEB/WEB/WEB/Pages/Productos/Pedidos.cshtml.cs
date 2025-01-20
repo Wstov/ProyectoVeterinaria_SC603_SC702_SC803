@@ -63,7 +63,7 @@ namespace WEB.Pages.Productos
                         }
                     }
                 
-                string urlEndPointCarrito = $"https://localhost:7184/api/Carrito/finalizados/{factura.IdCarrito}";
+                string urlEndPointCarrito = $"https://apiveterinaria.azurewebsites.net/api/Carrito/finalizados/{factura.IdCarrito}";
                 var solicitudCarrito = new HttpRequestMessage(HttpMethod.Get, urlEndPointCarrito);
                 var respuestaCarrito = await cliente.SendAsync(solicitudCarrito);
 
@@ -83,7 +83,7 @@ namespace WEB.Pages.Productos
 
                         if (!ProductosInfo.ContainsKey(detalle.ProductoID))
                         {
-                            string urlEndPointProducto = string.Format("https://localhost:7184/api/Producto?ProductoID={0}", detalle.ProductoID);
+                            string urlEndPointProducto = string.Format("https://apiveterinaria.azurewebsites.net/api/Producto?ProductoID={0}", detalle.ProductoID);
                             var solicitudProducto = new HttpRequestMessage(HttpMethod.Get, urlEndPointProducto);
                             var respuestaProducto = await cliente.SendAsync(solicitudProducto);
 

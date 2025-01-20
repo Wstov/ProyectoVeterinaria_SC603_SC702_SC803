@@ -126,7 +126,7 @@
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        fetch("https://localhost:7184/api/Persona")
+        fetch("https://apiveterinaria.azurewebsites.net/api/Persona")
             .then(response => response.json())
             .then(personas => {
                 const personaSelect = document.getElementById("personaSelect");
@@ -153,7 +153,7 @@
                 return;
             }
 
-            fetch("https://localhost:7184/api/Empleado", {
+            fetch("https://apiveterinaria.azurewebsites.net/api/Empleado", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -189,7 +189,7 @@
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://localhost:7184/api/Empleado?empleadoID=${empleadoID}`, {
+                fetch(`https://apiveterinaria.azurewebsites.net/api/Empleado?empleadoID=${empleadoID}`, {
                     method: 'DELETE'
                 })
                     .then(response => {

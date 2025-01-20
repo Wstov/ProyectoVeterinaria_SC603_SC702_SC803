@@ -80,7 +80,7 @@ else
 
             vetElements.forEach(el => {
                 const empleadoID = el.id.replace("vet-", "");
-                fetch(`https://localhost:7184/api/Empleado/one?empleadoID=${empleadoID}`)
+                fetch(`https://apiveterinaria.azurewebsites.net/api/Empleado/one?empleadoID=${empleadoID}`)
                     .then(response => {
                         if (response.ok) return response.json();
                         throw new Error("Error al obtener el veterinario");
